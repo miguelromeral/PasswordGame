@@ -10,13 +10,15 @@ data class Password(
     val word: String? = "",
     val random: Long? = 0
 ){
+    var solved: Boolean = false
+    var failed: Boolean = false
+
     val hintsSplit: List<String>
         get() =
             if(hints.isNullOrEmpty())
                 listOf()
             else
                 hints.split(SEPARATOR)
-
 
 
     companion object {

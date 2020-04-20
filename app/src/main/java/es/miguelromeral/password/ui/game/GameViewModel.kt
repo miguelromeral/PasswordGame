@@ -20,8 +20,11 @@ class GameViewModel : ViewModel() {
     private val _text = MutableLiveData<String>("Password!")
     val text: LiveData<String> = _text
 
-    private val _listOfWords = MutableLiveData<List<String>>()
+    private val _listOfWords = MutableLiveData<List<Password>>()
     val listOfWords = _listOfWords
+
+    private val _currentIndex = MutableLiveData<Int>(DEFAULT_INDEX)
+    val currentIndex = _currentIndex
 
     private var mFirestore: FirebaseFirestore
 
@@ -49,6 +52,8 @@ class GameViewModel : ViewModel() {
             }
 */
 
+        var listRetrieved = mutableListOf<Password>()
+
         mFirestore
             .collection(COLL_PASSWORD)
             //.whereEqualTo("level","medium")
@@ -57,14 +62,10 @@ class GameViewModel : ViewModel() {
             .addOnSuccessListener {documents ->
                 try {
                     if (documents != null) {
-                        var res = ""
                         for (document in documents) {
                             var obj = document.toObject(Password::class.java)
-                            Log.i(TAG, "Hints: "+obj.hintsSplit.toString())
-                            res += "${document.id} => ${document.data}\n"
+                            listRetrieved.add(obj)
                         }
-                        Log.d(TAG, res)
-                        _text.postValue(res)
                         Log.d(TAG, "DocumentSnapshot read successfully!")
                     } else {
                         Log.d(TAG, "No such document!")
@@ -74,6 +75,8 @@ class GameViewModel : ViewModel() {
                 }
             }
 
+        _listOfWords.postValue(listRetrieved)
+        _currentIndex.postValue(0)
         Log.i(TAG, "Finish!")
     }
 
@@ -81,9 +84,25 @@ class GameViewModel : ViewModel() {
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
 
+    fun nextWord(){
+        try {
+            listOfWords?.value?.let { list ->
+                var listSize = list.size - 1
+                var index = _currentIndex.value!!
+
+                if (index < listSize){
+                    _currentIndex.postValue(index + 1)
+                }
+            }
+        }catch (e: Exception){
+            Log.e(TAG, e.message)
+        }
+    }
+
     companion object {
         val TAG = "GameViewModel"
 
         val COLL_PASSWORD = "passwords"
+        val DEFAULT_INDEX = -1
     }
 }
