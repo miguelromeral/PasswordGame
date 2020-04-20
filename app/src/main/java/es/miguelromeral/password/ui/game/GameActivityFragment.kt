@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import es.miguelromeral.password.R
 import es.miguelromeral.password.databinding.FragmentGameBinding
@@ -28,6 +29,10 @@ class GameActivityFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false)
         binding.viewModel = viewModel
+
+        viewModel.text.observe(viewLifecycleOwner, Observer {
+            binding.tvPassword.text = it
+        })
 
         return binding.root
     }
