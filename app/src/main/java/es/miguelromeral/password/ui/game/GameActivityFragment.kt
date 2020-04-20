@@ -6,9 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import es.miguelromeral.password.R
 import es.miguelromeral.password.databinding.FragmentGameBinding
 import es.miguelromeral.password.databinding.FragmentHomeBinding
@@ -32,11 +34,25 @@ class GameActivityFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false)
         binding.viewModel = viewModel
 
+        val manager = GridLayoutManager(activity, 3)
+        binding.rvHints.layoutManager = manager
+
         val adapter = HintAdapter()
         binding.rvHints.adapter = adapter
 
-        binding.bFail.setOnClickListener { viewModel.nextWord() }
-        binding.bSuccess.setOnClickListener { viewModel.nextWord() }
+        binding.bFail.setOnClickListener {
+            if(viewModel.nextWord()) viewModel.failWord()
+        }
+        binding.bSuccess.setOnClickListener {
+            if(viewModel.nextWord()) viewModel.successWord()
+        }
+
+        viewModel.nFails.observe(viewLifecycleOwner, Observer {
+            binding.tvFails.text = it.toString()
+        })
+        viewModel.nSuccess.observe(viewLifecycleOwner, Observer {
+            binding.tvSuccess.text = it.toString()
+        })
 
         viewModel.text.observe(viewLifecycleOwner, Observer {
             binding.tvPassword.text = it

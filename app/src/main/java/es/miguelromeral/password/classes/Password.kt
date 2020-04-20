@@ -18,7 +18,7 @@ data class Password(
             if(hints.isNullOrEmpty())
                 listOf()
             else
-                hints.split(SEPARATOR)
+                hints.split(SEPARATOR).sorted()
 
 
     companion object {

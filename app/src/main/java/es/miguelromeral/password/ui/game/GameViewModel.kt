@@ -26,6 +26,12 @@ class GameViewModel : ViewModel() {
     private val _currentIndex = MutableLiveData<Int>(DEFAULT_INDEX)
     val currentIndex = _currentIndex
 
+    private val _nFails = MutableLiveData<Int>(0)
+    val nFails = _nFails
+
+    private val _nSuccess = MutableLiveData<Int>(0)
+    val nSuccess = _nSuccess
+
     private var mFirestore: FirebaseFirestore
 
     init{
@@ -67,24 +73,48 @@ class GameViewModel : ViewModel() {
                             listRetrieved.add(obj)
                         }
                         Log.d(TAG, "DocumentSnapshot read successfully!")
+
+                        _listOfWords.postValue(listRetrieved.shuffled())
+                        _currentIndex.postValue(0)
+
                     } else {
                         Log.d(TAG, "No such document!")
+
+                        _currentIndex.postValue(DEFAULT_INDEX)
                     }
                 }catch (ex: Exception){
                     Log.e(TAG, ex.message)
                 }
             }
 
-        _listOfWords.postValue(listRetrieved)
-        _currentIndex.postValue(0)
-        Log.i(TAG, "Finish!")
     }
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+    fun successWord(){
+        try{
+            getCurrentPassword()?.let{ pwd ->
+                pwd.solved = true
+                _nSuccess.postValue(_nSuccess.value!! + 1)
+            }
+        }catch(e: Exception){
+            Log.e(TAG, e.message)
+        }
+    }
 
-    fun nextWord(){
+    fun failWord(){
+        try{
+            getCurrentPassword()?.let{ pwd ->
+                pwd.failed = true
+                _nFails.postValue(_nFails.value!! + 1)
+            }
+        }catch(e: Exception){
+            Log.e(TAG, e.message)
+        }
+    }
+
+    fun nextWord(): Boolean {
         try {
             listOfWords?.value?.let { list ->
                 var listSize = list.size - 1
@@ -92,10 +122,21 @@ class GameViewModel : ViewModel() {
 
                 if (index < listSize){
                     _currentIndex.postValue(index + 1)
+                    return true
                 }
             }
         }catch (e: Exception){
             Log.e(TAG, e.message)
+        }
+        return false
+    }
+
+    private fun getCurrentPassword(): Password? {
+        try {
+            return listOfWords?.value?.get(_currentIndex.value!!)
+        }catch (e: Exception){
+            Log.e(TAG, e.message)
+            return null
         }
     }
 
