@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.databinding.FragmentGameBinding
 import es.miguelromeral.password.databinding.FragmentHomeBinding
 import es.miguelromeral.password.ui.Adapters.HintAdapter
@@ -29,7 +30,14 @@ class GameActivityFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
+
+        val vmf = GameFactory(
+            arguments?.getString(ARG_CATEGORY) ?: Options.DEFAULT_CATEGORY,
+            arguments?.getString(ARG_LEVEL) ?: Options.DEFAULT_LEVEL,
+            arguments?.getString(ARG_LANGUAGE) ?: Options.DEFAULT_LANGUAGE
+        )
+
+        viewModel = ViewModelProviders.of(this, vmf).get(GameViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false)
         binding.viewModel = viewModel
@@ -78,8 +86,6 @@ class GameActivityFragment : Fragment() {
             }
         })
 
-
-
         return binding.root
     }
 
@@ -91,5 +97,9 @@ class GameActivityFragment : Fragment() {
 
     companion object {
         const val TAG = "GameActivityFragment"
+
+        const val ARG_CATEGORY = "category"
+        const val ARG_LEVEL = "level"
+        const val ARG_LANGUAGE = "language"
     }
 }

@@ -14,11 +14,15 @@ import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.classes.Password
 import java.util.HashMap
 import kotlin.random.Random
 
-class GameViewModel : ViewModel() {
+class GameViewModel(
+    val category: String,
+    val level: String,
+    val language: String) : ViewModel() {
 
     private val _text = MutableLiveData<String>("Password!")
     val text: LiveData<String> = _text
@@ -50,6 +54,8 @@ class GameViewModel : ViewModel() {
         mFirestore = FirebaseFirestore.getInstance()
         mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
 
+        Log.i(TAG, "cat: $category, lev: $level, lan: $language")
+
         /*
         // Create a new user with a first, middle, and last name
         val user = hashMapOf(
@@ -75,7 +81,7 @@ class GameViewModel : ViewModel() {
         mFirestore
             .collection(COLL_PASSWORD)
             //.whereEqualTo("level","medium")
-            .limit(2)
+            //.limit(2)
             .get()
             .addOnSuccessListener {documents ->
                 try {

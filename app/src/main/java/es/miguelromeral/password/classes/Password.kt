@@ -6,6 +6,7 @@ import com.google.firebase.firestore.Exclude
 data class Password(
     val category: String? = "",
     val hints: String? = "",
+    val language: String? = "",
     val level: String? = "",
     val word: String? = "",
     val random: Long? = 0
