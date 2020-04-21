@@ -95,12 +95,12 @@ class GameActivityFragment : Fragment() {
         return binding.root
     }
 
-
+/*
     override fun onResume() {
         super.onResume()
         viewModel.initSettings()
     }
-
+*/
     companion object {
         const val TAG = "GameActivityFragment"
 

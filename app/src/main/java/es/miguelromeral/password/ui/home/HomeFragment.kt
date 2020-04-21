@@ -31,7 +31,9 @@ class HomeFragment : Fragment() {
         binding.textHome.text = "eyeyeyeyey"
 
         binding.bStartGame.setOnClickListener { b ->
-            GameActivity.newInstance(requireContext(), "eo","lll","language")
+            GameActivity.newInstance(requireContext(),
+                binding.spCategory.selectedItem.toString(),
+                binding.spLevel.selectedItem.toString(),"language")
         }
 
         return binding.root

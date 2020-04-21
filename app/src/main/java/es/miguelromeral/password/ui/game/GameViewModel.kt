@@ -13,6 +13,7 @@ import android.util.Log
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.firebase.firestore.Query
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.classes.Password
@@ -53,7 +54,7 @@ class GameViewModel(
     init{
         mFirestore = FirebaseFirestore.getInstance()
         mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
-
+        val ref = mFirestore.collection(COLL_PASSWORD)
         Log.i(TAG, "cat: $category, lev: $level, lan: $language")
 
         /*
@@ -78,10 +79,18 @@ class GameViewModel(
 
         var listRetrieved = mutableListOf<Password>()
 
-        mFirestore
-            .collection(COLL_PASSWORD)
-            //.whereEqualTo("level","medium")
-            //.limit(2)
+        var query: Query? = null
+
+        if(level.equals(Options.DEFAULT_LEVEL, true)){
+            query = (query ?: ref).whereEqualTo(FIELD_LEVEL, level.toLowerCase())
+        }
+        if(category.equals(Options.DEFAULT_CATEGORY, true)){
+            query = (query ?: ref).whereEqualTo(FIELD_CATEGORY, category.toLowerCase())
+        }
+        if(query != null)
+            query = ref
+
+        query!!
             .get()
             .addOnSuccessListener {documents ->
                 try {
@@ -94,6 +103,7 @@ class GameViewModel(
 
                         _listOfWords.postValue(listRetrieved.shuffled())
                         _currentIndex.postValue(0)
+                        initTimer()
 
                     } else {
                         Log.d(TAG, "No such document!")
@@ -107,9 +117,9 @@ class GameViewModel(
 
     }
 
-    fun initSettings(){
+    /*fun initSettings(){
         initTimer()
-    }
+    }*/
 
 
     private fun initTimer(){
@@ -188,6 +198,8 @@ class GameViewModel(
         val VALUE_FINISHED = -2
 
         val COLL_PASSWORD = "passwords"
+        val FIELD_CATEGORY = "category"
+        val FIELD_LEVEL = "level"
         val DEFAULT_INDEX = -1
     }
 }
