@@ -10,6 +10,7 @@ import android.widget.GridLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Options
@@ -89,6 +90,13 @@ class GameActivityFragment : Fragment() {
                         adapter.submitList(pwd.hintsSplit)
                     }
                 }
+            }
+        })
+
+        viewModel.gameFinished.observe(viewLifecycleOwner, Observer {
+            if(it == true) {
+                findNavController().navigate(R.id.action_gameActivityFragment_to_finishedGameFragment)
+                viewModel.finishGameOK()
             }
         })
 

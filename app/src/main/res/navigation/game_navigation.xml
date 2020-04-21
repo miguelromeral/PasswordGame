@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/game_navigation"
+    app:startDestination="@id/gameActivityFragment">
+
+    <fragment
+        android:id="@+id/gameActivityFragment"
+        android:name="es.miguelromeral.password.ui.game.GameActivityFragment"
+        android:label="GameActivityFragment"
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_gameActivityFragment_to_finishedGameFragment"
+            app:destination="@id/finishedGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/finishedGameFragment"
+        android:name="es.miguelromeral.password.ui.finishedgame.FinishedGameFragment"
+        android:label="FinishedGameFragment"
+        tools:layout="@layout/fragment_game_finished"/>
+</navigation>

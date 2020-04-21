@@ -44,6 +44,9 @@ class GameViewModel(
     private var _countdown = MutableLiveData<Int>()
     val countdown = _countdown
 
+    private val _gameFinished = MutableLiveData<Boolean>(false)
+    val gameFinished = _gameFinished
+
     private lateinit var timer: CountDownTimer
 
     private var viewModelJob = Job()
@@ -135,9 +138,18 @@ class GameViewModel(
             override fun onFinish() {
                 _countdownInt = VALUE_FINISHED
                 _countdown.postValue(0)
+                finishGame()
             }
         }
         timer.start()
+    }
+
+
+    private fun finishGame(){
+        _gameFinished.postValue(true)
+    }
+    fun finishGameOK(){
+        _gameFinished.postValue(false)
     }
 
 
@@ -171,6 +183,9 @@ class GameViewModel(
 
                 if (index < listSize){
                     _currentIndex.postValue(index + 1)
+                    return true
+                }else{
+                    finishGame()
                     return true
                 }
             }
