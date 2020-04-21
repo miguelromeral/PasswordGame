@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import es.miguelromeral.password.R
 import es.miguelromeral.password.databinding.FragmentHomeBinding
 import es.miguelromeral.password.ui.game.GameActivity
+import es.miguelromeral.password.ui.game.GameActivityFragment
 
 class HomeFragment : Fragment() {
 
@@ -32,8 +31,7 @@ class HomeFragment : Fragment() {
         binding.textHome.text = "eyeyeyeyey"
 
         binding.bStartGame.setOnClickListener { b ->
-            val intent = Intent(context, GameActivity::class.java)
-            startActivity(intent)
+            GameActivity.newInstance(requireContext(), "eo","lll","language")
         }
 
         return binding.root

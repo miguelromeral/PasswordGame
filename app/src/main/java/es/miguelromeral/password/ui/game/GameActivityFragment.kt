@@ -31,11 +31,17 @@ class GameActivityFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val vmf = GameFactory(
-            arguments?.getString(ARG_CATEGORY) ?: Options.DEFAULT_CATEGORY,
-            arguments?.getString(ARG_LEVEL) ?: Options.DEFAULT_LEVEL,
-            arguments?.getString(ARG_LANGUAGE) ?: Options.DEFAULT_LANGUAGE
-        )
+        var category: String? = Options.DEFAULT_CATEGORY
+        var level: String? = Options.DEFAULT_LEVEL
+        var language: String? = Options.DEFAULT_LANGUAGE
+
+        activity?.intent?.extras?.let{
+            category = it.getString(ARG_CATEGORY)
+            level = it.getString(ARG_LEVEL)
+            language = it.getString(ARG_LANGUAGE)
+        }
+
+        val vmf = GameFactory(category!!, level!!, language!!)
 
         viewModel = ViewModelProviders.of(this, vmf).get(GameViewModel::class.java)
 
