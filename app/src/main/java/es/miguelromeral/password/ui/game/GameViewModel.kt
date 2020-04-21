@@ -81,16 +81,17 @@ class GameViewModel(
 
         var query: Query? = null
 
-        if(level.equals(Options.DEFAULT_LEVEL, true)){
+        if(!level.equals(Options.DEFAULT_LEVEL, true)){
             query = (query ?: ref).whereEqualTo(FIELD_LEVEL, level.toLowerCase())
         }
-        if(category.equals(Options.DEFAULT_CATEGORY, true)){
+        if(!category.equals(Options.DEFAULT_CATEGORY, true)){
             query = (query ?: ref).whereEqualTo(FIELD_CATEGORY, category.toLowerCase())
         }
-        if(query != null)
+        if(query == null)
             query = ref
 
-        query!!
+        query
+            .limit(DEFAULT_MAX_WORDS)
             .get()
             .addOnSuccessListener {documents ->
                 try {
@@ -193,6 +194,8 @@ class GameViewModel(
 
         val DEFAULT_WAIT = 61000L
         val ONE_SECOND = 1000L
+
+        val DEFAULT_MAX_WORDS = 20L
 
         val VALUE_NOT_STARTED = -1
         val VALUE_FINISHED = -2

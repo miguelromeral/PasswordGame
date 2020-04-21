@@ -73,7 +73,7 @@ class GameActivityFragment : Fragment() {
         })
 
         viewModel.text.observe(viewLifecycleOwner, Observer {
-            binding.tvPassword.text = it
+            binding.tvPassword.text = it.toUpperCase()
         })
 
         viewModel.currentIndex.observe(viewLifecycleOwner, Observer { index ->

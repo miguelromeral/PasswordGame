@@ -4,6 +4,7 @@
     <string-array name="array_category">
         <item>@string/parameter_mixed</item>
         <item>Animals</item>
+        <item>Technology</item>
     </string-array>
 
     <string-array name="array_level">
