@@ -90,6 +90,16 @@
             app:layout_constraintStart_toEndOf="@+id/bSuccess"
             app:layout_constraintTop_toTopOf="@+id/bSuccess" />
 
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Timer"
+            app:layout_constraintEnd_toStartOf="@+id/bSuccess"
+            app:layout_constraintStart_toEndOf="@+id/bFail"
+            app:layout_constraintTop_toBottomOf="@+id/tvIndex" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

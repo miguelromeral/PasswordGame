@@ -47,6 +47,10 @@ class GameActivityFragment : Fragment() {
             if(viewModel.nextWord()) viewModel.successWord()
         }
 
+        viewModel.countdown.observe(viewLifecycleOwner, Observer {
+            binding.tvTimer.text = it.toString()
+        })
+
         viewModel.nFails.observe(viewLifecycleOwner, Observer {
             binding.tvFails.text = it.toString()
         })
@@ -79,6 +83,11 @@ class GameActivityFragment : Fragment() {
         return binding.root
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.initSettings()
+    }
 
     companion object {
         const val TAG = "GameActivityFragment"

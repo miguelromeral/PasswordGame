@@ -7,13 +7,16 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
+import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import java.util.HashMap
+import kotlin.random.Random
 
 class GameViewModel : ViewModel() {
 
@@ -31,6 +34,15 @@ class GameViewModel : ViewModel() {
 
     private val _nSuccess = MutableLiveData<Int>(0)
     val nSuccess = _nSuccess
+
+    private var _countdownInt = VALUE_NOT_STARTED
+    private var _countdown = MutableLiveData<Int>()
+    val countdown = _countdown
+
+    private lateinit var timer: CountDownTimer
+
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private var mFirestore: FirebaseFirestore
 
@@ -89,8 +101,28 @@ class GameViewModel : ViewModel() {
 
     }
 
-    private var viewModelJob = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    fun initSettings(){
+        initTimer()
+    }
+
+
+    private fun initTimer(){
+        _countdownInt = (DEFAULT_WAIT / ONE_SECOND).toInt()
+        _countdown.postValue(_countdownInt)
+        timer = object : CountDownTimer(DEFAULT_WAIT, ONE_SECOND){
+            override fun onTick(milisUtilFinished: Long){
+                _countdownInt -= 1
+                _countdown.postValue(_countdownInt)
+            }
+
+            override fun onFinish() {
+                _countdownInt = VALUE_FINISHED
+                _countdown.postValue(0)
+            }
+        }
+        timer.start()
+    }
+
 
     fun successWord(){
         try{
@@ -142,6 +174,12 @@ class GameViewModel : ViewModel() {
 
     companion object {
         val TAG = "GameViewModel"
+
+        val DEFAULT_WAIT = 61000L
+        val ONE_SECOND = 1000L
+
+        val VALUE_NOT_STARTED = -1
+        val VALUE_FINISHED = -2
 
         val COLL_PASSWORD = "passwords"
         val DEFAULT_INDEX = -1
