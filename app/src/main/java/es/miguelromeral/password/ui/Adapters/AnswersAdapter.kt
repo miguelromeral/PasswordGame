@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.databinding.ItemAnswerBinding
 import es.miguelromeral.password.databinding.ItemHintBinding
+import es.miguelromeral.password.ui.setTimeFormatted
 
 
 class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(HintDiffCallback()){
@@ -30,6 +31,7 @@ class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(HintDiff
                                         "Solved"
                                     else
                                         "Failed"
+            binding.tvTime.setTimeFormatted(item)
         }
 
         companion object {

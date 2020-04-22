@@ -54,6 +54,8 @@ class GameViewModel(
 
     private var mFirestore: FirebaseFirestore
 
+    private var timestamp: Long = 0
+
     init{
         mFirestore = FirebaseFirestore.getInstance()
         mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
@@ -141,6 +143,7 @@ class GameViewModel(
                 finishGame()
             }
         }
+        timestamp = System.currentTimeMillis()
         timer.start()
     }
 
@@ -155,14 +158,15 @@ class GameViewModel(
 
     fun nextWord(success: Boolean) {
         try {
+            val end = System.currentTimeMillis()
             listOfWords?.value?.let { list ->
-
                 var listSize = list.size
                 var index = _currentIndex.value!!
 
                 if(index < listSize){
                     val pwd = getCurrentPassword()
                     if(pwd != null){
+                        pwd.time = end - timestamp
                         if(success){
                             pwd.solved = true
                             _nSuccess.postValue(_nSuccess.value!! + 1)
@@ -173,6 +177,7 @@ class GameViewModel(
 
                         _currentIndex.postValue(_currentIndex.value!! + 1)
                     }
+                    timestamp = end
                     if(index == listSize - 1){
                         finishGame()
                     }

@@ -12,7 +12,8 @@ data class Password(
     val language: String? = "",
     val level: String? = "",
     val word: String? = "",
-    val random: Long? = 0
+    val random: Long? = 0,
+    var time: Long = 0
 ) : Parcelable {
 
     var solved: Boolean = false
