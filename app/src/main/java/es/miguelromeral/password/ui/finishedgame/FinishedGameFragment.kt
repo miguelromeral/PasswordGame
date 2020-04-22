@@ -32,7 +32,7 @@ class FinishedGameFragment : Fragment() {
 
         val args = FinishedGameFragmentArgs.fromBundle(requireArguments())
 
-        Log.i(TAG, "Success: ${args.success}, fails: ${args.fails}")
+        Log.i(TAG, "Success: ${args.success}, fails: ${args.fails}, passwords: ${args.passwords}")
 
         val vmf = FinishedGameFactory(args.success)
 
@@ -48,5 +48,7 @@ class FinishedGameFragment : Fragment() {
 
     companion object {
         const val TAG = "FinishedGameFragment"
+
+        const val ARG_PASSWORDS = "passwords"
     }
 }

@@ -17,6 +17,7 @@ import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.databinding.FragmentGameBinding
 import es.miguelromeral.password.databinding.FragmentHomeBinding
 import es.miguelromeral.password.ui.Adapters.HintAdapter
+import es.miguelromeral.password.ui.finishedgame.FinishedGameFragment
 import es.miguelromeral.password.ui.home.HomeViewModel
 
 /**
@@ -97,9 +98,12 @@ class GameActivityFragment : Fragment() {
 
         viewModel.gameFinished.observe(viewLifecycleOwner, Observer {
             if(it == true) {
-                val dir = GameActivityFragmentDirections.actionGameActivityFragmentToFinishedGameFragment()
+                val dir = GameActivityFragmentDirections
+                    .actionGameActivityFragmentToFinishedGameFragment(viewModel.listOfWords.value!!.toTypedArray())
+
                 dir.success = viewModel.nSuccess.value ?: 0
                 dir.fails = viewModel.nFails.value ?: 0
+
                 findNavController().navigate(dir)
 
                 viewModel.finishGameOK()

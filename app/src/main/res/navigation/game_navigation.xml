@@ -31,5 +31,8 @@
             android:name="fails"
             android:defaultValue="0"
             app:argType="integer" />
+        <argument
+            android:name="passwords"
+            app:argType="es.miguelromeral.password.classes.Password[]" />
     </fragment>
 </navigation>
