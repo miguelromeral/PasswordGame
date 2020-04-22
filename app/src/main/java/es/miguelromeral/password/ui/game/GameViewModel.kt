@@ -188,6 +188,23 @@ class GameViewModel(
         }
     }
 
+    fun checkHintsFromMicrophone(sentence: String){
+        try {
+            val words = sentence.split(SEPARATOR_VOICE)
+            getCurrentPassword()?.let { pwd ->
+                for (word in words) {
+                    if (pwd.saidHint(word) || pwd.word.equals(word)){
+                        Log.i(TAG, "MATCH! User said a hint: $word")
+                        nextWord(false)
+                        return
+                    }
+                }
+            }
+        }catch (e: Exception){
+            Log.i(TAG, "exception in checkHintsFromMicrophone: "+e.message)
+        }
+    }
+
     private fun getCurrentPassword(): Password? {
         try {
             return listOfWords?.value?.get(_currentIndex.value!!)
@@ -198,7 +215,9 @@ class GameViewModel(
     }
 
     companion object {
-        val TAG = "GameViewModel"
+        const val TAG = "GameViewModel"
+        const val SEPARATOR_VOICE = " "
+
 
         val DEFAULT_WAIT = 61000L
         val ONE_SECOND = 1000L

@@ -26,6 +26,7 @@ data class Password(
             else
                 hints.split(SEPARATOR).sorted()
 
+    fun saidHint(word: String): Boolean = hintsSplit.contains(word)
 
     private constructor(parcel: Parcel) : this(
         category = parcel.readString(),

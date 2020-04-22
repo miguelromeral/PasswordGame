@@ -27,6 +27,7 @@ class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(HintDiff
         fun bind(item: Password) {
             //val res = itemView.context.resources
             binding.password = item
+            binding.tvWord.text = item.word?.capitalize()
             binding.tvState.text = if(item.solved)
                                         "Solved"
                                     else
