@@ -1,18 +1,19 @@
 package es.miguelromeral.password.classes
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
 interface PasswordDatabaseDao {
 
-    @Insert
-    fun insert(password: Password)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(password: CustomPassword)
 
     @Update
-    fun update(password: Password)
+    fun update(password: CustomPassword)
+
+    @Query("SELECT * FROM password_table")
+    fun getAllPasswords(): LiveData<List<CustomPassword>>
 
     @Query("DELETE FROM password_table")
     fun clear()

@@ -11,7 +11,7 @@ class CustomPasswordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_custom_password)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, CustomPasswordFragment.newInstance())
+                .replace(R.id.container, CustomPasswordFragment())
                 .commitNow()
         }
     }

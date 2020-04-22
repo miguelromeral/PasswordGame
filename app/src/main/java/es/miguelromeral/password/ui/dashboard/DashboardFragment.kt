@@ -2,33 +2,50 @@ package es.miguelromeral.password.ui.dashboard
 
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import es.miguelromeral.password.R
-import es.miguelromeral.password.ui.game.GameActivityFragmentDirections
+import es.miguelromeral.password.classes.PasswordDatabase
+import es.miguelromeral.password.databinding.FragmentDashboardBinding
+import es.miguelromeral.password.ui.Adapters.CustomPasswordAdapter
+import es.miguelromeral.password.ui.custompassword.CustomPasswordFactory
+import es.miguelromeral.password.ui.custompassword.CustomPasswordViewModel
 
 class DashboardFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var viewModel: DashboardViewModel
+    private lateinit var binding: FragmentDashboardBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
+
+
+        val application = requireNotNull(this.activity).application
+        val dataSource = PasswordDatabase.getInstance(application).passwordDatabaseDao
+        val vmf = DashboardFactory(dataSource, application)
+
+        viewModel = ViewModelProviders.of(this, vmf).get(DashboardViewModel::class.java)
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard, container, false)
+
+        val adapter = CustomPasswordAdapter()
+        binding.customPasswordsList.adapter = adapter
+
+        viewModel.passwords.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(viewModel.passwords.value)
+        })
 
         setHasOptionsMenu(true)
 
-        return root
+        return binding.root
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -39,6 +56,10 @@ class DashboardFragment : Fragment() {
         return when(item.itemId){
             R.id.action_custom_password -> {
                 findNavController().navigate(DashboardFragmentDirections.actionNavigationDashboardToCustomPasswordFragment())
+                true
+            }
+            R.id.action_clear_custom_passwords ->{
+                viewModel.clearAllPasswords()
                 true
             }
             else -> super.onOptionsItemSelected(item)
