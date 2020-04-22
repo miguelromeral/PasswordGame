@@ -153,46 +153,34 @@ class GameViewModel(
     }
 
 
-    fun successWord(){
-        try{
-            getCurrentPassword()?.let{ pwd ->
-                pwd.solved = true
-                _nSuccess.postValue(_nSuccess.value!! + 1)
-            }
-        }catch(e: Exception){
-            Log.e(TAG, e.message)
-        }
-    }
-
-    fun failWord(){
-        try{
-            getCurrentPassword()?.let{ pwd ->
-                pwd.failed = true
-                _nFails.postValue(_nFails.value!! + 1)
-            }
-        }catch(e: Exception){
-            Log.e(TAG, e.message)
-        }
-    }
-
-    fun nextWord(): Boolean {
+    fun nextWord(success: Boolean) {
         try {
             listOfWords?.value?.let { list ->
-                var listSize = list.size - 1
+
+                var listSize = list.size
                 var index = _currentIndex.value!!
 
-                if (index < listSize){
-                    _currentIndex.postValue(index + 1)
-                    return true
-                }else{
-                    finishGame()
-                    return true
+                if(index < listSize){
+                    val pwd = getCurrentPassword()
+                    if(pwd != null){
+                        if(success){
+                            pwd.solved = true
+                            _nSuccess.postValue(_nSuccess.value!! + 1)
+                        }else{
+                            pwd.failed = true
+                            _nFails.postValue(_nFails.value!! + 1)
+                        }
+
+                        _currentIndex.postValue(_currentIndex.value!! + 1)
+                    }
+                    if(index == listSize - 1){
+                        finishGame()
+                    }
                 }
             }
         }catch (e: Exception){
             Log.e(TAG, e.message)
         }
-        return false
     }
 
     private fun getCurrentPassword(): Password? {

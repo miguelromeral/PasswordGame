@@ -12,11 +12,24 @@
         tools:layout="@layout/fragment_game">
         <action
             android:id="@+id/action_gameActivityFragment_to_finishedGameFragment"
-            app:destination="@id/finishedGameFragment" />
+            app:destination="@id/finishedGameFragment" >
+            <argument android:defaultValue="0"
+                android:name="success" />
+            <argument android:defaultValue="0"
+                android:name="fails" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/finishedGameFragment"
         android:name="es.miguelromeral.password.ui.finishedgame.FinishedGameFragment"
-        android:label="FinishedGameFragment"
-        tools:layout="@layout/fragment_game_finished"/>
+        android:label="FinishedGameFragment">
+        <argument
+            android:name="success"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="fails"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 </navigation>

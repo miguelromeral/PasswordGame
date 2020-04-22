@@ -56,10 +56,10 @@ class GameActivityFragment : Fragment() {
         binding.rvHints.adapter = adapter
 
         binding.bFail.setOnClickListener {
-            if(viewModel.nextWord()) viewModel.failWord()
+            viewModel.nextWord(false)
         }
         binding.bSuccess.setOnClickListener {
-            if(viewModel.nextWord()) viewModel.successWord()
+            viewModel.nextWord(true)
         }
 
         viewModel.countdown.observe(viewLifecycleOwner, Observer {
@@ -79,6 +79,8 @@ class GameActivityFragment : Fragment() {
 
         viewModel.currentIndex.observe(viewLifecycleOwner, Observer { index ->
             if(index != GameViewModel.DEFAULT_INDEX){
+                binding.bFail.isEnabled = true
+                binding.bSuccess.isEnabled = true
                 binding.tvIndex.text = index.toString()
 
                 val list = viewModel.listOfWords.value
@@ -95,7 +97,11 @@ class GameActivityFragment : Fragment() {
 
         viewModel.gameFinished.observe(viewLifecycleOwner, Observer {
             if(it == true) {
-                findNavController().navigate(R.id.action_gameActivityFragment_to_finishedGameFragment)
+                val dir = GameActivityFragmentDirections.actionGameActivityFragmentToFinishedGameFragment()
+                dir.success = viewModel.nSuccess.value ?: 0
+                dir.fails = viewModel.nFails.value ?: 0
+                findNavController().navigate(dir)
+
                 viewModel.finishGameOK()
             }
         })
