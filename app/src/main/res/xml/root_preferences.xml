@@ -1,0 +1,16 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Microphone">
+
+        <CheckBoxPreference
+            android:key="@string/pref_microphone_key"
+            android:title="Use microphone in game"
+            android:summary="The user can choose if the app listens to them in order to avoid cheating saying any of the hints."
+            android:icon="@drawable/microphone"
+            android:defaultValue="true"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
