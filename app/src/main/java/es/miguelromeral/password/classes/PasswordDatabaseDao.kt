@@ -7,13 +7,13 @@ import androidx.room.*
 interface PasswordDatabaseDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(password: CustomPassword)
+    fun insert(password: Password)
 
     @Update
-    fun update(password: CustomPassword)
+    fun update(password: Password)
 
     @Query("SELECT * FROM password_table")
-    fun getAllPasswords(): LiveData<List<CustomPassword>>
+    fun getAllPasswords(): LiveData<List<Password>>
 
     @Query("DELETE FROM password_table")
     fun clear()

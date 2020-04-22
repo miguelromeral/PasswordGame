@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import es.miguelromeral.password.classes.CustomPassword
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabaseDao
 import es.miguelromeral.password.ui.game.GameFactory
@@ -23,7 +22,7 @@ class CustomPasswordViewModel(
     private val _warning = MutableLiveData<String?>()
     val warning = _warning
 
-    fun addPassword(password: CustomPassword?){
+    fun addPassword(password: Password?){
         password?.let {
             uiScope.launch {
                 createNewPassword(password)
@@ -31,7 +30,7 @@ class CustomPasswordViewModel(
         }
     }
 
-    private suspend fun createNewPassword(password: CustomPassword){
+    private suspend fun createNewPassword(password: Password){
         return withContext(Dispatchers.IO){
             password.random = Random.nextLong()
             password.language = "english"

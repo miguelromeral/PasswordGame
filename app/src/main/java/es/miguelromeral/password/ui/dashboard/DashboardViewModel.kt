@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import es.miguelromeral.password.classes.CustomPassword
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabaseDao
 import kotlinx.coroutines.*
@@ -18,7 +17,7 @@ class DashboardViewModel(
 
     val passwords = database.getAllPasswords()
 
-    val filteredList: MutableLiveData<List<CustomPassword>> = MutableLiveData()
+    val filteredList: MutableLiveData<List<Password>> = MutableLiveData()
 
     private var _dataChanged = MutableLiveData<Boolean>()
     val dataChanged = _dataChanged

@@ -11,7 +11,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import es.miguelromeral.password.R
-import es.miguelromeral.password.classes.CustomPassword
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentCustomPasswordBinding
@@ -37,7 +36,7 @@ class CustomPasswordFragment : Fragment() {
         viewModel = ViewModelProviders.of(this, vmf).get(CustomPasswordViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_custom_password, container, false)
-        binding.password = CustomPassword(word = "a", hints = "b,c,d")
+        binding.password = Password(word = "a", hints = "b,c,d")
 
         viewModel.warning.observe(viewLifecycleOwner, Observer {
             it?.let{

@@ -9,13 +9,26 @@ import com.google.firebase.firestore.Exclude
 import kotlinx.android.parcel.Parceler
 import kotlinx.android.parcel.Parcelize
 
+@Entity(tableName = "password_table")
 data class Password(
+    @ColumnInfo(name = "category")
     var category: String? = "",
+
+    @ColumnInfo(name = "hints")
     var hints: String? = "",
+
+    @ColumnInfo(name = "language")
     var language: String? = "",
+
+    @ColumnInfo(name = "level")
     var level: String? = "",
+
+    @PrimaryKey
     var word: String = "",
+
+    @ColumnInfo(name = "random")
     var random: Long? = 0,
+
     var time: Long = 0
 ) : Parcelable {
 
