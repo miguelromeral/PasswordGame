@@ -2,38 +2,57 @@ package es.miguelromeral.password.classes
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.firebase.firestore.Exclude
 import kotlinx.android.parcel.Parceler
 import kotlinx.android.parcel.Parcelize
 
+@Entity(tableName = "password_table")
 data class Password(
-    val category: String? = "",
-    val hints: String? = "",
-    val language: String? = "",
-    val level: String? = "",
-    val word: String? = "",
-    val random: Long? = 0,
+    @ColumnInfo(name = "category")
+    var category: String? = "",
+
+    @ColumnInfo(name = "hints")
+    var hints: String? = "",
+
+    @ColumnInfo(name = "language")
+    var language: String? = "",
+
+    @ColumnInfo(name = "level")
+    var level: String? = "",
+
+    @PrimaryKey
+    var word: String = "",
+
+    @ColumnInfo(name = "random")
+    var random: Long? = 0,
+
     var time: Long = 0
 ) : Parcelable {
 
     var solved: Boolean = false
     var failed: Boolean = false
 
-    val hintsSplit: List<String>
-        get() =
-            if(hints.isNullOrEmpty())
-                listOf()
-            else
-                hints.split(SEPARATOR).sorted()
 
-    fun saidHint(word: String): Boolean = hintsSplit.contains(word)
+    fun hintsSplit(): List<String> {
+        return if(hints.isNullOrEmpty())
+            listOf()
+        else{
+            var h = hints!!
+            h.split(SEPARATOR).sorted()
+        }
+    }
+
+    fun saidHint(word: String): Boolean = hintsSplit().contains(word)
 
     private constructor(parcel: Parcel) : this(
         category = parcel.readString(),
         hints = parcel.readString(),
         language = parcel.readString(),
         level = parcel.readString(),
-        word = parcel.readString(),
+        word = parcel.readString() ?: "",
         random = parcel.readLong()
     )
 

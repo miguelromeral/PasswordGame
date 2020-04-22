@@ -129,7 +129,7 @@ class GameActivityFragment : Fragment() {
                     if(index < list.size) {
                         val pwd = list[index]
                         binding.tvPassword.text = pwd.word
-                        adapter.submitList(pwd.hintsSplit)
+                        adapter.submitList(pwd.hintsSplit())
                     }
                 }
             }
@@ -137,6 +137,10 @@ class GameActivityFragment : Fragment() {
 
         viewModel.gameFinished.observe(viewLifecycleOwner, Observer {
             if(it == true) {
+
+
+
+
                 val dir = GameActivityFragmentDirections
                     .actionGameActivityFragmentToFinishedGameFragment(viewModel.listOfWords.value!!.toTypedArray())
 

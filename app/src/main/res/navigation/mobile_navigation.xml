@@ -15,11 +15,20 @@
         android:id="@+id/navigation_dashboard"
         android:name="es.miguelromeral.password.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_customPasswordFragment"
+            app:destination="@id/customPasswordFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="es.miguelromeral.password.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/customPasswordFragment"
+        android:name="es.miguelromeral.password.ui.custompassword.CustomPasswordFragment"
+        android:label="fragment_custom_password"
+        tools:layout="@layout/fragment_custom_password" />
 </navigation>
