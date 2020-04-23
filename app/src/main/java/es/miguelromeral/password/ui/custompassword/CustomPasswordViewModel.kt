@@ -34,7 +34,7 @@ class CustomPasswordViewModel(
         return withContext(Dispatchers.IO){
             password.random = Random.nextLong()
             password.language = "english"
-            password.level = "easy"
+            password.level = password.level
             password.category = "custom"
             database.insert(password)
             _warning.postValue("Added successfully!")

@@ -14,11 +14,6 @@ import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentCustomPasswordBinding
-import es.miguelromeral.password.ui.Adapters.AnswersAdapter
-import es.miguelromeral.password.ui.Adapters.CustomPasswordAdapter
-import es.miguelromeral.password.ui.dashboard.DashboardFragmentDirections
-import es.miguelromeral.password.ui.game.GameActivity
-import es.miguelromeral.password.ui.home.HomeViewModel
 
 class CustomPasswordFragment : Fragment() {
 
@@ -46,7 +41,11 @@ class CustomPasswordFragment : Fragment() {
         })
 
         binding.bInsert.setOnClickListener { view ->
-            viewModel.addPassword(binding.password)
+            binding.password?.let{ pwd ->
+                pwd.level = binding.partialSpinnerLevel.spLevel.selectedItem.toString()
+
+                viewModel.addPassword(pwd)
+            }
         }
 
         return binding.root

@@ -10,9 +10,7 @@ import androidx.navigation.fragment.findNavController
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentDashboardBinding
-import es.miguelromeral.password.ui.Adapters.CustomPasswordAdapter
-import es.miguelromeral.password.ui.custompassword.CustomPasswordFactory
-import es.miguelromeral.password.ui.custompassword.CustomPasswordViewModel
+import es.miguelromeral.password.ui.custompassword.CustomPasswordAdapter
 
 class DashboardFragment : Fragment() {
 
