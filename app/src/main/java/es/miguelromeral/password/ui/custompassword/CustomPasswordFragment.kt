@@ -14,6 +14,9 @@ import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentCustomPasswordBinding
+import android.widget.ArrayAdapter
+import es.miguelromeral.password.classes.Options
+
 
 class CustomPasswordFragment : Fragment() {
 
@@ -33,6 +36,7 @@ class CustomPasswordFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_custom_password, container, false)
         binding.password = Password(word = "a", hints = "b,c,d")
 
+
         viewModel.warning.observe(viewLifecycleOwner, Observer {
             it?.let{
                 Toast.makeText(context, it, Toast.LENGTH_LONG).show()
@@ -42,11 +46,12 @@ class CustomPasswordFragment : Fragment() {
 
         binding.bInsert.setOnClickListener { view ->
             binding.password?.let{ pwd ->
-                pwd.level = binding.partialSpinnerLevel.spLevel.selectedItem.toString()
+                pwd.level = Options.getLevelValue(binding.partialSpinnerLevel.spLevel.selectedItemPosition)
 
                 viewModel.addPassword(pwd)
             }
         }
+
 
         return binding.root
     }

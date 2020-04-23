@@ -2,16 +2,16 @@
 <resources>
 
     <string-array name="array_category">
-        <item>@string/parameter_mixed</item>
+        <item>@string/dpm_level_mixed</item>
         <item>Animals</item>
         <item>Technology</item>
     </string-array>
 
     <string-array name="array_level">
-        <item>@string/parameter_mixed</item>
-        <item>Easy</item>
-        <item>Medium</item>
-        <item>Hard</item>
+        <item>@string/dpm_level_mixed</item>
+        <item>@string/dpm_level_easy</item>
+        <item>@string/dpm_level_medium</item>
+        <item>@string/dpm_level_hard</item>
     </string-array>
 
 </resources>

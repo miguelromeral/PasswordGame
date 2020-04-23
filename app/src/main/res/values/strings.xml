@@ -7,11 +7,15 @@
     <string name="action_settings">Settings</string>
 
 
-    <string name="parameter_mixed">Mixed</string>
-
 
     <string name="pref_microphone_key">pref_microphone_key</string>
     <string name="pref_mix_passwords_key">pref_mix_passwords_key</string>
+
+
+    <string name="dpm_level_mixed">Mixto</string>
+    <string name="dpm_level_easy">Facil</string>
+    <string name="dpm_level_medium">Medio</string>
+    <string name="dpm_level_hard">Dificil</string>
 
 
 </resources>

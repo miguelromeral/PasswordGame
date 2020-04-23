@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.databinding.FragmentHomeBinding
 import es.miguelromeral.password.ui.game.GameActivity
 import es.miguelromeral.password.ui.game.GameActivityFragment
@@ -33,7 +34,7 @@ class HomeFragment : Fragment() {
         binding.bStartGame.setOnClickListener { b ->
             GameActivity.newInstance(requireContext(),
                 binding.spCategory.selectedItem.toString(),
-                binding.partialSpinnerLevel.spLevel.selectedItem.toString(),
+                Options.getLevelValue(binding.partialSpinnerLevel.spLevel.selectedItemPosition),
                 "language")
         }
 

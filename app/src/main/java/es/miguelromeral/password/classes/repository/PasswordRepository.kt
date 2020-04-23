@@ -47,15 +47,14 @@ class PasswordRepository(private val database: PasswordDatabaseDao){
                 var query: Query? = null
 
                 if (!level.equals(Options.DEFAULT_LEVEL, true)) {
-                    query =
-                        (query ?: ref).whereEqualTo(GameViewModel.FIELD_LEVEL, level.toLowerCase())
+                    query = (query ?: ref).whereEqualTo(GameViewModel.FIELD_LEVEL, level)
                 }
-                if (!category.equals(Options.DEFAULT_CATEGORY, true)) {
+                /*if (!category.equals(Options.DEFAULT_CATEGORY, true)) {
                     query = (query ?: ref).whereEqualTo(
                         GameViewModel.FIELD_CATEGORY,
                         category.toLowerCase()
                     )
-                }
+                }*/
                 if (query == null)
                     query = ref
 
@@ -70,25 +69,25 @@ class PasswordRepository(private val database: PasswordDatabaseDao){
                     .get()
                     .addOnSuccessListener { documents ->
                         try{
-                        if (documents != null) {
-                            for (document in documents) {
-                                var obj = document.toObject(Password::class.java)
-                                listRetrieved.add(obj)
+                            if (documents != null) {
+                                for (document in documents) {
+                                    var obj = document.toObject(Password::class.java)
+                                    listRetrieved.add(obj)
+                                }
+
+
+                                inter.retrievedWords(listRetrieved.toList())
+
+                                retrieved.postValue(listRetrieved.toList())
+
+                                Log.d(TAG, "DocumentSnapshot read successfully!")
+
+                                Log.i("TEST", "Retrieved words: ${listRetrieved.size}")
+
+
+                            } else {
+                                Log.d(TAG, "No such document!")
                             }
-
-
-                            inter.retrievedWords(listRetrieved.toList())
-
-                            retrieved.postValue(listRetrieved.toList())
-
-                            Log.d(TAG, "DocumentSnapshot read successfully!")
-
-                            Log.i("TEST", "Retrieved words: ${listRetrieved.size}")
-
-
-                        } else {
-                            Log.d(TAG, "No such document!")
-                        }
 
                     } catch (e: Exception) {
                             Log.i(TAG, "Exception trying to retrieve words: " + e.message)
