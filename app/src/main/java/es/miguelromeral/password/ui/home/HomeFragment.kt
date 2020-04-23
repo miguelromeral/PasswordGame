@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -32,10 +33,13 @@ class HomeFragment : Fragment() {
         binding.textHome.text = "eyeyeyeyey"
 
         binding.bStartGame.setOnClickListener { b ->
+            b.isEnabled = false
+            Toast.makeText(context, "Preparing the game!", Toast.LENGTH_LONG).show()
             GameActivity.newInstance(requireContext(),
                 Options.getCategoryValue(binding.partialSpinnerCategory.spCategory.selectedItemPosition),
                 Options.getLevelValue(binding.partialSpinnerLevel.spLevel.selectedItemPosition),
                 "language")
+            b.isEnabled = true
         }
 
         return binding.root

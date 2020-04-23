@@ -19,6 +19,8 @@ class Options {
         const val CATEGORY_TECHNOLOGY = "technology"
 
 
+        fun isDefaultLevel(level: String) = level.equals(DEFAULT_LEVEL, true)
+
         fun getLevelValue(index: Int): String =
             when(index){
                 1 -> LEVEL_EASY
@@ -35,6 +37,8 @@ class Options {
                  else -> resources.getString(R.string.dpm_level_mixed)
              }
 
+
+        fun isDefaultCategory(category: String) = category.equals(DEFAULT_CATEGORY, true)
 
         fun getCategoryValue(index: Int): String =
             when(index){
