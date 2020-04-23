@@ -37,29 +37,17 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Hello!" />
 
-        <Button
-            android:id="@+id/bStartGame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Start"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Spinner
-            android:id="@+id/spCategory"
+        <include
+            android:id="@+id/partial_spinner_category"
+            layout="@layout/partial_spinner_category"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:entries="@array/array_category"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_home" />
-
 
         <include
             android:id="@+id/partial_spinner_level"
@@ -71,8 +59,19 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spCategory" />
+            app:layout_constraintTop_toBottomOf="@+id/partial_spinner_category" />
 
+
+        <Button
+            android:id="@+id/bStartGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

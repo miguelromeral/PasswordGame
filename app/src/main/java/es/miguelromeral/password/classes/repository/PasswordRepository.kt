@@ -49,12 +49,9 @@ class PasswordRepository(private val database: PasswordDatabaseDao){
                 if (!level.equals(Options.DEFAULT_LEVEL, true)) {
                     query = (query ?: ref).whereEqualTo(GameViewModel.FIELD_LEVEL, level)
                 }
-                /*if (!category.equals(Options.DEFAULT_CATEGORY, true)) {
-                    query = (query ?: ref).whereEqualTo(
-                        GameViewModel.FIELD_CATEGORY,
-                        category.toLowerCase()
-                    )
-                }*/
+                if (!category.equals(Options.DEFAULT_CATEGORY, true)) {
+                    query = (query ?: ref).whereEqualTo(GameViewModel.FIELD_CATEGORY,category)
+                }
                 if (query == null)
                     query = ref
 

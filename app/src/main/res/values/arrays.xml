@@ -2,9 +2,9 @@
 <resources>
 
     <string-array name="array_category">
-        <item>@string/dpm_level_mixed</item>
-        <item>Animals</item>
-        <item>Technology</item>
+        <item>@string/dpm_category_mixed</item>
+        <item>@string/dpm_category_animals</item>
+        <item>@string/dpm_category_technology</item>
     </string-array>
 
     <string-array name="array_level">

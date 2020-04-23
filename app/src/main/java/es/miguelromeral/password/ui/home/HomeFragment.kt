@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
 
         binding.bStartGame.setOnClickListener { b ->
             GameActivity.newInstance(requireContext(),
-                binding.spCategory.selectedItem.toString(),
+                Options.getCategoryValue(binding.partialSpinnerCategory.spCategory.selectedItemPosition),
                 Options.getLevelValue(binding.partialSpinnerLevel.spLevel.selectedItemPosition),
                 "language")
         }

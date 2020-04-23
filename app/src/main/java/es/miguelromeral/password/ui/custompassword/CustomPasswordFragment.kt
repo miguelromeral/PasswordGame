@@ -47,6 +47,7 @@ class CustomPasswordFragment : Fragment() {
         binding.bInsert.setOnClickListener { view ->
             binding.password?.let{ pwd ->
                 pwd.level = Options.getLevelValue(binding.partialSpinnerLevel.spLevel.selectedItemPosition)
+                pwd.category = Options.getCategoryValue(binding.partialSpinnerCategory.spCategory.selectedItemPosition)
 
                 viewModel.addPassword(pwd)
             }

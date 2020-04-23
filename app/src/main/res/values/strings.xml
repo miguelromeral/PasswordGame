@@ -12,10 +12,15 @@
     <string name="pref_mix_passwords_key">pref_mix_passwords_key</string>
 
 
-    <string name="dpm_level_mixed">Mixto</string>
+    <string name="dpm_level_mixed">Todas las dificultades</string>
     <string name="dpm_level_easy">Facil</string>
     <string name="dpm_level_medium">Medio</string>
     <string name="dpm_level_hard">Dificil</string>
+
+    <string name="dpm_category_mixed">Todas las categorias</string>
+    <string name="dpm_category_animals">Animales</string>
+    <string name="dpm_category_technology">Tecnologia</string>
+
 
 
 </resources>
