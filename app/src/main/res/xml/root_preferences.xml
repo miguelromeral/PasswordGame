@@ -13,4 +13,16 @@
 
     </PreferenceCategory>
 
+
+    <PreferenceCategory
+        android:title="Game">
+
+        <CheckBoxPreference
+            android:key="@string/pref_mix_passwords_key"
+            android:title="Use your own words in game"
+            android:summary="The words you've created in this device will be added to the game"
+            android:defaultValue="true"/>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

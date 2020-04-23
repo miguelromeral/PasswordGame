@@ -29,6 +29,7 @@ import com.google.android.material.snackbar.Snackbar
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.GameRecognitionService
 import es.miguelromeral.password.classes.Options
+import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentGameBinding
 import es.miguelromeral.password.databinding.FragmentHomeBinding
 import es.miguelromeral.password.ui.Adapters.HintAdapter
@@ -64,7 +65,15 @@ class GameActivityFragment : Fragment() {
             language = it.getString(ARG_LANGUAGE)
         }
 
-        val vmf = GameFactory(category!!, level!!, language!!)
+        val application = requireNotNull(this.activity).application
+        val dataSource = PasswordDatabase.getInstance(application).passwordDatabaseDao
+
+        val vmf = GameFactory(dataSource, application, category!!, level!!, language!!,
+            PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+                requireContext().getString(
+                    R.string.pref_mix_passwords_key
+                ), Options.DEFAULT_MIX_PASSWORDS_VALUE)
+        )
 
         viewModel = ViewModelProviders.of(this, vmf).get(GameViewModel::class.java)
 
@@ -147,9 +156,6 @@ class GameActivityFragment : Fragment() {
         viewModel.gameFinished.observe(viewLifecycleOwner, Observer {
             if(it == true) {
 
-
-
-
                 val dir = GameActivityFragmentDirections
                     .actionGameActivityFragmentToFinishedGameFragment(viewModel.listOfWords.value!!.toTypedArray())
 
@@ -161,7 +167,17 @@ class GameActivityFragment : Fragment() {
                 viewModel.finishGameOK()
             }
         })
+/*
+        viewModel.listOfWords.observe(viewLifecycleOwner, Observer {
 
+            Log.i("TEST", "it size: ${it.size}")
+            if(it.isNotEmpty()){
+                viewModel.initTimer()
+
+                Log.i("TEST", "Timer init")
+            }
+        })
+*/
         return binding.root
     }
 
@@ -172,6 +188,7 @@ class GameActivityFragment : Fragment() {
             viewModel.initSettings()
         }
     */
+
     companion object {
         const val TAG = "GameActivityFragment"
 

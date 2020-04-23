@@ -1,5 +1,6 @@
 package es.miguelromeral.password.ui.game
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,18 +16,27 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.Query
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.IRepository
 import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.classes.Password
+import es.miguelromeral.password.classes.PasswordDatabaseDao
+import es.miguelromeral.password.classes.repository.PasswordRepository
+import kotlinx.coroutines.launch
 import java.util.HashMap
 import kotlin.random.Random
 
 class GameViewModel(
+    private val database: PasswordDatabaseDao,
+    val application: Application,
     val category: String,
     val level: String,
-    val language: String) : ViewModel() {
+    val language: String,
+    val useLocalDB: Boolean) : ViewModel(), IRepository {
 
     private val _text = MutableLiveData<String>("Password!")
     val text: LiveData<String> = _text
+
+    private val repository = PasswordRepository(database)
 
     private val _listOfWords = MutableLiveData<List<Password>>()
     val listOfWords = _listOfWords
@@ -34,10 +44,10 @@ class GameViewModel(
     private val _currentIndex = MutableLiveData<Int>(DEFAULT_INDEX)
     val currentIndex = _currentIndex
 
-    private val _nFails = MutableLiveData<Int>(0)
+    private val _nFails = MutableLiveData(0)
     val nFails = _nFails
 
-    private val _nSuccess = MutableLiveData<Int>(0)
+    private val _nSuccess = MutableLiveData(0)
     val nSuccess = _nSuccess
 
     private var _countdownInt = VALUE_NOT_STARTED
@@ -52,83 +62,30 @@ class GameViewModel(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var mFirestore: FirebaseFirestore
-
     private var timestamp: Long = 0
 
     init{
-        mFirestore = FirebaseFirestore.getInstance()
-        mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
-        val ref = mFirestore.collection(COLL_PASSWORD)
-        Log.i(TAG, "cat: $category, lev: $level, lan: $language")
-
-        /*
-        // Create a new user with a first, middle, and last name
-        val user = hashMapOf(
-            "first" to "Alan",
-            "middle" to "Mathison",
-            "last" to "Turing",
-            "born" to 1912
-        )
-
-        // Add a new document with a generated ID
-        mFirestore.collection("users")
-            .add(user)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
-            }
-*/
-
-        var listRetrieved = mutableListOf<Password>()
-
-        var query: Query? = null
-
-        if(!level.equals(Options.DEFAULT_LEVEL, true)){
-            query = (query ?: ref).whereEqualTo(FIELD_LEVEL, level.toLowerCase())
-        }
-        if(!category.equals(Options.DEFAULT_CATEGORY, true)){
-            query = (query ?: ref).whereEqualTo(FIELD_CATEGORY, category.toLowerCase())
-        }
-        if(query == null)
-            query = ref
-
-        query
-            .limit(DEFAULT_MAX_WORDS)
-            .get()
-            .addOnSuccessListener {documents ->
-                try {
-                    if (documents != null) {
-                        for (document in documents) {
-                            var obj = document.toObject(Password::class.java)
-                            listRetrieved.add(obj)
-                        }
-                        Log.d(TAG, "DocumentSnapshot read successfully!")
-
-                        _listOfWords.postValue(listRetrieved.shuffled())
-                        _currentIndex.postValue(0)
-                        initTimer()
-
-                    } else {
-                        Log.d(TAG, "No such document!")
-
-                        _currentIndex.postValue(DEFAULT_INDEX)
-                    }
-                }catch (ex: Exception){
-                    Log.e(TAG, ex.message)
-                }
-            }
-
+        initGame()
     }
 
-    /*fun initSettings(){
-        initTimer()
-    }*/
+    fun initGame(){
+        val t = this
+        uiScope.launch {
+            repository.retrieveWords(category, level, language, useLocalDB, t)
+        }
+    }
 
+    override fun retrievedWords(list: List<Password>) {
+        if(list.isNotEmpty()) {
+            _listOfWords.postValue(list?.shuffled())
+            initTimer()
+            Log.i("TEST", "timer initiated")
+        }
+        Log.i("TEST", "End of retrievedWords")
+    }
 
-    private fun initTimer(){
+    fun initTimer(){
+        _currentIndex.postValue(0)
         _countdownInt = (DEFAULT_WAIT / ONE_SECOND).toInt()
         _countdown.postValue(_countdownInt)
         timer = object : CountDownTimer(DEFAULT_WAIT, ONE_SECOND){
@@ -212,6 +169,11 @@ class GameViewModel(
             Log.e(TAG, e.message)
             return null
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 
     companion object {

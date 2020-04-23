@@ -11,6 +11,7 @@
 
 
     <string name="pref_microphone_key">pref_microphone_key</string>
+    <string name="pref_mix_passwords_key">pref_mix_passwords_key</string>
 
 
 </resources>

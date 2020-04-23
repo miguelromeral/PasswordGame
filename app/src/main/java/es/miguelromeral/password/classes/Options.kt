@@ -9,5 +9,6 @@ class Options {
 
 
         const val DEFAULT_MICROPHONE_VALUE = true
+        const val DEFAULT_MIX_PASSWORDS_VALUE = true
     }
 }
