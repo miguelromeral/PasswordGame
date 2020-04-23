@@ -13,7 +13,9 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
+import androidx.preference.PreferenceManager
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.Options
 import kotlinx.android.synthetic.main.activity_game.*
 
 class GameActivity : AppCompatActivity() {
@@ -23,7 +25,13 @@ class GameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_game)
         setSupportActionBar(toolbar)
 
-        checkVoiceCommandPermission()
+        if(PreferenceManager.getDefaultSharedPreferences(baseContext).getBoolean(
+                baseContext.getString(
+                        R.string.pref_microphone_key
+                ), Options.DEFAULT_MICROPHONE_VALUE)){
+
+            checkVoiceCommandPermission()
+        }
     }
 
 

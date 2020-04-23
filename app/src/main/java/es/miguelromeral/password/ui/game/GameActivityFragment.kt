@@ -23,6 +23,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import es.miguelromeral.password.R
@@ -67,14 +68,35 @@ class GameActivityFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this, vmf).get(GameViewModel::class.java)
 
-        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext())
-        speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-        speechRecognizer.setRecognitionListener(GameRecognitionService(requireContext(), viewModel))
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false)
         binding.viewModel = viewModel
+
+        if(PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+                requireContext().getString(
+                    R.string.pref_microphone_key
+                ), Options.DEFAULT_MICROPHONE_VALUE)){
+
+            speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext())
+            speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+            speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+            speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+            speechRecognizer.setRecognitionListener(GameRecognitionService(requireContext(), viewModel))
+
+            binding.fabAudio.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
+
+                when(motionEvent.action){
+                    MotionEvent.ACTION_DOWN ->
+                        speechRecognizer.startListening(speechRecognizerIntent)
+                    MotionEvent.ACTION_UP ->
+                        speechRecognizer.stopListening()
+                }
+
+                return@OnTouchListener false
+            })
+
+        }else{
+            binding.fabAudio.hide()
+        }
 
         val manager = GridLayoutManager(activity, 2)
         binding.rvHints.layoutManager = manager
@@ -88,19 +110,6 @@ class GameActivityFragment : Fragment() {
         binding.bSuccess.setOnClickListener {
             viewModel.nextWord(true)
         }
-
-
-        binding.fabAudio.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
-
-            when(motionEvent.action){
-                MotionEvent.ACTION_DOWN ->
-                    speechRecognizer.startListening(speechRecognizerIntent)
-                MotionEvent.ACTION_UP ->
-                    speechRecognizer.stopListening()
-            }
-
-            return@OnTouchListener false
-        })
 
         viewModel.countdown.observe(viewLifecycleOwner, Observer {
             binding.tvTimer.text = it.toString()

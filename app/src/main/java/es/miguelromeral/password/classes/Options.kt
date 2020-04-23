@@ -5,5 +5,9 @@ class Options {
         const val DEFAULT_CATEGORY = "Mixed"
         const val DEFAULT_LEVEL = "Mixed"
         const val DEFAULT_LANGUAGE = "Mixed"
+
+
+
+        const val DEFAULT_MICROPHONE_VALUE = true
     }
 }
