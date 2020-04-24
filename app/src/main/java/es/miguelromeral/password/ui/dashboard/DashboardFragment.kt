@@ -1,7 +1,9 @@
 package es.miguelromeral.password.ui.dashboard
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -65,7 +67,18 @@ class DashboardFragment : Fragment() {
                 true
             }
             R.id.action_clear_custom_passwords ->{
-                viewModel.clearAllPasswords()
+
+                val builder = AlertDialog.Builder(requireContext())
+                builder.setTitle("Clear All Custom Passwords?")
+                builder.setMessage("Are you sure you really want to clear all the passwords you have in this device? This action can not be changed.")
+                builder.setNegativeButton("BACK", null)
+                builder.setPositiveButton("DELETE") { dialogInterface: DialogInterface, i: Int ->
+                    viewModel.clearAllPasswords()
+                }
+
+                val dialog = builder.create()
+                dialog.show()
+
                 true
             }
             else -> super.onOptionsItemSelected(item)
