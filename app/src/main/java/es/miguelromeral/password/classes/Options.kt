@@ -23,9 +23,9 @@ class Options {
 
         fun getLevelValue(index: Int): String =
             when(index){
-                1 -> LEVEL_EASY
-                2 -> LEVEL_MEDIUM
-                3 -> LEVEL_HARD
+                0 -> LEVEL_EASY
+                1 -> LEVEL_MEDIUM
+                2 -> LEVEL_HARD
                 else -> DEFAULT_LEVEL
             }
 
@@ -42,8 +42,8 @@ class Options {
 
         fun getCategoryValue(index: Int): String =
             when(index){
-                1 -> CATEGORY_ANIMALS
-                2 -> CATEGORY_TECHNOLOGY
+                0 -> CATEGORY_ANIMALS
+                1 -> CATEGORY_TECHNOLOGY
                 else -> DEFAULT_CATEGORY
             }
 
