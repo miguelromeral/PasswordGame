@@ -80,10 +80,12 @@ class GameActivityFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false)
         binding.viewModel = viewModel
 
-        if(PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
-                requireContext().getString(
-                    R.string.pref_microphone_key
-                ), Options.DEFAULT_MICROPHONE_VALUE)){
+        val microphoneEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+            requireContext().getString(
+                R.string.pref_microphone_key
+            ), Options.DEFAULT_MICROPHONE_VALUE)
+
+        if(microphoneEnabled){
 
             speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext())
             speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
@@ -103,8 +105,6 @@ class GameActivityFragment : Fragment() {
                 return@OnTouchListener false
             })
 
-        }else{
-            binding.fabAudio.hide()
         }
 
         val manager = GridLayoutManager(activity, 2)
@@ -150,6 +150,14 @@ class GameActivityFragment : Fragment() {
                         adapter.submitList(pwd.hintsSplit())
                     }
                 }
+
+                if(microphoneEnabled){
+                    binding.fabAudio.visibility = View.VISIBLE
+                }
+
+                binding.layoutLoading.visibility = View.GONE
+
+                binding.clGame.visibility = View.VISIBLE
             }
         })
 
@@ -167,17 +175,7 @@ class GameActivityFragment : Fragment() {
                 viewModel.finishGameOK()
             }
         })
-/*
-        viewModel.listOfWords.observe(viewLifecycleOwner, Observer {
 
-            Log.i("TEST", "it size: ${it.size}")
-            if(it.isNotEmpty()){
-                viewModel.initTimer()
-
-                Log.i("TEST", "Timer init")
-            }
-        })
-*/
         return binding.root
     }
 
