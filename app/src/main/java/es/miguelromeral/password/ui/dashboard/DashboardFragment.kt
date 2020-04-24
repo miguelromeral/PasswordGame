@@ -46,6 +46,9 @@ class DashboardFragment : Fragment() {
         binding.customPasswordsList.adapter = adapter
 
         viewModel.passwords.observe(viewLifecycleOwner, Observer {
+
+            binding.partialEmptyCPLayout.visibility = if(it.isNotEmpty()) View.GONE else View.VISIBLE
+
             adapter.submitList(viewModel.passwords.value?.sortedBy { it.word })
         })
 

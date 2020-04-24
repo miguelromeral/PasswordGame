@@ -24,6 +24,9 @@
         android:layout_height="match_parent">
 
 
+        <include layout="@layout/partial_empty_cp"
+            android:id="@+id/partialEmptyCPLayout"/>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/custom_passwords_list"
