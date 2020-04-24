@@ -141,6 +141,11 @@ class GameActivityFragment : Fragment() {
                 binding.bSuccess.isEnabled = true
                 binding.tvIndex.text = index.toString()
 
+                viewModel.listened.observe(viewLifecycleOwner, Observer {
+                    binding.etSpeech.setText(it)
+                    binding.etSpeech.setSelection(it.length)
+                })
+
                 val list = viewModel.listOfWords.value
                 Log.i(TAG, "List of passwords: $list")
                 list?.let{ list ->
@@ -152,7 +157,7 @@ class GameActivityFragment : Fragment() {
                 }
 
                 if(microphoneEnabled){
-                    binding.fabAudio.visibility = View.VISIBLE
+                    binding.clSpeech.visibility = View.VISIBLE
                 }
 
                 binding.layoutLoading.visibility = View.GONE

@@ -39,9 +39,13 @@ class HomeFragment : Fragment() {
                 Options.getCategoryValue(binding.partialSpinnerCategory.spCategory.selectedItemPosition),
                 Options.getLevelValue(binding.partialSpinnerLevel.spLevel.selectedItemPosition),
                 "language")
-            b.isEnabled = true
         }
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.bStartGame.isEnabled = true
     }
 }

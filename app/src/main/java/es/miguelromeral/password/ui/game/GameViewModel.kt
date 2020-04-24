@@ -38,6 +38,9 @@ class GameViewModel(
 
     private val repository = PasswordRepository(database)
 
+    private val _listened = MutableLiveData<String>("")
+    val listened = _listened
+
     private val _listOfWords = MutableLiveData<List<Password>>()
     val listOfWords = _listOfWords
 
@@ -147,6 +150,7 @@ class GameViewModel(
 
     fun checkHintsFromMicrophone(sentence: String){
         try {
+            _listened.postValue("${_listened.value}${if (_listened.value.isNullOrEmpty()) "" else "\n"}$sentence")
             val words = sentence.split(SEPARATOR_VOICE)
             getCurrentPassword()?.let { pwd ->
                 for (word in words) {
