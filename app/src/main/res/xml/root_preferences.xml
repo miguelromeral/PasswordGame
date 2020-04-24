@@ -25,4 +25,16 @@
 
     </PreferenceCategory>
 
+
+    <PreferenceCategory
+        android:title="Display">
+
+        <CheckBoxPreference
+            android:key="@string/pref_theme_key"
+            android:title="Dark Theme"
+            android:summary="Enable dark colors for the app"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

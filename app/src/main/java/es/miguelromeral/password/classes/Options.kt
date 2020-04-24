@@ -7,8 +7,9 @@ class Options {
     companion object {
         const val DEFAULT_CATEGORY = "mixed"
         const val DEFAULT_LEVEL = "mixed"
-
         const val DEFAULT_LANGUAGE = "Mixed"
+
+        const val DEFAULT_NIGHT_THEME = false
 
 
         const val LEVEL_EASY = "easy"

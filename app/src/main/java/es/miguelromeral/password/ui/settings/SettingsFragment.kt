@@ -1,7 +1,9 @@
 package es.miguelromeral.password.ui.settings
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import es.miguelromeral.password.R
 import androidx.preference.*
 
@@ -21,22 +23,17 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
             }
             false
         }
-
-        setTintColor(context)*/
+*/
+        setTintColor(context)
     }
 
-    /*
+
     private fun setTintColor(context: Context?){
         context?.let {
             val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
             val night = isNightThemeEnabled(context, sharedPreferences)
             val preferences = listOf(
-                context.getString(R.string.preference_help_id),
-                context.getString(R.string.preference_date_format_id),
-                context.getString(R.string.preference_key_theme),
-                context.getString(R.string.preference_key_filename),
-                context.getString(R.string.preference_save_qr_id),
-                getString(R.string.preference_auto_return_result_id)
+                getString(R.string.pref_microphone_key)
             )
 
             for (spr in preferences) {
@@ -46,21 +43,17 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
                 )
             }
         }
-    }*/
+    }
+
 
     override fun onSharedPreferenceChanged(preferences: SharedPreferences?, key: String?) {
-
-        /*when(key){
-            resources.getString(R.string.preference_key_theme) -> {
-                setStyleTheme(context!!, preferences)
+        when(key){
+            resources.getString(R.string.pref_theme_key) -> {
+                setStyleTheme(requireContext(), preferences)
             }
-        }*/
+        }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        var mycontext = context
-    }
 
     override fun onResume() {
         super.onResume()
@@ -73,25 +66,23 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
     }
 
     companion object {
-/*
+
         fun isNightThemeEnabled(context: Context, sharedPreferences: SharedPreferences) =
-            sharedPreferences!!.getBoolean(context.getString(R.string.preference_key_theme), false)
-*/
-/*
+            sharedPreferences!!.getBoolean(context.getString(R.string.pref_theme_key), false)
+
+
         private fun setStyleTheme(context: Context, sharedPreferences: SharedPreferences? = null){
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)
             val resources = context.resources
 
-            val style = preferences!!.getBoolean(resources.getString(R.string.preference_key_theme), false)
+            val style = preferences!!.getBoolean(resources.getString(R.string.pref_theme_key), false)
             if(style){
-                //getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-
-
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }else{
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
-        }*/
+        }
+
     }
 
 }
