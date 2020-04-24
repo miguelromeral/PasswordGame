@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabaseDao
+import es.miguelromeral.password.ui.game.GameActivityFragment
 import es.miguelromeral.password.ui.game.GameFactory
 import kotlinx.coroutines.*
 import kotlin.random.Random
@@ -22,12 +23,35 @@ class CustomPasswordViewModel(
     private val _warning = MutableLiveData<String?>()
     val warning = _warning
 
+    private val _hints = MutableLiveData<List<String>>(listOf("uno","dos","tres"))
+    val hints = _hints
+
     fun addPassword(password: Password?){
         password?.let {
             uiScope.launch {
                 createNewPassword(password)
             }
         }
+    }
+
+    fun addHint(){
+        _hints.value?.let{ list ->
+            var nueva = list.toMutableList()
+            nueva.add("-")
+            _hints.postValue(nueva)
+        }
+    }
+
+    fun getHintsFormatted(): String{
+        var text = ""
+        hints.value?.let { list ->
+            for (hint in list) {
+                text += "${hint}${Password.SEPARATOR}"
+            }
+            if(list.size > 0)
+                text = text.substring(0, text.length - 1)
+        }
+        return text
     }
 
     private suspend fun createNewPassword(password: Password){

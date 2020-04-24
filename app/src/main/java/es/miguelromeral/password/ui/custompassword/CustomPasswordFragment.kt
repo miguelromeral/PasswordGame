@@ -16,6 +16,7 @@ import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentCustomPasswordBinding
 import android.widget.ArrayAdapter
 import es.miguelromeral.password.classes.Options
+import es.miguelromeral.password.ui.Adapters.CustomHintAdapter
 
 
 class CustomPasswordFragment : Fragment() {
@@ -37,6 +38,24 @@ class CustomPasswordFragment : Fragment() {
         binding.password = Password(word = "a", hints = "b,c,d")
 
 
+
+        val adapter = CustomHintAdapter()
+        binding.customHintList.adapter = adapter
+
+
+        binding.bAddHint.setOnClickListener {b ->
+            //adapter.submitList(listOf("test","dos"))
+
+            viewModel.addHint()
+        }
+
+        viewModel.hints.observe(viewLifecycleOwner, Observer {
+            it?.let { list ->
+                adapter.submitList(list.sorted())
+            }
+        })
+
+
         viewModel.warning.observe(viewLifecycleOwner, Observer {
             it?.let{
                 Toast.makeText(context, it, Toast.LENGTH_LONG).show()
@@ -48,10 +67,13 @@ class CustomPasswordFragment : Fragment() {
             binding.password?.let{ pwd ->
                 pwd.level = Options.getLevelValue(binding.partialSpinnerLevel.spLevel.selectedItemPosition)
                 pwd.category = Options.getCategoryValue(binding.partialSpinnerCategory.spCategory.selectedItemPosition)
+                pwd.hints = viewModel.getHintsFormatted()
 
-                viewModel.addPassword(pwd)
+                if(pwd.word.isNotEmpty())
+                    viewModel.addPassword(pwd)
             }
         }
+
 
 
         return binding.root
