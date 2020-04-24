@@ -33,10 +33,21 @@ class DashboardViewModel(
         }
     }
 
+    fun deletePassword(pwd: Password){
+        uiScope.launch {
+            deletePasswordIO(pwd)
+        }
+    }
 
     private suspend fun clearDatabaseIO(){
         return withContext(Dispatchers.IO){
             database.clear()
+        }
+    }
+
+    private suspend fun deletePasswordIO(pwd: Password){
+        return withContext(Dispatchers.IO){
+            database.delete(pwd.word)
         }
     }
 

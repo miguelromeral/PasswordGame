@@ -2,7 +2,6 @@ package es.miguelromeral.password.ui.dashboard
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -12,9 +11,7 @@ import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentDashboardBinding
-import es.miguelromeral.password.ui.custompassword.CustomPasswordAdapter
 import es.miguelromeral.password.ui.listeners.CustomPasswordListener
-import es.miguelromeral.password.ui.listeners.RemoveCustomHintListener
 
 class DashboardFragment : Fragment() {
 
@@ -36,14 +33,18 @@ class DashboardFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard, container, false)
 
-        val adapter = CustomPasswordAdapter(CustomPasswordListener { pwd ->
-            navigateToCustomPassword(pwd)
-        })
+        val adapter =
+            CustomPasswordAdapter(CustomPasswordListener { pwd ->
+                navigateToCustomPassword(pwd)
+            },
+            CustomPasswordListener { item ->
+                viewModel.deletePassword(item)
+            })
 
         binding.customPasswordsList.adapter = adapter
 
         viewModel.passwords.observe(viewLifecycleOwner, Observer {
-            adapter.submitList(viewModel.passwords.value)
+            adapter.submitList(viewModel.passwords.value?.sortedBy { it.word })
         })
 
         setHasOptionsMenu(true)
