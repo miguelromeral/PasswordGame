@@ -44,7 +44,7 @@ class GameViewModel(
     private val _listOfWords = MutableLiveData<List<Password>>()
     val listOfWords = _listOfWords
 
-    private val _currentIndex = MutableLiveData<Int>(DEFAULT_INDEX)
+    private val _currentIndex = MutableLiveData<Int>(VALUE_NOT_STARTED)
     val currentIndex = _currentIndex
 
     private val _nFails = MutableLiveData(0)
@@ -81,14 +81,14 @@ class GameViewModel(
     override fun retrievedWords(list: List<Password>) {
         if(list.isNotEmpty()) {
             _listOfWords.postValue(list?.shuffled())
+            _currentIndex.postValue(0)
             initTimer()
-            Log.i("TEST", "timer initiated")
+        }else {
+            _currentIndex.postValue(VALUE_NO_WORDS)
         }
-        Log.i("TEST", "End of retrievedWords")
     }
 
     fun initTimer(){
-        _currentIndex.postValue(0)
         _countdownInt = (DEFAULT_WAIT / ONE_SECOND).toInt()
         _countdown.postValue(_countdownInt)
         timer = object : CountDownTimer(DEFAULT_WAIT, ONE_SECOND){
@@ -192,10 +192,10 @@ class GameViewModel(
 
         val VALUE_NOT_STARTED = -1
         val VALUE_FINISHED = -2
+        val VALUE_NO_WORDS = -3
 
         val COLL_PASSWORD = "passwords"
         val FIELD_CATEGORY = "category"
         val FIELD_LEVEL = "level"
-        val DEFAULT_INDEX = -1
     }
 }

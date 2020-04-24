@@ -18,6 +18,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -136,33 +137,48 @@ class GameActivityFragment : Fragment() {
         })
 
         viewModel.currentIndex.observe(viewLifecycleOwner, Observer { index ->
-            if(index != GameViewModel.DEFAULT_INDEX){
-                binding.bFail.isEnabled = true
-                binding.bSuccess.isEnabled = true
-                binding.tvIndex.text = index.toString()
+            if(index != GameViewModel.VALUE_NOT_STARTED){
+                if(index == GameViewModel.VALUE_NO_WORDS){
+                    val builder = AlertDialog.Builder(requireContext())
+                    builder.setTitle("No words found")
+                    builder.setMessage("We haven't been able to find words according to that criteria.\n" +
+                            "Please, try filtering other values or try with these again later.")
 
-                viewModel.listened.observe(viewLifecycleOwner, Observer {
-                    binding.etSpeech.setText(it)
-                    binding.etSpeech.setSelection(it.length)
-                })
 
-                val list = viewModel.listOfWords.value
-                Log.i(TAG, "List of passwords: $list")
-                list?.let{ list ->
-                    if(index < list.size) {
-                        val pwd = list[index]
-                        binding.tvPassword.text = pwd.word
-                        adapter.submitList(pwd.hintsSplit())
+                    builder.setPositiveButton("Go Home"){ dialogInterface, i ->
+                        activity?.finish()
                     }
+
+                    val dialog: AlertDialog = builder.create()
+                    dialog.show()
+                }else {
+                    binding.bFail.isEnabled = true
+                    binding.bSuccess.isEnabled = true
+                    binding.tvIndex.text = index.toString()
+
+                    viewModel.listened.observe(viewLifecycleOwner, Observer {
+                        binding.etSpeech.setText(it)
+                        binding.etSpeech.setSelection(it.length)
+                    })
+
+                    val list = viewModel.listOfWords.value
+                    Log.i(TAG, "List of passwords: $list")
+                    list?.let { list ->
+                        if (index < list.size) {
+                            val pwd = list[index]
+                            binding.tvPassword.text = pwd.word
+                            adapter.submitList(pwd.hintsSplit())
+                        }
+                    }
+
+                    if (microphoneEnabled) {
+                        binding.clSpeech.visibility = View.VISIBLE
+                    }
+
+                    binding.layoutLoading.visibility = View.GONE
+
+                    binding.clGame.visibility = View.VISIBLE
                 }
-
-                if(microphoneEnabled){
-                    binding.clSpeech.visibility = View.VISIBLE
-                }
-
-                binding.layoutLoading.visibility = View.GONE
-
-                binding.clGame.visibility = View.VISIBLE
             }
         })
 
