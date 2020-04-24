@@ -1,20 +1,22 @@
 package es.miguelromeral.password.ui.Adapters
 
+import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import es.miguelromeral.password.databinding.ItemCustomHintBinding
+import es.miguelromeral.password.ui.listeners.RemoveCustomHintListener
 
 
-class CustomHintAdapter : ListAdapter<String, CustomHintAdapter.ViewHolder>(HintDiffCallback()){
+class CustomHintAdapter(
+    val removeCustomHintListener: RemoveCustomHintListener
+) : ListAdapter<String, CustomHintAdapter.ViewHolder>(HintDiffCallback()){
 
     override fun onBindViewHolder(holder:ViewHolder, position:Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, removeCustomHintListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,8 +25,9 @@ class CustomHintAdapter : ListAdapter<String, CustomHintAdapter.ViewHolder>(Hint
 
     class ViewHolder private constructor (val binding: ItemCustomHintBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: String) {
+        fun bind(item: String, removeCustomHintListener: RemoveCustomHintListener) {
             binding.hint = item
+            binding.removeListener = removeCustomHintListener
         }
 
         companion object {

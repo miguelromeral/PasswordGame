@@ -1,14 +1,10 @@
 package es.miguelromeral.password.ui.custompassword
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabaseDao
-import es.miguelromeral.password.ui.game.GameActivityFragment
-import es.miguelromeral.password.ui.game.GameFactory
 import kotlinx.coroutines.*
 import kotlin.random.Random
 
@@ -23,7 +19,7 @@ class CustomPasswordViewModel(
     private val _warning = MutableLiveData<String?>()
     val warning = _warning
 
-    private val _hints = MutableLiveData<List<String>>(listOf("uno","dos","tres"))
+    private val _hints = MutableLiveData<List<String>>(listOf())
     val hints = _hints
 
     fun addPassword(password: Password?){
@@ -34,10 +30,19 @@ class CustomPasswordViewModel(
         }
     }
 
-    fun addHint(){
+    fun addHint(hint: String){
         _hints.value?.let{ list ->
             var nueva = list.toMutableList()
-            nueva.add("-")
+            nueva.add(hint)
+            _hints.postValue(nueva)
+        }
+    }
+
+    fun removeHint(hint: String){
+        hints.value?.let { list ->
+            var nueva = list.toMutableList()
+            var index = list.indexOf(hint)
+            nueva.removeAt(index)
             _hints.postValue(nueva)
         }
     }

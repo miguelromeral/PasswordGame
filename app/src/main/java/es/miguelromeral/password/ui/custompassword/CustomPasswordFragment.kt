@@ -2,11 +2,15 @@ package es.miguelromeral.password.ui.custompassword
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -14,9 +18,13 @@ import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentCustomPasswordBinding
-import android.widget.ArrayAdapter
 import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.ui.Adapters.CustomHintAdapter
+import es.miguelromeral.password.ui.listeners.RemoveCustomHintListener
+import android.widget.LinearLayout
+import es.miguelromeral.password.MainActivity
+import android.widget.EditText
+import android.content.DialogInterface
 
 
 class CustomPasswordFragment : Fragment() {
@@ -34,19 +42,49 @@ class CustomPasswordFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this, vmf).get(CustomPasswordViewModel::class.java)
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_custom_password, container, false)
+        binding = DataBindingUtil.inflate(inflater, es.miguelromeral.password.R.layout.fragment_custom_password, container, false)
         binding.password = Password(word = "a", hints = "b,c,d")
 
 
 
-        val adapter = CustomHintAdapter()
+        val adapter = CustomHintAdapter(RemoveCustomHintListener { item ->
+            Toast.makeText(context, "Removing hint: $item", Toast.LENGTH_SHORT).show()
+            viewModel.removeHint(item)
+        })
+
         binding.customHintList.adapter = adapter
 
 
         binding.bAddHint.setOnClickListener {b ->
             //adapter.submitList(listOf("test","dos"))
 
-            viewModel.addHint()
+
+
+            val builder = AlertDialog.Builder(requireContext())
+
+            val input = EditText(context)
+            val lp = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+            )
+            input.layoutParams = lp
+
+            builder.setView(input)
+
+            builder.setTitle("New Hint")
+            builder.setMessage("Write the new hint.")
+
+
+                .setCancelable(false)
+                .setPositiveButton("OK"){ dialogInterface, i ->
+                    viewModel.addHint(input.text.toString())
+                }
+                .setNegativeButton("Cancel"){ dialogInterface, i ->
+                    dialogInterface.cancel()
+                }
+
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
         }
 
         viewModel.hints.observe(viewLifecycleOwner, Observer {
