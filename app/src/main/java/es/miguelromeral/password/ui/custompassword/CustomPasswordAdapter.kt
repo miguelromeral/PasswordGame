@@ -8,15 +8,19 @@ import androidx.recyclerview.widget.RecyclerView
 import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.databinding.ItemCustomPasswordsBinding
+import es.miguelromeral.password.ui.listeners.CustomPasswordListener
+import es.miguelromeral.password.ui.listeners.RemoveCustomHintListener
 
 
-class CustomPasswordAdapter : ListAdapter<Password, CustomPasswordAdapter.ViewHolder>(
+class CustomPasswordAdapter(
+    val listener: CustomPasswordListener
+) : ListAdapter<Password, CustomPasswordAdapter.ViewHolder>(
     HintDiffCallback()
 ){
 
     override fun onBindViewHolder(holder: ViewHolder, position:Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,9 +31,10 @@ class CustomPasswordAdapter : ListAdapter<Password, CustomPasswordAdapter.ViewHo
 
     class ViewHolder private constructor (val binding: ItemCustomPasswordsBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Password) {
+        fun bind(item: Password, listener: CustomPasswordListener) {
             val res = itemView.context.resources
             binding.password = item
+            binding.listener = listener
             binding.tvWord.text = item.word?.capitalize()
             binding.tvHints.text = item.hints
             binding.tvLevel.text = Options.getStringFromLevelValue(res, item.level ?: "-")

@@ -2,15 +2,19 @@ package es.miguelromeral.password.ui.dashboard
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentDashboardBinding
 import es.miguelromeral.password.ui.custompassword.CustomPasswordAdapter
+import es.miguelromeral.password.ui.listeners.CustomPasswordListener
+import es.miguelromeral.password.ui.listeners.RemoveCustomHintListener
 
 class DashboardFragment : Fragment() {
 
@@ -32,7 +36,10 @@ class DashboardFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard, container, false)
 
-        val adapter = CustomPasswordAdapter()
+        val adapter = CustomPasswordAdapter(CustomPasswordListener { pwd ->
+            navigateToCustomPassword(pwd)
+        })
+
         binding.customPasswordsList.adapter = adapter
 
         viewModel.passwords.observe(viewLifecycleOwner, Observer {
@@ -53,7 +60,7 @@ class DashboardFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.action_custom_password -> {
-                findNavController().navigate(DashboardFragmentDirections.actionNavigationDashboardToCustomPasswordFragment())
+                navigateToCustomPassword()
                 true
             }
             R.id.action_clear_custom_passwords ->{
@@ -62,5 +69,11 @@ class DashboardFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun navigateToCustomPassword(pwd: Password? = null){
+        var dir = DashboardFragmentDirections.actionNavigationDashboardToCustomPasswordFragment()
+        dir.password = pwd
+        findNavController().navigate(dir)
     }
 }

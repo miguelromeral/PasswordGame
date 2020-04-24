@@ -34,6 +34,11 @@
         <action
             android:id="@+id/action_customPasswordFragment_to_navigation_dashboard"
             app:destination="@id/navigation_dashboard" />
+        <argument
+            android:name="password"
+            app:argType="es.miguelromeral.password.classes.Password"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
     <fragment

@@ -22,6 +22,12 @@ class CustomPasswordViewModel(
     private val _hints = MutableLiveData<List<String>>(listOf())
     val hints = _hints
 
+
+    fun setPassword(pwd: Password){
+        _hints.postValue(pwd.hintsSplit())
+    }
+
+
     fun addPassword(password: Password?){
         password?.let {
             uiScope.launch {

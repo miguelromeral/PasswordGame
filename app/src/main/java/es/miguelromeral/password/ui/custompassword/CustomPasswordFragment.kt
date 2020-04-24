@@ -25,6 +25,7 @@ import android.widget.LinearLayout
 import es.miguelromeral.password.MainActivity
 import android.widget.EditText
 import android.content.DialogInterface
+import es.miguelromeral.password.ui.finishedgame.FinishedGameFragmentArgs
 
 
 class CustomPasswordFragment : Fragment() {
@@ -36,6 +37,10 @@ class CustomPasswordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        val args = CustomPasswordFragmentArgs.fromBundle(requireArguments())
+        val pwdLoaded = args.password
+
         val application = requireNotNull(this.activity).application
         val dataSource = PasswordDatabase.getInstance(application).passwordDatabaseDao
         val vmf = CustomPasswordFactory(dataSource, application)
@@ -43,22 +48,28 @@ class CustomPasswordFragment : Fragment() {
         viewModel = ViewModelProviders.of(this, vmf).get(CustomPasswordViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, es.miguelromeral.password.R.layout.fragment_custom_password, container, false)
-        binding.password = Password(word = "a", hints = "b,c,d")
+
+
+        binding.password = if(pwdLoaded != null){
+                viewModel.setPassword(pwdLoaded)
+                binding.bInsert.text = "UPDATE"
+                binding.partialSpinnerLevel.spLevel.setSelection(Options.getLevelValueIndex(pwdLoaded.level ?: Options.DEFAULT_LEVEL))
+                binding.partialSpinnerCategory.spCategory.setSelection(Options.getCategoryValueIndex(pwdLoaded.category ?: Options.DEFAULT_CATEGORY))
+                pwdLoaded
+            }else{
+                Password(word = "a", hints = "b,c,d")
+            }
 
 
 
         val adapter = CustomHintAdapter(RemoveCustomHintListener { item ->
-            Toast.makeText(context, "Removing hint: $item", Toast.LENGTH_SHORT).show()
             viewModel.removeHint(item)
         })
 
         binding.customHintList.adapter = adapter
 
 
-        binding.bAddHint.setOnClickListener {b ->
-            //adapter.submitList(listOf("test","dos"))
-
-
+        binding.bAddHint.setOnClickListener { b ->
 
             val builder = AlertDialog.Builder(requireContext())
 
