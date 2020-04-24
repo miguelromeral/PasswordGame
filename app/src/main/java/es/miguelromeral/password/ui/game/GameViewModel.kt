@@ -7,23 +7,13 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import android.os.Bundle
 import android.os.CountDownTimer
-import android.text.TextUtils
 import android.util.Log
-import android.widget.Toast
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreSettings
-import com.google.firebase.firestore.Query
-import es.miguelromeral.password.R
-import es.miguelromeral.password.classes.IRepository
-import es.miguelromeral.password.classes.Options
+import es.miguelromeral.password.classes.repository.IRepository
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabaseDao
 import es.miguelromeral.password.classes.repository.PasswordRepository
 import kotlinx.coroutines.launch
-import java.util.HashMap
-import kotlin.random.Random
 
 class GameViewModel(
     private val database: PasswordDatabaseDao,
@@ -31,7 +21,8 @@ class GameViewModel(
     val category: String,
     val level: String,
     val language: String,
-    val useLocalDB: Boolean) : ViewModel(), IRepository {
+    val useLocalDB: Boolean) : ViewModel(),
+    IRepository {
 
     private val _text = MutableLiveData<String>("Password!")
     val text: LiveData<String> = _text

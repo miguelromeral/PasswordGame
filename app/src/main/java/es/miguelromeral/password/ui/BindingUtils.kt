@@ -2,6 +2,7 @@ package es.miguelromeral.password.ui
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import java.text.SimpleDateFormat
 import java.util.*
@@ -19,3 +20,17 @@ fun formatTime(time: Long): String{
 }
 
 fun Double.format(digits: Int) = "%.${digits}f".format(this)
+
+
+
+
+
+@BindingAdapter("customPasswordText")
+fun TextView.setCustomPasswordText(custom: Boolean){
+    text = if(custom) "Personalizado" else "Firestore"
+}
+
+@BindingAdapter("solvedPasswordText")
+fun TextView.setSolvedPasswordText(pwd: Password){
+    text = if(pwd.solved) "Solved!" else "Failed"
+}

@@ -34,6 +34,7 @@ data class Password(
 
     var solved: Boolean = false
     var failed: Boolean = false
+    var custom: Boolean = false
 
 
     fun hintsSplit(): List<String> {

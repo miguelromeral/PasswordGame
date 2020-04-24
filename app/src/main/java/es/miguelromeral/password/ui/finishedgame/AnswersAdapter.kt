@@ -1,4 +1,4 @@
-package es.miguelromeral.password.ui.Adapters
+package es.miguelromeral.password.ui.finishedgame
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,19 +7,22 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.databinding.ItemAnswerBinding
-import es.miguelromeral.password.databinding.ItemHintBinding
 import es.miguelromeral.password.ui.setTimeFormatted
 
 
-class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(HintDiffCallback()){
+class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(
+    HintDiffCallback()
+){
 
-    override fun onBindViewHolder(holder:ViewHolder, position:Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position:Int) {
         val item = getItem(position)
         holder.bind(item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        return ViewHolder.from(
+            parent
+        )
     }
 
     class ViewHolder private constructor (val binding: ItemAnswerBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -28,11 +31,6 @@ class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(HintDiff
             //val res = itemView.context.resources
             binding.password = item
             binding.tvWord.text = item.word?.capitalize()
-            binding.tvState.text = if(item.solved)
-                                        "Solved"
-                                    else
-                                        "Failed"
-            binding.tvTime.setTimeFormatted(item)
         }
 
         companion object {

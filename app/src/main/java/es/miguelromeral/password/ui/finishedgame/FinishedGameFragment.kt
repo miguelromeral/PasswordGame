@@ -2,25 +2,15 @@ package es.miguelromeral.password.ui.finishedgame
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 
 import es.miguelromeral.password.R
-import es.miguelromeral.password.classes.Options
-import es.miguelromeral.password.databinding.FragmentGameBinding
 import es.miguelromeral.password.databinding.FragmentGameFinishedBinding
-import es.miguelromeral.password.ui.Adapters.AnswersAdapter
-import es.miguelromeral.password.ui.Adapters.HintAdapter
-import es.miguelromeral.password.ui.game.GameActivityFragment
-import es.miguelromeral.password.ui.game.GameFactory
-import es.miguelromeral.password.ui.game.GameViewModel
 
 class FinishedGameFragment : Fragment() {
 

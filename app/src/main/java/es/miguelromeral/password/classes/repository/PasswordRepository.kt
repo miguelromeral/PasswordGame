@@ -2,11 +2,9 @@ package es.miguelromeral.password.classes.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.QuerySnapshot
 import es.miguelromeral.password.classes.*
 import es.miguelromeral.password.ui.game.GameViewModel
 import kotlinx.coroutines.Dispatchers
@@ -45,6 +43,8 @@ class PasswordRepository(private val database: PasswordDatabaseDao){
 
                     if(!Options.isDefaultCategory(category))
                         myWords = myWords.filter { it.category.equals(category) }
+
+                    myWords.forEach { it.custom = true }
                 }
             }
 
