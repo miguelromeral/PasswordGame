@@ -39,7 +39,7 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
             for (spr in preferences) {
                 val pref = findPreference(spr)
                 pref.icon.setTint(
-                    if (night) context.getColor(R.color.purple) else context.getColor(R.color.black)
+                    if (night) context.getColor(R.color.colorAccent) else context.getColor(R.color.black)
                 )
             }
         }

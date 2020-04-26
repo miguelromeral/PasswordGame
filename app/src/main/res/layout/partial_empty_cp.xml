@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/microphone" />
+        app:srcCompat="@drawable/microphone"
+        style="@style/IconTheme"/>
 
     <TextView
         android:id="@+id/textView"
