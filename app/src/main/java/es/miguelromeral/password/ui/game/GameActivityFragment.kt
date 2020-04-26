@@ -19,6 +19,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
 import androidx.appcompat.app.AlertDialog
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -33,9 +34,11 @@ import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentGameBinding
 import es.miguelromeral.password.databinding.FragmentHomeBinding
+import es.miguelromeral.password.databinding.PartialGameBinding
 import es.miguelromeral.password.ui.Adapters.HintAdapter
 import es.miguelromeral.password.ui.finishedgame.FinishedGameFragment
 import es.miguelromeral.password.ui.home.HomeViewModel
+import kotlinx.android.synthetic.main.partial_game.view.*
 import java.util.*
 import java.util.jar.Manifest
 
@@ -83,6 +86,7 @@ class GameActivityFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false)
         binding.viewModel = viewModel
+        val lg = binding.layoutGame
 
         val microphoneEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
             requireContext().getString(
@@ -109,34 +113,36 @@ class GameActivityFragment : Fragment() {
                 return@OnTouchListener false
             })
 
+        }else{
+            binding.clSpeech.visibility = View.GONE
         }
 
         val manager = GridLayoutManager(activity, 2)
-        binding.rvHints.layoutManager = manager
+        lg.rvHints.layoutManager = manager
 
         val adapter = HintAdapter()
-        binding.rvHints.adapter = adapter
+        lg.rvHints.adapter = adapter
 
-        binding.bFail.setOnClickListener {
+        lg.bFail.setOnClickListener {
             viewModel.nextWord(false)
         }
-        binding.bSuccess.setOnClickListener {
+        lg.bSuccess.setOnClickListener {
             viewModel.nextWord(true)
         }
 
         viewModel.countdown.observe(viewLifecycleOwner, Observer {
-            binding.tvTimer.text = it.toString()
+            lg.tvTimer.text = it.toString()
         })
 
         viewModel.nFails.observe(viewLifecycleOwner, Observer {
-            binding.tvFails.text = it.toString()
+            lg.tvFails.text = it.toString()
         })
         viewModel.nSuccess.observe(viewLifecycleOwner, Observer {
-            binding.tvSuccess.text = it.toString()
+            lg.tvSuccess.text = it.toString()
         })
 
         viewModel.text.observe(viewLifecycleOwner, Observer {
-            binding.tvPassword.text = it.toUpperCase()
+            lg.tvPassword.text = it.toUpperCase()
         })
 
         viewModel.currentIndex.observe(viewLifecycleOwner, Observer { index ->
@@ -157,9 +163,9 @@ class GameActivityFragment : Fragment() {
                 }else if(index == GameViewModel.VALUE_PREPARE_TIMER) {
                     viewModel.initTimer()
                 } else {
-                    binding.bFail.isEnabled = true
-                    binding.bSuccess.isEnabled = true
-                    binding.tvIndex.text = index.toString()
+                    lg.bFail.isEnabled = true
+                    lg.bSuccess.isEnabled = true
+                    lg.tvIndex.text = index.toString()
 
                     viewModel.listened.observe(viewLifecycleOwner, Observer {
                         binding.etSpeech.setText(it)
@@ -171,18 +177,14 @@ class GameActivityFragment : Fragment() {
                     list?.let { list ->
                         if (index < list.size) {
                             val pwd = list[index]
-                            binding.tvPassword.text = pwd.word
+                            lg.tvPassword.text = pwd.word
                             adapter.submitList(pwd.hintsSplit())
                         }
                     }
 
-                    if (microphoneEnabled) {
-                        binding.clSpeech.visibility = View.VISIBLE
-                    }
-
                     binding.layoutLoading.visibility = View.GONE
 
-                    binding.clGame.visibility = View.VISIBLE
+                    lg.clGame.visibility = View.VISIBLE
                 }
             }
         })

@@ -1,8 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/clGame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintBottom_toTopOf="@+id/clSpeech"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:context=".ui.game.GameActivityFragment"
+    tools:showIn="@layout/activity_game">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Password!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bSuccess" />
+
+    <TextView
+        android:id="@+id/tvIndex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Index"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bFail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Missed"
+        app:layout_constraintEnd_toStartOf="@+id/tvIndex"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvIndex" />
+
+    <Button
+        android:id="@+id/bSuccess"
+        style="@style/SuccessButton"
+        android:enabled="false"
+        android:text="Success"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvIndex"
+        app:layout_constraintTop_toTopOf="@+id/tvIndex" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHints"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
+
+    <TextView
+        android:id="@+id/tvFails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NaN"
+        app:layout_constraintBottom_toBottomOf="@+id/bFail"
+        app:layout_constraintEnd_toStartOf="@+id/bFail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bFail" />
+
+    <TextView
+        android:id="@+id/tvSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NaN"
+        app:layout_constraintBottom_toBottomOf="@+id/bSuccess"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bSuccess"
+        app:layout_constraintTop_toTopOf="@+id/bSuccess" />
+
+    <TextView
+        android:id="@+id/tvTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Timer"
+        app:layout_constraintEnd_toStartOf="@+id/bSuccess"
+        app:layout_constraintStart_toEndOf="@+id/bFail"
+        app:layout_constraintTop_toBottomOf="@+id/tvIndex" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
