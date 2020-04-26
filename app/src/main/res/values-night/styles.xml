@@ -19,9 +19,6 @@
         <item name="android:background">@color/black</item>
     </style>
 
-    <style name="IconTheme">
-        <item name="android:tint">@color/colorAccent</item>
-    </style>
     <style name="IconThemeOpposite">
         <item name="android:tint">@color/black</item>
     </style>
@@ -35,5 +32,17 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+
+    <style name="myTextView" parent="mainTextView">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="textViewInCardView" parent="mainTextView">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="cardViewCustomPassword" parent="mainCardView">
+        <item name="cardBackgroundColor">@color/colorAccent</item>
+    </style>
 
 </resources>
