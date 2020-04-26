@@ -31,6 +31,18 @@ class Options {
             }
 
 
+        const val SOURCE_BOTH = 0
+        const val SOURCE_DEFAULT = 1
+        const val SOURCE_CUSTOM = 2
+
+        fun getSourceByString(value: String, resources: Resources): Int =
+            when(value){
+                resources.getString(R.string.pref_words_source_value_default) -> SOURCE_DEFAULT
+                resources.getString(R.string.pref_words_source_value_custom) -> SOURCE_CUSTOM
+                else -> SOURCE_BOTH
+            }
+
+
         fun getLevelValueIndex(value: String): Int =
             when(value){
                 LEVEL_EASY -> 0

@@ -10,6 +10,13 @@
 
     <string name="pref_microphone_key">pref_microphone_key</string>
     <string name="pref_mix_passwords_key">pref_mix_passwords_key</string>
+    <string name="pref_words_source_key">pref_words_source_key</string>
+    <string name="pref_words_source_value_both" translatable="false">pref_words_source_value_both</string>
+    <string name="pref_words_source_value_default" translatable="false">pref_words_source_value_default</string>
+    <string name="pref_words_source_value_custom" translatable="false">pref_words_source_value_custom</string>
+
+
+
     <string name="pref_theme_key">pref_theme_key</string>
 
 

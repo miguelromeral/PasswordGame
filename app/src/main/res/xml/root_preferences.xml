@@ -17,11 +17,12 @@
     <PreferenceCategory
         android:title="Game">
 
-        <CheckBoxPreference
-            android:key="@string/pref_mix_passwords_key"
-            android:title="Use your own words in game"
-            android:summary="The words you've created in this device will be added to the game"
-            android:defaultValue="true"/>
+        <DropDownPreference
+            android:key="@string/pref_words_source_key"
+            android:title="Password Sources"
+            android:entries="@array/pref_words_source_entries"
+            android:summary="%s"
+            android:entryValues="@array/pref_words_source_values"/>
 
     </PreferenceCategory>
 

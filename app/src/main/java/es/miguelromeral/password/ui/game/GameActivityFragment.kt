@@ -69,12 +69,15 @@ class GameActivityFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = PasswordDatabase.getInstance(application).passwordDatabaseDao
 
-        val vmf = GameFactory(dataSource, application, category!!, level!!, language!!,
-            PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+        val source = Options.getSourceByString(
+            PreferenceManager.getDefaultSharedPreferences(context).getString(
                 requireContext().getString(
-                    R.string.pref_mix_passwords_key
-                ), Options.DEFAULT_MIX_PASSWORDS_VALUE)
+                    R.string.pref_words_source_key),
+                    "")!!,
+            resources
         )
+
+        val vmf = GameFactory(dataSource, application, category!!, level!!, language!!, source)
 
         viewModel = ViewModelProviders.of(this, vmf).get(GameViewModel::class.java)
 
@@ -151,7 +154,9 @@ class GameActivityFragment : Fragment() {
 
                     val dialog: AlertDialog = builder.create()
                     dialog.show()
-                }else {
+                }else if(index == GameViewModel.VALUE_PREPARE_TIMER) {
+                    viewModel.initTimer()
+                } else {
                     binding.bFail.isEnabled = true
                     binding.bSuccess.isEnabled = true
                     binding.tvIndex.text = index.toString()

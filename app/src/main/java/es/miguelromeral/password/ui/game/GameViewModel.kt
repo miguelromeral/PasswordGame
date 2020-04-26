@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import android.os.CountDownTimer
 import android.util.Log
+import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.classes.repository.IRepository
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabaseDao
@@ -21,7 +22,7 @@ class GameViewModel(
     val category: String,
     val level: String,
     val language: String,
-    val useLocalDB: Boolean) : ViewModel(),
+    val source: Int) : ViewModel(),
     IRepository {
 
     private val _text = MutableLiveData<String>("Password!")
@@ -59,21 +60,17 @@ class GameViewModel(
     private var timestamp: Long = 0
 
     init{
-        initGame()
-    }
-
-    fun initGame(){
         val t = this
         uiScope.launch {
-            repository.retrieveWords(category, level, language, useLocalDB, t)
+            repository.retrieveWords(category, level, language, source, t)
         }
     }
 
-    override fun retrievedWords(list: List<Password>) {
+
+    override fun recieveWords(list: List<Password>) {
         if(list.isNotEmpty()) {
             _listOfWords.postValue(list?.shuffled())
-            _currentIndex.postValue(0)
-            initTimer()
+            _currentIndex.postValue(VALUE_PREPARE_TIMER)
         }else {
             _currentIndex.postValue(VALUE_NO_WORDS)
         }
@@ -82,6 +79,7 @@ class GameViewModel(
     fun initTimer(){
         _countdownInt = (DEFAULT_WAIT / ONE_SECOND).toInt()
         _countdown.postValue(_countdownInt)
+        _currentIndex.postValue(0)
         timer = object : CountDownTimer(DEFAULT_WAIT, ONE_SECOND){
             override fun onTick(milisUtilFinished: Long){
                 _countdownInt -= 1
@@ -184,6 +182,7 @@ class GameViewModel(
         val VALUE_NOT_STARTED = -1
         val VALUE_FINISHED = -2
         val VALUE_NO_WORDS = -3
+        val VALUE_PREPARE_TIMER = -4
 
         val COLL_PASSWORD = "passwords"
         val FIELD_CATEGORY = "category"
