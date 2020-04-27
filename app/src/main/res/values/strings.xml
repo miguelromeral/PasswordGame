@@ -20,6 +20,9 @@
     <string name="pref_theme_key">pref_theme_key</string>
 
 
+    <string name="option_search_secrets">Search</string>
+
+
     <string name="dpm_level_mixed">Todas las dificultades</string>
     <string name="dpm_level_easy">Facil</string>
     <string name="dpm_level_medium">Medio</string>

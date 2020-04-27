@@ -14,17 +14,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/microphone"
+        app:srcCompat="@drawable/alert"
         style="@style/IconTheme"/>
 
     <TextView
         android:id="@+id/textView"
+        style="@style/myTextView"
         android:layout_width="match_parent"
-        android:text="There aren't any custom passwords yet. Please, touch the three dots on the toolbar to add the first one."
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:text="There aren't any custom passwords yet. Please, touch the three dots on the toolbar to add one."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        style="@style/myTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

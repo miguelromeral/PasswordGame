@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,7 +16,7 @@ import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentDashboardBinding
 import es.miguelromeral.password.ui.listeners.CustomPasswordListener
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardBinding
@@ -45,11 +46,33 @@ class DashboardFragment : Fragment() {
 
         binding.customPasswordsList.adapter = adapter
 
+        /*
         viewModel.passwords.observe(viewLifecycleOwner, Observer {
 
             binding.partialEmptyCPLayout.visibility = if(it.isNotEmpty()) View.GONE else View.VISIBLE
 
             adapter.submitList(viewModel.passwords.value?.sortedBy { it.word })
+        })
+*/
+
+        viewModel.dataChanged.observe(viewLifecycleOwner, Observer { changed ->
+            if(changed == true){
+                viewModel.passwords.observe(viewLifecycleOwner, Observer {
+                    it?.let {
+                        viewModel.filteredList.postValue(it)
+                    }
+                })
+                viewModel.finalDataChanged()
+            }
+        })
+
+        viewModel.filteredList.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+            if(it.isEmpty()){
+                binding.partialEmptyCPLayout.visibility = View.VISIBLE
+            }else{
+                binding.partialEmptyCPLayout.visibility = View.GONE
+            }
         })
 
         setHasOptionsMenu(true)
@@ -58,10 +81,27 @@ class DashboardFragment : Fragment() {
     }
 
 
+    private lateinit var searchView: SearchView
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.custom_password_options, menu)
+        searchView = menu.findItem(R.id.action_search).actionView as SearchView
+        searchView.setOnQueryTextListener(this)
     }
+
+    override fun onQueryTextSubmit(p0: String?): Boolean {
+        return filter(p0)
+    }
+
+    override fun onQueryTextChange(p0: String?): Boolean {
+        return filter(p0)
+    }
+
+    private fun filter(p0: String?): Boolean{
+        return viewModel.filterPasswords(p0)
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
