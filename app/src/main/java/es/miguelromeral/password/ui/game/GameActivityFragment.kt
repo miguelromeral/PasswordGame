@@ -171,6 +171,7 @@ class GameActivityFragment : Fragment() {
 
         viewModel.gameFinished.observe(viewLifecycleOwner, Observer {
             if(it == true) {
+                viewModel.nextWord(false)
 
                 val dir = GameActivityFragmentDirections
                     .actionGameActivityFragmentToFinishedGameFragment(viewModel.listOfWords.value!!.toTypedArray())

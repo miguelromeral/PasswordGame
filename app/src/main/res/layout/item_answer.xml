@@ -74,7 +74,6 @@
                         android:layout_marginBottom="8dp"
                         android:maxWidth="100sp"
                         android:textAlignment="center"
-                        app:solvedPasswordText="@{password}"
                         tools:text="State" />
 
 

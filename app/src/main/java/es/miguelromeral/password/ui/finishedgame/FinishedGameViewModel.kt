@@ -18,12 +18,53 @@ class FinishedGameViewModel (
 
 
     init {
-        val answers = passwords.filter { it.time != 0L }
+        val answers = passwords.filter { it.solved || it.failed }
         _score.postValue(calculateScore(answers))
         _listOfWords.postValue(answers)
     }
 
-    fun calculateScore(answers: List<Password>): Int{
-        return 0
+    private fun calculateScore(answers: List<Password>): Int{
+        var points = 0
+        for(ans in answers){
+            ans.score =
+                    if(ans.solved){
+                        SCORE_HIT + getBonus(ans.time)
+                    }else if(ans.failed){
+                        SCORE_MISS
+                    }else{
+                        0
+                    }
+            points += ans.score
+        }
+        if(points < 0)
+            points = 0
+
+        return points
+    }
+
+    private fun getBonus(time: Long): Int =
+        if(time > SCORE_MAX_TIME)
+            SCORE_MAX_TIME_VALUE
+        else if(time < SCORE_MIN_TIME)
+            SCORE_MIN_TIME_VALUE
+        else{
+            val maxtime = SCORE_MAX_TIME - SCORE_MIN_TIME
+            val midtime = time - SCORE_MIN_TIME
+            val maxscore = SCORE_MIN_TIME_VALUE - SCORE_MAX_TIME_VALUE
+            val pct = (midtime.toDouble() / maxtime.toDouble())
+            val part = pct * maxscore
+            (maxscore - part).toInt()
+        }
+
+
+    companion object {
+        const val SCORE_HIT = 200
+        const val SCORE_MISS = -100
+
+        const val SCORE_MAX_TIME_VALUE = 50
+        const val SCORE_MAX_TIME = 30000L
+
+        const val SCORE_MIN_TIME_VALUE = 2000
+        const val SCORE_MIN_TIME = 10000L
     }
 }

@@ -46,6 +46,8 @@
 
 
 
+
+
     <style name="SuccessButton" parent="MainButtonRounded">
         <item name="android:backgroundTint">@color/lightGreen</item>
         <item name="android:textColor">@color/black</item>
@@ -94,16 +96,22 @@
         <item name="android:fontFamily">@font/bangers</item>
     </style>
 
-    <style name="tvScoreFail" parent="mainTextView">
+
+
+    <style name="tvGames" parent="mainTextView">
         <item name="android:textSize">28sp</item>
         <item name="android:textColor">@color/lightRed</item>
         <item name="android:fontFamily">@font/bangers</item>
+        <item name="android:layout_width">60sp</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
-    <style name="tvScoreSuccess" parent="mainTextView">
+    <style name="tvScoreFail" parent="tvGames">
+        <item name="android:textColor">@color/lightRed</item>
+    </style>
+
+    <style name="tvScoreSuccess" parent="tvGames">
         <item name="android:textColor">@color/darkGreen</item>
-        <item name="android:textSize">28sp</item>>
-        <item name="android:fontFamily">@font/bangers</item>
     </style>
 
 

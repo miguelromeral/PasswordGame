@@ -27,11 +27,12 @@ data class Password(
     var word: String = "",
 
     @ColumnInfo(name = "random")
-    var random: Long? = 0,
-
-    var time: Long = 0
+    var random: Long? = 0
 
 ) : Parcelable {
+
+    var time: Long = 0
+    var score: Int = 0
 
     var solved: Boolean = false
     var failed: Boolean = false

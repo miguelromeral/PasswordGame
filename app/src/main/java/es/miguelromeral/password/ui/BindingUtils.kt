@@ -27,7 +27,7 @@ fun Double.format(digits: Int) = "%.${digits}f".format(this)
 
 @BindingAdapter("customPasswordText")
 fun TextView.setCustomPasswordText(custom: Boolean){
-    text = resources.getString(if(custom) R.string.fg_word_default else R.string.fg_word_custom)
+    text = resources.getString(if(custom) R.string.fg_word_custom else R.string.fg_word_default)
 }
 
 @BindingAdapter("solvedPasswordText")

@@ -114,6 +114,7 @@
 
     <!-- Finished Game -->
     <string name="fg_title">Game Finished</string>
+    <string name="fg_score">Your Score: %1$s</string>
     <string name="fg_word_default">Firestore</string>
     <string name="fg_word_custom">Custom</string>
     <string name="fg_answer_failed">Failed</string>

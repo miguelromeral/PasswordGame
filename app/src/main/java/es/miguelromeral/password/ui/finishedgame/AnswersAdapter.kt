@@ -1,10 +1,13 @@
 package es.miguelromeral.password.ui.finishedgame
 
+import android.graphics.Color
+import android.graphics.Color.MAGENTA
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.databinding.ItemAnswerBinding
 import es.miguelromeral.password.ui.setTimeFormatted
@@ -28,9 +31,19 @@ class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(
     class ViewHolder private constructor (val binding: ItemAnswerBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Password) {
-            //val res = itemView.context.resources
+            val res = binding.cardViewAnswer.resources
             binding.password = item
+            binding.tvState.text = item.score.toString()
             binding.tvWord.text = item.word?.capitalize()
+
+            binding.cardViewAnswer.setBackgroundColor(res.getColor(
+                    if(item.solved)
+                        R.color.darkGreen
+                    else if(item.failed)
+                        R.color.lightRed
+                    else
+                        R.color.colorPrimaryDark
+            ))
         }
 
         companion object {

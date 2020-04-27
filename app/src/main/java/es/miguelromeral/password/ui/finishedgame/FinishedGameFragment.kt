@@ -43,6 +43,10 @@ class FinishedGameFragment : Fragment() {
             }
         })
 
+        viewModel.score.observe(viewLifecycleOwner, Observer {
+            binding.tvScore.text = resources.getString(R.string.fg_score, it.toString())
+        })
+
         return binding.root
     }
 
