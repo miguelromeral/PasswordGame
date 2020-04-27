@@ -65,6 +65,6 @@ class FinishedGameViewModel (
         const val SCORE_MAX_TIME = 30000L
 
         const val SCORE_MIN_TIME_VALUE = 2000
-        const val SCORE_MIN_TIME = 10000L
+        const val SCORE_MIN_TIME = 5000L
     }
 }

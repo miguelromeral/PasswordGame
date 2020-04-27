@@ -29,6 +29,19 @@
     </style>
 
 
+
+    <style name="MiniIconTheme" parent="IconTheme">
+        <item name="android:tint">@color/white</item>
+        <item name="android:layout_width">18sp</item>
+        <item name="android:layout_height">18sp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginStart">0dp</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+
     <style name="MainButton" parent="Widget.AppCompat.Button.Colored">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

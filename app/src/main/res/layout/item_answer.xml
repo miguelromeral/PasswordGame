@@ -12,7 +12,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="500sp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:id="@+id/cardViewAnswer">
@@ -22,96 +22,161 @@
             android:layout_height="wrap_content" >
 
 
-            <TableLayout
-                android:id="@+id/tableLayout"
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:stretchColumns="1"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TableRow>
-
-                    <TextView
-                        android:id="@+id/tvTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="0"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.18"
-                        app:timeFormatted="@{password}"
-                        tools:text="0.6" />
-
-                    <TextView
-                        android:id="@+id/tvWord"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:textAlignment="center"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/tvTime"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        tools:text="Word" />
-
-                    <TextView
-                        android:id="@+id/tvState"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="2"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:maxWidth="100sp"
-                        android:textAlignment="center"
-                        tools:text="State" />
-
-
-                    <TextView
-                        android:id="@+id/tvCustom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="3"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:maxWidth="100sp"
-                        android:textAlignment="center"
-                        app:customPasswordText="@{password.custom}"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Firestore" />
-
-                </TableRow>
-
-            </TableLayout>
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tableLayout">
-
+                <ImageView
+                    android:id="@+id/imageView2"
+                    style="@style/MiniIconTheme"
+                    app:layout_constraintEnd_toStartOf="@+id/tvTime"
+                    app:srcCompat="@drawable/stopwatch_regular" />
 
                 <TextView
-                    android:id="@+id/tvHints"
-                    hintsFormatted="@{password}"
+                    android:id="@+id/tvTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints,HintHints,s,Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints," />
+                    android:layout_marginEnd="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageView2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:timeFormatted="@{password}"
+                    tools:text="0.6" />
 
-            </HorizontalScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toEndOf="@+id/constraintLayout2">
+
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    style="@style/MiniIconTheme"
+                    app:layout_constraintEnd_toStartOf="@+id/tvState"
+                    app:srcCompat="@drawable/star_add"
+                    tools:layout_editor_absoluteY="10dp" />
+
+                <TextView
+                    android:id="@+id/tvState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageView4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="2200" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toEndOf="@+id/constraintLayout3">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    style="@style/MiniIconTheme"
+                    app:layout_constraintEnd_toStartOf="@+id/tvCustom"
+                    app:srcCompat="@drawable/database_regular" />
+
+                <TextView
+                    android:id="@+id/tvCustom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="100sp"
+                    android:textAlignment="center"
+                    app:customPasswordText="@{password.custom}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Firestore" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clWord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/constraintLayout2">
+
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    style="@style/MiniIconTheme"
+                    app:layout_constraintEnd_toStartOf="@+id/tvWord"
+                    app:srcCompat="@drawable/user_exclamation" />
+
+                <TextView
+                    android:id="@+id/tvWord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    tools:text="Word" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clHints"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clWord">
+
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    style="@style/MiniIconTheme"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/hint" />
+
+
+                <HorizontalScrollView
+                    android:id="@+id/nested"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageView6">
+
+
+                    <TextView
+                        android:id="@+id/tvHints"
+                        hintsFormatted="@{password}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Hints,Hints,Hinsadasdasdasasdasdadsdasdasdasdadwdawdwaddawdawdawdwadw" />
+
+                </HorizontalScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
