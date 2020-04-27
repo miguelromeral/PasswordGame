@@ -34,3 +34,18 @@ fun TextView.setCustomPasswordText(custom: Boolean){
 fun TextView.setSolvedPasswordText(pwd: Password){
     text = if(pwd.solved) "Solved!" else "Failed"
 }
+
+
+@BindingAdapter("hintsFormatted")
+fun TextView.setCustomPasswordText(pwd: Password){
+    var formatted = ""
+    pwd.hintsSplit()?.let { list ->
+        for (hint in list) {
+            formatted += "${hint}${Password.SEPARATOR} "
+        }
+        if(list.size > 0)
+            formatted = formatted.substring(0, formatted.length - 2)
+    }
+
+    text = formatted
+}

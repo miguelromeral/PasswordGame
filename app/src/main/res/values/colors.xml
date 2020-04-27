@@ -9,8 +9,8 @@
     <color name="purple">#cf69ff</color>
     <color name="lightRed">#ff120a</color>
     <color name="white">#fff</color>
-    <color name="lightBlue">#a1a8ff</color>
     <color name="lightGreen">#37ff05</color>
+    <color name="darkGreen">#1f9900</color>
     <color name="gray">#777</color>
     <color name="almost_black">#222</color>
     <color name="almost_white">#ddd</color>
@@ -20,9 +20,10 @@
 
 
     <color name="mainOrange">#ff8f26</color>
-    <color name="darkOrange">#b35c0b</color>
+    <color name="darkOrange">#803e00</color>
+    <color name="lightBlue">#a1a8ff</color>
     <color name="mainBlue">#4564ff</color>
-    <color name="darkBlue">#00064a</color>
+    <color name="darkBlue">#001580</color>
 
 
 

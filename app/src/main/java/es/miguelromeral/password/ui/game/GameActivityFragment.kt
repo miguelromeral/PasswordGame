@@ -165,7 +165,6 @@ class GameActivityFragment : Fragment() {
                 } else {
                     lg.bFail.isEnabled = true
                     lg.bSuccess.isEnabled = true
-                    lg.tvIndex.text = index.toString()
 
                     viewModel.listened.observe(viewLifecycleOwner, Observer {
                         binding.etSpeech.setText(it)

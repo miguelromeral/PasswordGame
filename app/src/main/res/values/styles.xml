@@ -52,15 +52,10 @@
     </style>
 
     <style name="mainTextView">
-        <item name="android:textColor">@color/darkBlue</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginTop">32dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
-        <item name="android:layout_marginBottom">16dp</item>
     </style>
 
     <style name="myTextView" parent="mainTextView">
@@ -68,7 +63,32 @@
     </style>
 
     <style name="textViewInCardView" parent="mainTextView">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="textViewHint" parent="mainTextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="textViewPassword" parent="mainTextView">
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/darkBlue</item>
+    </style>
+
+    <style name="tvTimer" parent="mainTextView">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/mainOrange</item>
+    </style>
+
+    <style name="tvScoreFail" parent="mainTextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/lightRed</item>
+    </style>
+
+    <style name="tvScoreSuccess" parent="mainTextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/darkGreen</item>
     </style>
 
 
@@ -80,8 +100,13 @@
 
 
     <style name="cardViewCustomPassword" parent="mainCardView">
-        <item name="cardBackgroundColor">@color/lightBlue</item>
+        <item name="cardBackgroundColor">@color/mainBlue</item>
     </style>
+
+    <style name="cardViewHint" parent="mainCardView">
+        <item name="cardBackgroundColor">@color/mainOrange</item>
+    </style>
+
 
 
 
