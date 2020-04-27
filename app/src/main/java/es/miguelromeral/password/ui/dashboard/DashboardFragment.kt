@@ -46,14 +46,6 @@ class DashboardFragment : Fragment(), SearchView.OnQueryTextListener {
 
         binding.customPasswordsList.adapter = adapter
 
-        /*
-        viewModel.passwords.observe(viewLifecycleOwner, Observer {
-
-            binding.partialEmptyCPLayout.visibility = if(it.isNotEmpty()) View.GONE else View.VISIBLE
-
-            adapter.submitList(viewModel.passwords.value?.sortedBy { it.word })
-        })
-*/
 
         viewModel.dataChanged.observe(viewLifecycleOwner, Observer { changed ->
             if(changed == true){
@@ -112,10 +104,10 @@ class DashboardFragment : Fragment(), SearchView.OnQueryTextListener {
             R.id.action_clear_custom_passwords ->{
 
                 val builder = AlertDialog.Builder(requireContext())
-                builder.setTitle("Clear All Custom Passwords?")
-                builder.setMessage("Are you sure you really want to clear all the passwords you have in this device? This action can not be changed.")
-                builder.setNegativeButton("BACK", null)
-                builder.setPositiveButton("DELETE") { dialogInterface: DialogInterface, i: Int ->
+                builder.setTitle(R.string.df_alert_clear_db_title)
+                builder.setMessage(R.string.df_alert_clear_db_body)
+                builder.setNegativeButton(R.string.df_alert_clear_db_cancel, null)
+                builder.setPositiveButton(R.string.df_alert_clear_db_ok) { dialogInterface: DialogInterface, i: Int ->
                     viewModel.clearAllPasswords()
                 }
 
@@ -129,7 +121,8 @@ class DashboardFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun navigateToCustomPassword(pwd: Password? = null){
-        var dir = DashboardFragmentDirections.actionNavigationDashboardToCustomPasswordFragment()
+        var dir =
+            DashboardFragmentDirections.actionNavigationDashboardToCustomPasswordFragment()
         dir.password = pwd
         findNavController().navigate(dir)
     }

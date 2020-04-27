@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/gameActivityFragment"
         android:name="es.miguelromeral.password.ui.game.GameActivityFragment"
-        android:label="GameActivityFragment"
+        android:label="@string/gaf_title_activity"
         tools:layout="@layout/fragment_game">
         <action
             android:id="@+id/action_gameActivityFragment_to_finishedGameFragment"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/finishedGameFragment"
         android:name="es.miguelromeral.password.ui.finishedgame.FinishedGameFragment"
-        android:label="FinishedGameFragment">
+        android:label="@string/fg_title">
         <argument
             android:name="success"
             android:defaultValue="0"

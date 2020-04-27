@@ -13,8 +13,17 @@ class FinishedGameViewModel (
     private val _listOfWords = MutableLiveData<List<Password>>()
     val listOfWords = _listOfWords
 
+    private val _score = MutableLiveData<Int>()
+    val score = _score
+
 
     init {
-        _listOfWords.postValue(passwords.toList())
+        val answers = passwords.filter { it.time != 0L }
+        _score.postValue(calculateScore(answers))
+        _listOfWords.postValue(answers)
+    }
+
+    fun calculateScore(answers: List<Password>): Int{
+        return 0
     }
 }

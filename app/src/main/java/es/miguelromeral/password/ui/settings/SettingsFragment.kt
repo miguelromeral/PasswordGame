@@ -1,7 +1,9 @@
 package es.miguelromeral.password.ui.settings
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import es.miguelromeral.password.R
@@ -12,18 +14,18 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
-        /*val p = findPreference(getString(R.string.preference_help_id))
+        val p = findPreference(getString(R.string.pref_github_key))
         p.setOnPreferenceClickListener {
             context?.let{
                 val i = Intent(Intent.ACTION_VIEW).apply {
-                    data = Uri.parse("https://github.com/miguelromeral/SecretManager/blob/master/HOW-TO.md")
+                    data = Uri.parse(resources.getString(R.string.pref_github_web))
                 }
                 it.startActivity(i)
                 return@setOnPreferenceClickListener true
             }
             false
         }
-*/
+
         setTintColor(context)
     }
 

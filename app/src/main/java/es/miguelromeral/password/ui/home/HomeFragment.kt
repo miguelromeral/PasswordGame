@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
 
         binding.bStartGame.setOnClickListener { b ->
             b.isEnabled = false
-            Toast.makeText(context, "Preparing the game!", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, R.string.fh_toast_preparing, Toast.LENGTH_LONG).show()
 
             val category =
                 if(homeViewModel.filterCategory.value!!)

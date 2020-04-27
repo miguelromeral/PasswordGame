@@ -1,8 +1,10 @@
 package es.miguelromeral.password.ui.custompassword
 
 import android.app.Application
+import android.content.res.Resources
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabaseDao
 import kotlinx.coroutines.*
@@ -28,10 +30,10 @@ class CustomPasswordViewModel(
     }
 
 
-    fun addPassword(password: Password?){
+    fun addPassword(resources: Resources, password: Password?){
         password?.let {
             uiScope.launch {
-                createNewPassword(password)
+                createNewPassword(resources, password)
             }
         }
     }
@@ -65,14 +67,14 @@ class CustomPasswordViewModel(
         return text
     }
 
-    private suspend fun createNewPassword(password: Password){
+    private suspend fun createNewPassword(resources: Resources, password: Password){
         return withContext(Dispatchers.IO){
             password.random = Random.nextLong()
             password.language = "english"
             password.level = password.level
             password.category = password.category
             database.insert(password)
-            _warning.postValue("Added successfully!")
+            _warning.postValue(resources.getString(R.string.cpf_warning_added_successfully, password.word))
         }
     }
 

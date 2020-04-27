@@ -27,12 +27,12 @@ fun Double.format(digits: Int) = "%.${digits}f".format(this)
 
 @BindingAdapter("customPasswordText")
 fun TextView.setCustomPasswordText(custom: Boolean){
-    text = if(custom) "Personalizado" else "Firestore"
+    text = resources.getString(if(custom) R.string.fg_word_default else R.string.fg_word_custom)
 }
 
 @BindingAdapter("solvedPasswordText")
 fun TextView.setSolvedPasswordText(pwd: Password){
-    text = if(pwd.solved) "Solved!" else "Failed"
+    text = resources.getString(if(pwd.solved) R.string.fg_answer_solved else R.string.fg_answer_failed)
 }
 
 
@@ -43,7 +43,7 @@ fun TextView.setCustomPasswordText(pwd: Password){
         for (hint in list) {
             formatted += "${hint}${Password.SEPARATOR} "
         }
-        if(list.size > 0)
+        if(list.isNotEmpty())
             formatted = formatted.substring(0, formatted.length - 2)
     }
 

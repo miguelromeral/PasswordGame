@@ -30,6 +30,7 @@ data class Password(
     var random: Long? = 0,
 
     var time: Long = 0
+
 ) : Parcelable {
 
     var solved: Boolean = false

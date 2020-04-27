@@ -2,9 +2,6 @@ package es.miguelromeral.password.ui.custompassword
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,18 +11,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentCustomPasswordBinding
 import es.miguelromeral.password.classes.Options
-import es.miguelromeral.password.ui.Adapters.CustomHintAdapter
 import es.miguelromeral.password.ui.listeners.RemoveCustomHintListener
 import android.widget.LinearLayout
-import es.miguelromeral.password.MainActivity
 import android.widget.EditText
-import android.content.DialogInterface
-import es.miguelromeral.password.ui.finishedgame.FinishedGameFragmentArgs
+import es.miguelromeral.password.R
 
 
 class CustomPasswordFragment : Fragment() {
@@ -52,19 +45,20 @@ class CustomPasswordFragment : Fragment() {
 
         binding.password = if(pwdLoaded != null){
                 viewModel.setPassword(pwdLoaded)
-                binding.bInsert.text = "UPDATE"
+                binding.bInsert.text = requireContext().getString(R.string.cpf_button_update_password)
                 binding.partialSpinnerLevel.spLevel.setSelection(Options.getLevelValueIndex(pwdLoaded.level ?: Options.DEFAULT_LEVEL))
                 binding.partialSpinnerCategory.spCategory.setSelection(Options.getCategoryValueIndex(pwdLoaded.category ?: Options.DEFAULT_CATEGORY))
                 pwdLoaded
             }else{
-                Password(word = "a", hints = "b,c,d")
+                Password()
             }
 
 
 
-        val adapter = CustomHintAdapter(RemoveCustomHintListener { item ->
-            viewModel.removeHint(item)
-        })
+        val adapter =
+            CustomHintAdapter(RemoveCustomHintListener { item ->
+                viewModel.removeHint(item)
+            })
 
         binding.customHintList.adapter = adapter
 
@@ -82,15 +76,14 @@ class CustomPasswordFragment : Fragment() {
 
             builder.setView(input)
 
-            builder.setTitle("New Hint")
-            builder.setMessage("Write the new hint.")
-
+            builder.setTitle(R.string.cpf_alert_new_hint_title)
+            builder.setMessage(R.string.cpf_alert_new_hint_body)
 
                 .setCancelable(false)
-                .setPositiveButton("OK"){ dialogInterface, i ->
+                .setPositiveButton(R.string.cpf_alert_new_hint_ok){ dialogInterface, i ->
                     viewModel.addHint(input.text.toString())
                 }
-                .setNegativeButton("Cancel"){ dialogInterface, i ->
+                .setNegativeButton(R.string.cpf_alert_new_hint_cancel){ dialogInterface, i ->
                     dialogInterface.cancel()
                 }
 
@@ -119,7 +112,7 @@ class CustomPasswordFragment : Fragment() {
                 pwd.hints = viewModel.getHintsFormatted()
 
                 if(pwd.word.isNotEmpty())
-                    viewModel.addPassword(pwd)
+                    viewModel.addPassword(resources, pwd)
             }
         }
 

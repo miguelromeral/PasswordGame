@@ -10,76 +10,115 @@
 
     </data>
 
-    <TableLayout
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:stretchColumns="1">
+        android:layout_margin="8dp"
+        android:id="@+id/cardViewAnswer">
 
-        <TableRow>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
-            <TextView
-                android:id="@+id/tvTime"
-                android:layout_width="wrap_content"
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.18"
-                tools:text="0.6"
-                app:timeFormatted="@{password}"
-                android:layout_column="0"/>
-
-            <TextView
-                android:id="@+id/tvWord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvTime"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                tools:text="Word"
-                android:layout_column="1"/>
-
-            <TextView
-                android:id="@+id/tvState"
-                android:maxWidth="100sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:textAlignment="center"
-                tools:text="State"
-                app:solvedPasswordText="@{password}"
-                android:layout_column="2"/>
-
-
-            <TextView
-                android:id="@+id/tvCustom"
-                android:layout_width="wrap_content"
-                android:maxWidth="100sp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="8dp"
+                android:stretchColumns="1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Firestore"
-                app:customPasswordText="@{password.custom}"
-                android:layout_column="3"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        </TableRow>
+                <TableRow>
 
-    </TableLayout>
+                    <TextView
+                        android:id="@+id/tvTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.18"
+                        app:timeFormatted="@{password}"
+                        tools:text="0.6" />
+
+                    <TextView
+                        android:id="@+id/tvWord"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:textAlignment="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tvTime"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="Word" />
+
+                    <TextView
+                        android:id="@+id/tvState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:maxWidth="100sp"
+                        android:textAlignment="center"
+                        app:solvedPasswordText="@{password}"
+                        tools:text="State" />
+
+
+                    <TextView
+                        android:id="@+id/tvCustom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:maxWidth="100sp"
+                        android:textAlignment="center"
+                        app:customPasswordText="@{password.custom}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Firestore" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout">
+
+
+                <TextView
+                    android:id="@+id/tvHints"
+                    hintsFormatted="@{password}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints,HintHints,s,Hints,Hints,Hints,Hints,Hints,Hints,Hints,Hints," />
+
+            </HorizontalScrollView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 
 </layout>

@@ -2,12 +2,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        android:title="Microphone">
+        android:title="@string/pref_microphone_header_title">
 
         <CheckBoxPreference
             android:key="@string/pref_microphone_key"
-            android:title="Use microphone in game"
-            android:summary="The user can choose if the app listens to them in order to avoid cheating saying any of the hints."
+            android:title="@string/pref_microphone_title"
+            android:summary="@string/pref_microphone_summary"
             android:icon="@drawable/microphone"
             android:defaultValue="true"/>
 
@@ -15,26 +15,39 @@
 
 
     <PreferenceCategory
-        android:title="Game">
+        android:title="@string/pref_game_header_title">
 
         <DropDownPreference
             android:key="@string/pref_words_source_key"
-            android:title="Password Sources"
+            android:title="@string/pref_words_source_title"
             android:entries="@array/pref_words_source_entries"
-            android:summary="%s"
+            android:summary="@string/pref_words_source_summary"
             android:entryValues="@array/pref_words_source_values"/>
 
     </PreferenceCategory>
 
 
     <PreferenceCategory
-        android:title="Display">
+        android:title="@string/pref_display_header_title">
 
         <CheckBoxPreference
             android:key="@string/pref_theme_key"
-            android:title="Dark Theme"
-            android:summary="Enable dark colors for the app"
+            android:title="@string/pref_theme_title"
+            android:summary="@string/pref_theme_summary"
             android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+
+
+
+    <PreferenceCategory
+        android:title="@string/pref_about_header_title">
+
+        <Preference
+            app:key="@string/pref_github_key"
+            app:title="@string/pref_github_title"
+            app:summary="@string/pref_github_summary"/>
 
     </PreferenceCategory>
 

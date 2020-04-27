@@ -1,6 +1,5 @@
-package es.miguelromeral.password.ui.Adapters
+package es.miguelromeral.password.ui.custompassword
 
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -14,13 +13,15 @@ class CustomHintAdapter(
     val removeCustomHintListener: RemoveCustomHintListener
 ) : ListAdapter<String, CustomHintAdapter.ViewHolder>(HintDiffCallback()){
 
-    override fun onBindViewHolder(holder:ViewHolder, position:Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position:Int) {
         val item = getItem(position)
         holder.bind(item, removeCustomHintListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        return ViewHolder.from(
+            parent
+        )
     }
 
     class ViewHolder private constructor (val binding: ItemCustomHintBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -34,7 +35,9 @@ class CustomHintAdapter(
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemCustomHintBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
+                return ViewHolder(
+                    binding
+                )
             }
         }
     }

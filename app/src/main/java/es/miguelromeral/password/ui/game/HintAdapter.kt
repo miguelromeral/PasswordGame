@@ -1,19 +1,16 @@
-package es.miguelromeral.password.ui.Adapters
+package es.miguelromeral.password.ui.game
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import es.miguelromeral.password.R
 import es.miguelromeral.password.databinding.ItemHintBinding
 
 
 class HintAdapter : ListAdapter<String, HintAdapter.ViewHolder>(HintDiffCallback()){
 
-    override fun onBindViewHolder(holder:ViewHolder, position:Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position:Int) {
         val item = getItem(position)
         holder.bind(item)
     }

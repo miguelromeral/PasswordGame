@@ -43,16 +43,14 @@ class GameActivity : AppCompatActivity() {
 
 
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Microphone Permission Required")
-                builder.setMessage("In order to use the auto check for hints, you must enable the Microphone permission for this app.\n" +
-                        "Please, in the next screen, go to 'Permissions' and enable the one named 'Microphone'.")
+                builder.setTitle(R.string.gaf_alert_microphone_title)
+                builder.setMessage(R.string.gaf_alert_microphone_body)
 
-
-                builder.setNeutralButton("Dismiss"){dialog , which ->
+                builder.setNeutralButton(R.string.gaf_alert_microphone_cancel){dialog , which ->
                     finish()
                 }
 
-                builder.setPositiveButton("Go to Settings"){ dialogInterface, i ->
+                builder.setPositiveButton(R.string.gaf_alert_microphone_ok){ dialogInterface, i ->
                     val newIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName"))
                     startActivity(newIntent)
                 }

@@ -2,14 +2,8 @@ package es.miguelromeral.password.ui.game
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.os.Build
 import androidx.fragment.app.Fragment
 import android.os.Bundle
-import android.provider.Settings
-import android.speech.RecognitionListener
-import android.speech.RecognitionService
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.util.Log
@@ -17,30 +11,20 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import androidx.appcompat.app.AlertDialog
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.GameRecognitionService
 import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentGameBinding
-import es.miguelromeral.password.databinding.FragmentHomeBinding
-import es.miguelromeral.password.databinding.PartialGameBinding
-import es.miguelromeral.password.ui.Adapters.HintAdapter
-import es.miguelromeral.password.ui.finishedgame.FinishedGameFragment
-import es.miguelromeral.password.ui.home.HomeViewModel
 import kotlinx.android.synthetic.main.partial_game.view.*
 import java.util.*
-import java.util.jar.Manifest
 
 /**
  * A placeholder fragment containing a simple view.
@@ -149,12 +133,9 @@ class GameActivityFragment : Fragment() {
             if(index != GameViewModel.VALUE_NOT_STARTED){
                 if(index == GameViewModel.VALUE_NO_WORDS){
                     val builder = AlertDialog.Builder(requireContext())
-                    builder.setTitle("No words found")
-                    builder.setMessage("We haven't been able to find words according to that criteria.\n" +
-                            "Please, try filtering other values or try with these again later.")
-
-
-                    builder.setPositiveButton("Go Home"){ dialogInterface, i ->
+                    builder.setTitle(R.string.gaf_alert_no_words_title)
+                    builder.setMessage(R.string.gaf_alert_no_words_body)
+                    builder.setPositiveButton(R.string.gaf_alert_no_words_ok){ dialogInterface, i ->
                         activity?.finish()
                     }
 

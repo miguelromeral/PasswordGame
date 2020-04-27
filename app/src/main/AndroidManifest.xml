@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.game.GameActivity"
-            android:label="@string/title_activity_game"
+            android:label="@string/gaf_title_activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"

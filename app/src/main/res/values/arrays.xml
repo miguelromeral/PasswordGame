@@ -15,9 +15,9 @@
 
 
     <string-array name="pref_words_source_entries">
-        <item>Both Default and Custom</item>
-        <item>Just Default</item>
-        <item>Just Custom</item>
+        <item>@string/pref_words_source_entry_both</item>
+        <item>@string/pref_words_source_entry_default</item>
+        <item>@string/pref_words_source_entry_custom</item>
     </string-array>
 
     <string-array name="pref_words_source_values">
