@@ -47,5 +47,5 @@ fun TextView.setCustomPasswordText(pwd: Password){
             formatted = formatted.substring(0, formatted.length - 2)
     }
 
-    text = formatted
+    text = if (formatted.isNullOrBlank()) resources.getString(R.string.cp_no_hints) else formatted
 }

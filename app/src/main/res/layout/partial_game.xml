@@ -85,8 +85,7 @@
 
     <TextView
         android:id="@+id/tvHeaderHints"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/mainTextView"
         android:layout_marginTop="16dp"
         android:text="@string/pg_title_hint"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,8 +94,7 @@
 
     <TextView
         android:id="@+id/tvTimerTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/mainTextView"
         android:layout_marginTop="8dp"
         android:text="@string/pg_timer_title"
         app:layout_constraintTop_toTopOf="parent"

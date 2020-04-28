@@ -63,6 +63,7 @@
     <!-- Item Custom Password -->
     <string name="cp_edit_title">Edit</string>
     <string name="cp_delete_title">Delete</string>
+    <string name="cp_no_hints">*No hints for this word*</string>
 
     <!-- Custom Passowrd Fragment -->
     <string name="cpf_title">Custom Answer</string>

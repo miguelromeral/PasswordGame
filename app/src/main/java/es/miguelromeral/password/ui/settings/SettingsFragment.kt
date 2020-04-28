@@ -3,8 +3,10 @@ package es.miguelromeral.password.ui.settings
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import es.miguelromeral.password.R
 import androidx.preference.*
@@ -71,6 +73,16 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
 
         fun isNightThemeEnabled(context: Context, sharedPreferences: SharedPreferences) =
             sharedPreferences!!.getBoolean(context.getString(R.string.pref_theme_key), false)
+
+        fun isNightThemeEnabled(context: Context): Boolean =
+                when(context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK){
+                    Configuration.UI_MODE_NIGHT_YES -> true
+                    Configuration.UI_MODE_NIGHT_NO -> false
+                    else -> {
+                        PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+                                context.resources.getString(R.string.pref_theme_key), false)
+                    }
+                }
 
 
         private fun setStyleTheme(context: Context, sharedPreferences: SharedPreferences? = null){

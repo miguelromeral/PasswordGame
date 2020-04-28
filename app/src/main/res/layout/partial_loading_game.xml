@@ -19,8 +19,7 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/mainTextView"
         android:layout_marginTop="8dp"
         android:text="@string/plg_waiting"
         app:layout_constraintEnd_toEndOf="@+id/progressBar"

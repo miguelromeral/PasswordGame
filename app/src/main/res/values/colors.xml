@@ -8,9 +8,11 @@
 
     <color name="purple">#cf69ff</color>
     <color name="lightRed">#ff120a</color>
+    <color name="darkRed">#910500</color>
     <color name="white">#fff</color>
     <color name="lightGreen">#37ff05</color>
-    <color name="darkGreen">#1f9900</color>
+    <color name="green">#26bf00</color>
+    <color name="darkGreen">#198000</color>
     <color name="gray">#777</color>
     <color name="almost_black">#222</color>
     <color name="almost_white">#ddd</color>

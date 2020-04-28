@@ -1,7 +1,9 @@
 package es.miguelromeral.password.ui.finishedgame
 
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Color.MAGENTA
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -11,6 +13,7 @@ import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.databinding.ItemAnswerBinding
 import es.miguelromeral.password.ui.setTimeFormatted
+import es.miguelromeral.password.ui.settings.SettingsFragment
 
 
 class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(
@@ -35,12 +38,22 @@ class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(
             binding.password = item
             binding.tvState.text = item.score.toString()
             binding.tvWord.text = item.word?.capitalize()
+/*
+            val nightModeFlags = res.configuration.uiMode
+
+            when(nightModeFlags){
+                Configuration.UI_MODE_NIGHT_YES -> Log.i("TEST", "Night: Yes")
+                    Configuration.UI_MODE_NIGHT_NO -> Log.i("TEST", "Night: No")
+                Configuration.UI_MODE_NIGHT_UNDEFINED -> Log.i("TEST", "Night: Undefined")
+            }*/
+
+            val nightMode = SettingsFragment.isNightThemeEnabled(binding.cardViewAnswer.context)
 
             binding.cardViewAnswer.setBackgroundColor(res.getColor(
                     if(item.solved)
-                        R.color.darkGreen
+                        if(nightMode) R.color.darkGreen else R.color.green
                     else if(item.failed)
-                        R.color.lightRed
+                        if(nightMode) R.color.darkRed else R.color.lightRed
                     else
                         R.color.colorPrimaryDark
             ))

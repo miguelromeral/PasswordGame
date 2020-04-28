@@ -11,7 +11,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:navigationBarColor">@color/colorPrimary</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:fontFamily">@font/baloobhaina2_regular</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -30,8 +30,59 @@
 
 
 
-    <style name="MiniIconTheme" parent="IconTheme">
-        <item name="android:tint">@color/black</item>
+    <style name="mainCardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">8sp</item>
+    </style>
+
+
+        <style name="cardViewCustomPassword" parent="mainCardView">
+            <item name="cardBackgroundColor">@color/mainBlue</item>
+        </style>
+
+
+                <style name="IconCustomPassword" parent="MiniIconThemeBase">
+                    <item name="android:tint">@color/white</item>
+                    <item name="android:layout_marginStart">8dp</item>
+                </style>
+
+
+                <style name="TextCustomPassword" parent="mainTextView">
+                    <item name="android:textColor">@color/white</item>
+                </style>
+
+                <style name="TextThreeDots" parent="TextCustomPassword">
+                    <item name="android:textSize">35sp</item>
+                    <item name="android:textStyle">bold</item>
+                </style>
+
+
+    <style name="cardViewHint" parent="mainCardView">
+        <item name="cardBackgroundColor">@color/mainOrange</item>
+    </style>
+
+            <style name="textViewHint" parent="mainTextView">
+                <item name="android:textSize">18sp</item>
+                <item name="android:textColor">@color/white</item>
+            </style>
+
+            <style name="IconHint" parent="MiniIconThemeBase">
+                <item name="android:tint">@color/white</item>
+                <item name="android:layout_marginStart">8dp</item>
+                <item name="android:layout_marginEnd">8dp</item>
+                <item name="layout_constraintBottom_toBottomOf"></item>
+                <item name="layout_constraintEnd_toEndOf">parent</item>
+                <item name="layout_constraintStart_toStartOf"></item>
+                <item name="layout_constraintTop_toTopOf"></item>
+            </style>
+
+
+
+
+
+
+    <style name="MiniIconThemeBase" parent="IconTheme">
         <item name="android:layout_width">18sp</item>
         <item name="android:layout_height">18sp</item>
         <item name="android:layout_marginEnd">8dp</item>
@@ -42,12 +93,26 @@
     </style>
 
 
-    <style name="MainButton" parent="Widget.AppCompat.Button.Colored">
+    <style name="MiniIconTheme" parent="MiniIconThemeBase">
+        <item name="android:tint">@color/darkBlue</item>
+        <item name="layout_constraintBottom_toBottomOf"></item>
+        <item name="layout_constraintStart_toStartOf"></item>
+        <item name="layout_constraintTop_toTopOf"></item>
+    </style>
+
+
+
+
+
+    <style name="MainButtonBase" parent="Widget.AppCompat.Button.Colored">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">12dp</item>
-        <item name="android:backgroundTint">@color/mainOrange</item>
         <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="MainButton" parent="MainButtonBase">
+        <item name="android:backgroundTint">@color/mainOrange</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -56,8 +121,6 @@
         <item name="android:fontFamily">@font/bangers</item>
         <item name="android:textSize">16dp</item>
     </style>
-
-
 
 
 
@@ -76,31 +139,29 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="mainTextView">
+
+    <style name="mainTextViewBase">
         <item name="android:textSize">18sp</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="myTextView" parent="mainTextView">
+    <style name="mainTextView" parent="mainTextViewBase">
         <item name="android:textColor">@color/darkBlue</item>
     </style>
 
-    <style name="textViewInCardView" parent="mainTextView">
-        <item name="android:textColor">@color/black</item>
-    </style>
 
-    <style name="textViewHint" parent="mainTextView">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
 
-    <style name="textViewPassword" parent="mainTextView">
+
+
+    <style name="textViewPasswordBase" parent="mainTextView">
         <item name="android:textSize">30sp</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/darkBlue</item>
         <item name="android:fontFamily">@font/bangers</item>
+    </style>
+
+    <style name="textViewPassword" parent="textViewPasswordBase">
+        <item name="android:textColor">@color/darkBlue</item>
     </style>
 
     <style name="tvTimer" parent="mainTextView">
@@ -113,9 +174,8 @@
 
     <style name="tvGames" parent="mainTextView">
         <item name="android:textSize">28sp</item>
-        <item name="android:textColor">@color/lightRed</item>
         <item name="android:fontFamily">@font/bangers</item>
-        <item name="android:layout_width">60sp</item>
+        <item name="android:layout_width">100sp</item>
         <item name="android:textAlignment">center</item>
     </style>
 
@@ -128,26 +188,6 @@
     </style>
 
 
-    <style name="mainCardView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">8sp</item>
-    </style>
-
-
-    <style name="cardViewCustomPassword" parent="mainCardView">
-        <item name="cardBackgroundColor">@color/mainBlue</item>
-    </style>
-
-    <style name="cardViewCustomHint" parent="mainCardView">
-        <item name="cardBackgroundColor">@color/mainBlue</item>
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
-    </style>
-
-    <style name="cardViewHint" parent="mainCardView">
-        <item name="cardBackgroundColor">@color/mainOrange</item>
-    </style>
 
 
 

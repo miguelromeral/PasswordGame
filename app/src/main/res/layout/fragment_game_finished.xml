@@ -33,13 +33,12 @@
 
             <TextView
                 android:id="@+id/tvScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/mainTextView"
                 android:layout_marginTop="24dp"
-                tools:text="Score"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Score" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

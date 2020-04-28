@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/textView"
-        style="@style/myTextView"
+        style="@style/mainTextView"
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_marginStart="24dp"

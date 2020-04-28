@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-
-    <size
-        android:width="108dp"
-        android:height="108dp" />
-
-    <gradient
-        android:type="linear"
-        android:angle="315"
-        android:startColor="@color/black"
-        android:endColor="@color/colorAccent" />
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/splash_background_night"/>
+    <item>
+        <bitmap
+            android:tint="@android:color/white"
+            android:gravity="center"
+            android:src="@drawable/microphone"/>
+    </item>
+</layer-list>
