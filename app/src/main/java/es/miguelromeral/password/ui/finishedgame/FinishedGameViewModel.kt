@@ -2,6 +2,7 @@ package es.miguelromeral.password.ui.finishedgame
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.classes.Password
 
 class FinishedGameViewModel (
@@ -28,7 +29,7 @@ class FinishedGameViewModel (
         for(ans in answers){
             ans.score =
                     if(ans.solved){
-                        SCORE_HIT + getBonus(ans.time)
+                        SCORE_HIT + getBonus(ans)
                     }else if(ans.failed){
                         SCORE_MISS
                     }else{
@@ -42,19 +43,29 @@ class FinishedGameViewModel (
         return points
     }
 
-    private fun getBonus(time: Long): Int =
-        if(time > SCORE_MAX_TIME)
-            SCORE_MAX_TIME_VALUE
-        else if(time < SCORE_MIN_TIME)
-            SCORE_MIN_TIME_VALUE
-        else{
-            val maxtime = SCORE_MAX_TIME - SCORE_MIN_TIME
-            val midtime = time - SCORE_MIN_TIME
-            val maxscore = SCORE_MIN_TIME_VALUE - SCORE_MAX_TIME_VALUE
-            val pct = (midtime.toDouble() / maxtime.toDouble())
-            val part = pct * maxscore
-            (maxscore - part).toInt()
+    private fun getBonus(pwd: Password): Int {
+        val time = pwd.time
+        var points = if (time > SCORE_MAX_TIME)
+                    SCORE_MAX_TIME_VALUE
+                else if (time < SCORE_MIN_TIME)
+                    SCORE_MIN_TIME_VALUE
+                else {
+                    val maxtime = SCORE_MAX_TIME - SCORE_MIN_TIME
+                    val midtime = time - SCORE_MIN_TIME
+                    val maxscore = SCORE_MIN_TIME_VALUE - SCORE_MAX_TIME_VALUE
+                    val pct = (midtime.toDouble() / maxtime.toDouble())
+                    val part = pct * maxscore
+                    (maxscore - part).toInt()
+                }
+
+        points = when(pwd.level){
+            Options.LEVEL_MEDIUM -> (points * SCORE_BONUS_MEDIUM).toInt()
+            Options.LEVEL_HARD -> (points * SCORE_BONUS_HARD).toInt()
+            else -> points
         }
+
+        return points
+    }
 
 
     companion object {
@@ -66,5 +77,8 @@ class FinishedGameViewModel (
 
         const val SCORE_MIN_TIME_VALUE = 2000
         const val SCORE_MIN_TIME = 5000L
+
+        const val SCORE_BONUS_MEDIUM = 0.25
+        const val SCORE_BONUS_HARD = 0.5
     }
 }
