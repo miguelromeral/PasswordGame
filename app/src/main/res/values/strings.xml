@@ -41,9 +41,9 @@
     <string name="pref_words_source_value_default" translatable="false">pref_words_source_value_default</string>
     <string name="pref_words_source_value_custom" translatable="false">pref_words_source_value_custom</string>
 
-    <string name="pref_words_source_entry_both">Both Default and Custom</string>
-    <string name="pref_words_source_entry_default">Just Default</string>
-    <string name="pref_words_source_entry_custom">Just Custom</string>
+    <string name="pref_words_source_entry_both">Both Server and Device</string>
+    <string name="pref_words_source_entry_default">Just Server</string>
+    <string name="pref_words_source_entry_custom">Just Device</string>
 
 
     <string name="pref_display_header_title">Display</string>
@@ -69,7 +69,7 @@
     <string name="cpf_title_word">Word (Solution)</string>
     <string name="cpf_title_category">Category</string>
     <string name="cpf_title_level">Level</string>
-    <string name="cpf_title_hints">Hints (not allowed to say)</string>
+    <string name="cpf_title_hints">Hints</string>
     <string name="cpf_button_add_hint">Add Hint</string>
     <string name="cpf_button_add_password">Create</string>
     <string name="cpf_button_update_password">Update</string>
@@ -115,8 +115,8 @@
     <!-- Finished Game -->
     <string name="fg_title">Game Finished</string>
     <string name="fg_score">Your Score: %1$s</string>
-    <string name="fg_word_default">Firestore</string>
-    <string name="fg_word_custom">Custom</string>
+    <string name="fg_word_default">Server</string>
+    <string name="fg_word_custom">Device</string>
     <string name="fg_answer_failed">Failed</string>
     <string name="fg_answer_solved">Solved!</string>
 
