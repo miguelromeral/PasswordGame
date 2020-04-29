@@ -58,13 +58,15 @@ class FinishedGameViewModel (
                     (maxscore - part).toInt()
                 }
 
-        points = when(pwd.level){
+
+
+        val bonus = when(pwd.level){
             Options.LEVEL_MEDIUM -> (points * SCORE_BONUS_MEDIUM).toInt()
             Options.LEVEL_HARD -> (points * SCORE_BONUS_HARD).toInt()
-            else -> points
+            else -> 0
         }
 
-        return points
+        return points + bonus
     }
 
 

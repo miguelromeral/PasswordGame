@@ -37,7 +37,8 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
             val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
             val night = isNightThemeEnabled(context, sharedPreferences)
             val preferences = listOf(
-                getString(R.string.pref_microphone_key)
+                    getString(R.string.pref_microphone_key),
+                    getString(R.string.pref_language_key)
             )
 
             for (spr in preferences) {
