@@ -45,6 +45,7 @@ class FinishedGameViewModel (
 
     private fun getBonus(pwd: Password): Int {
         val time = pwd.time
+
         var points = if (time > SCORE_MAX_TIME)
                     SCORE_MAX_TIME_VALUE
                 else if (time < SCORE_MIN_TIME)

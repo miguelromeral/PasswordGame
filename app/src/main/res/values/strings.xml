@@ -141,7 +141,7 @@
     <string name="fg_answer_solved">Solved!</string>
 
     <!-- Partial Game -->
-    <string name="pg_button_miss">MISSED</string>
+    <string name="pg_button_miss">PASS</string>
     <string name="pg_button_hit">SUCCESS</string>
     <string name="pg_score_zero">0</string>
     <string name="pg_title_hint">You can\'t say any of these words</string>
