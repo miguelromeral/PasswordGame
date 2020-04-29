@@ -49,13 +49,19 @@
     <string name="pref_language_title">Answers language</string>
     <string name="pref_language_summary" translatable="false">%s</string>
 
-
     <string name="pref_language_value_english" translatable="false">english</string>
     <string name="pref_language_value_spanish" translatable="false">spanish</string>
 
     <string name="pref_language_entry_english">Inglés</string>
     <string name="pref_language_entry_spanish">Español</string>
 
+    <string name="pref_tip_key" translatable="false">pref_tip_key</string>
+    <string name="pref_tip_title">Support the Author</string>
+    <string name="pref_tip_summary">Send us a tip if you found the app useful and entertaining.</string>
+
+    <string name="pref_policy_key" translatable="false">pref_policy_key</string>
+    <string name="pref_policy_title">Privacy Policy</string>
+    <string name="pref_policy_summary">Read the app\'s Privacy Policy.</string>
 
 
     <string name="pref_display_header_title">Display</string>

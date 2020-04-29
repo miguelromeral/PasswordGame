@@ -38,7 +38,7 @@
 			style="@style/MiniIconTheme"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
-			app:srcCompat="@drawable/user_exclamation" />
+			app:srcCompat="@drawable/word" />
 
 		<TextView
 			android:id="@+id/textView"

@@ -8,7 +8,7 @@
             android:key="@string/pref_microphone_key"
             android:title="@string/pref_microphone_title"
             android:summary="@string/pref_microphone_summary"
-            android:icon="@drawable/microphone"
+            android:icon="@drawable/microphone_regular"
             android:defaultValue="true"/>
 
     </PreferenceCategory>
@@ -22,7 +22,8 @@
             android:title="@string/pref_words_source_title"
             android:entries="@array/pref_words_source_entries"
             android:summary="@string/pref_words_source_summary"
-            android:entryValues="@array/pref_words_source_values"/>
+            android:entryValues="@array/pref_words_source_values"
+            android:icon="@drawable/database_regular"/>
 
 
         <DropDownPreference
@@ -40,10 +41,11 @@
         android:title="@string/pref_display_header_title">
 
         <CheckBoxPreference
+            android:defaultValue="false"
             android:key="@string/pref_theme_key"
-            android:title="@string/pref_theme_title"
             android:summary="@string/pref_theme_summary"
-            android:defaultValue="false"/>
+            android:title="@string/pref_theme_title"
+            android:icon="@drawable/theme" />
 
     </PreferenceCategory>
 
@@ -56,7 +58,20 @@
         <Preference
             app:key="@string/pref_github_key"
             app:title="@string/pref_github_title"
-            app:summary="@string/pref_github_summary"/>
+            app:summary="@string/pref_github_summary"
+            android:icon="@drawable/android"/>
+
+        <Preference
+            app:key="@string/pref_policy_key"
+            app:title="@string/pref_policy_title"
+            app:summary="@string/pref_policy_summary"
+            android:icon="@drawable/policy"/>
+
+        <Preference
+            app:key="@string/pref_tip_key"
+            app:title="@string/pref_tip_title"
+            app:summary="@string/pref_tip_summary"
+            android:icon="@drawable/tip"/>
 
     </PreferenceCategory>
 

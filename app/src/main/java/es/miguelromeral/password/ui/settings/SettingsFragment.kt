@@ -16,11 +16,30 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
-        val p = findPreference(getString(R.string.pref_github_key))
-        p.setOnPreferenceClickListener {
+        findPreference(getString(R.string.pref_github_key)).setOnPreferenceClickListener {
             context?.let{
                 val i = Intent(Intent.ACTION_VIEW).apply {
                     data = Uri.parse(resources.getString(R.string.pref_github_web))
+                }
+                it.startActivity(i)
+                return@setOnPreferenceClickListener true
+            }
+            false
+        }
+        findPreference(getString(R.string.pref_tip_key)).setOnPreferenceClickListener {
+            context?.let{
+                val i = Intent(Intent.ACTION_VIEW).apply {
+                    data = Uri.parse(paypal_tip_web)
+                }
+                it.startActivity(i)
+                return@setOnPreferenceClickListener true
+            }
+            false
+        }
+        findPreference(getString(R.string.pref_policy_key)).setOnPreferenceClickListener {
+            context?.let{
+                val i = Intent(Intent.ACTION_VIEW).apply {
+                    data = Uri.parse(policy_private_web)
                 }
                 it.startActivity(i)
                 return@setOnPreferenceClickListener true
@@ -38,7 +57,13 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
             val night = isNightThemeEnabled(context, sharedPreferences)
             val preferences = listOf(
                     getString(R.string.pref_microphone_key),
-                    getString(R.string.pref_language_key)
+                    getString(R.string.pref_language_key),
+                    getString(R.string.pref_tip_key),
+                    getString(R.string.pref_policy_key),
+                    getString(R.string.pref_words_source_key),
+                    getString(R.string.pref_theme_key),
+                    getString(R.string.pref_github_key)
+
             )
 
             for (spr in preferences) {
@@ -98,6 +123,8 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
             }
         }
 
+        const val paypal_tip_web = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=M4CR7FHADMVXN&source=url"
+        const val policy_private_web = "https://github.com/miguelromeral/PasswordGame/blob/master/PRIVACY-POLICY.md"
     }
 
 }
