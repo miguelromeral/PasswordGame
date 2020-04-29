@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.preference.PreferenceManager
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.databinding.FragmentHomeBinding
@@ -48,10 +49,14 @@ class HomeFragment : Fragment() {
                 else
                     Options.getLevelValue(-1)
 
+            val language = PreferenceManager.getDefaultSharedPreferences(requireContext()).getString(
+                    resources.getString(R.string.pref_language_key), null) ?:
+                    resources.getString(R.string.pref_language_value_english)
+
             GameActivity.newInstance(requireContext(),
                 category,
                 level,
-                "language")
+                language)
         }
 
         homeViewModel.filterCategory.observe(viewLifecycleOwner, Observer {

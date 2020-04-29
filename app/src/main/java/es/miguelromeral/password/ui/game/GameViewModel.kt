@@ -187,5 +187,6 @@ class GameViewModel(
         val COLL_PASSWORD = "passwords"
         val FIELD_CATEGORY = "category"
         val FIELD_LEVEL = "level"
+        val FIELD_LANGUAGE = "language"
     }
 }

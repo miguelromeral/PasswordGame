@@ -70,9 +70,9 @@ class CustomPasswordViewModel(
     private suspend fun createNewPassword(resources: Resources, password: Password){
         return withContext(Dispatchers.IO){
             password.random = Random.nextLong()
-            password.language = "english"
+            /*password.language = password.language
             password.level = password.level
-            password.category = password.category
+            password.category = password.category*/
             database.insert(password)
             _warning.postValue(resources.getString(R.string.cpf_warning_added_successfully, password.word))
         }

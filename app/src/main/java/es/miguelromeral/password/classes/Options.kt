@@ -87,6 +87,23 @@ class Options {
 
 
 
+        fun getLanguageTextFromValue(resources: Resources, value: String): String =
+                when(value){
+                    resources.getString(R.string.pref_language_value_spanish) ->
+                        resources.getString(R.string.pref_language_entry_spanish)
+                    else ->
+                        resources.getString(R.string.pref_language_entry_english)
+                }
+
+        fun getLanguageValueFromEntry(resources: Resources, entry: String): String =
+                when(entry){
+                    resources.getString(R.string.pref_language_entry_spanish) ->
+                        resources.getString(R.string.pref_language_value_spanish)
+                    else ->
+                        resources.getString(R.string.pref_language_value_english)
+                }
+
+
 
         const val DEFAULT_MICROPHONE_VALUE = true
         const val DEFAULT_MIX_PASSWORDS_VALUE = true

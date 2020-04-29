@@ -111,6 +111,8 @@ class CustomPasswordFragment : Fragment() {
                 pwd.category = Options.getCategoryValue(binding.partialSpinnerCategory.spCategory.selectedItemPosition)
                 pwd.hints = viewModel.getHintsFormatted()
 
+                pwd.language = Options.getLanguageValueFromEntry(resources, binding.partialSpinnerLanguage.spLanguage.selectedItem.toString())
+
                 if(pwd.word.isNotEmpty())
                     viewModel.addPassword(resources, pwd)
             }

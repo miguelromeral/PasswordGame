@@ -26,4 +26,17 @@
         <item>@string/pref_words_source_value_custom</item>
     </string-array>
 
+
+
+    <string-array name="pref_language_entries">
+        <item>@string/pref_language_entry_english</item>
+        <item>@string/pref_language_entry_spanish</item>
+    </string-array>
+
+    <string-array name="pref_language_values">
+        <item>@string/pref_language_value_english</item>
+        <item>@string/pref_language_value_spanish</item>
+    </string-array>
+
+
 </resources>

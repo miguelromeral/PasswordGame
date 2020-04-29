@@ -45,6 +45,18 @@
     <string name="pref_words_source_entry_default">Just Server</string>
     <string name="pref_words_source_entry_custom">Just Device</string>
 
+    <string name="pref_language_key" translatable="false">pref_language_key</string>
+    <string name="pref_language_title">Answers language</string>
+    <string name="pref_language_summary" translatable="false">%s</string>
+
+
+    <string name="pref_language_value_english" translatable="false">english</string>
+    <string name="pref_language_value_spanish" translatable="false">spanish</string>
+
+    <string name="pref_language_entry_english">Inglés</string>
+    <string name="pref_language_entry_spanish">Español</string>
+
+
 
     <string name="pref_display_header_title">Display</string>
 
@@ -70,6 +82,7 @@
     <string name="cpf_title_word">Word (Solution)</string>
     <string name="cpf_title_category">Category</string>
     <string name="cpf_title_level">Level</string>
+    <string name="cpf_title_language">Language</string>
     <string name="cpf_title_hints">Hints</string>
     <string name="cpf_button_add_hint">Add Hint</string>
     <string name="cpf_button_add_password">Create</string>

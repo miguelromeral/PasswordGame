@@ -24,6 +24,14 @@
             android:summary="@string/pref_words_source_summary"
             android:entryValues="@array/pref_words_source_values"/>
 
+
+        <DropDownPreference
+            android:key="@string/pref_language_key"
+            android:title="@string/pref_language_title"
+            android:summary="@string/pref_language_summary"
+            android:entries="@array/pref_language_entries"
+            android:entryValues="@array/pref_language_values"/>
+
     </PreferenceCategory>
 
 

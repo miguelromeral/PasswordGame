@@ -48,6 +48,7 @@ class CustomPasswordAdapter(
             binding.password = item
             editListener = listener
             deleteListener = removeListener
+            binding.tvLanguage.text = Options.getLanguageTextFromValue(res, item.language ?: "-")
             binding.tvWord.text = item.word?.capitalize()
             binding.tvHints.text = item.hints
             binding.tvLevel.text = Options.getStringFromLevelValue(res, item.level ?: "-")

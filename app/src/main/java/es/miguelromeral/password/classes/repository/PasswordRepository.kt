@@ -31,6 +31,9 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
 
         tmp?.let{ list ->
             myWords = list
+
+            myWords = myWords.filter { it.language.equals(language) }
+
             if(!Options.isDefaultLevel(level))
                 myWords = myWords.filter { it.level.equals(level) }
 
@@ -63,16 +66,14 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
                 Log.i(TAG, "cat: $category, lev: $level, lan: $language, source: $source")
 
 
-                var query: Query? = null
+                var query: Query = ref.whereEqualTo(GameViewModel.FIELD_LANGUAGE, language)
 
                 if (!Options.isDefaultLevel(level)) {
-                    query = (query ?: ref).whereEqualTo(GameViewModel.FIELD_LEVEL, level)
+                    query = query.whereEqualTo(GameViewModel.FIELD_LEVEL, level)
                 }
                 if (!Options.isDefaultCategory(category)) {
-                    query = (query ?: ref).whereEqualTo(GameViewModel.FIELD_CATEGORY, category)
+                    query = query.whereEqualTo(GameViewModel.FIELD_CATEGORY, category)
                 }
-                if (query == null)
-                    query = ref
 
 /*
                 query.limit(GameViewModel.DEFAULT_MAX_WORDS)
