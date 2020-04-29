@@ -59,11 +59,13 @@ class DashboardFragment : Fragment(), SearchView.OnQueryTextListener {
         })
 
         viewModel.filteredList.observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
-            if(it.isEmpty()){
-                binding.partialEmptyCPLayout.visibility = View.VISIBLE
-            }else{
-                binding.partialEmptyCPLayout.visibility = View.GONE
+            it?.let {
+                adapter.submitList(it)
+                if (it.isEmpty()) {
+                    binding.partialEmptyCPLayout.visibility = View.VISIBLE
+                } else {
+                    binding.partialEmptyCPLayout.visibility = View.GONE
+                }
             }
         })
 

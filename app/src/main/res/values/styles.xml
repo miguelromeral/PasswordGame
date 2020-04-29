@@ -11,7 +11,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
         <item name="android:fontFamily">@font/baloobhaina2_regular</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -187,7 +187,14 @@
         <item name="android:textColor">@color/darkGreen</item>
     </style>
 
-
+    <style name="BottomNavigation">
+        <item name="android:background">@color/lightOrange</item>
+        <item name="itemBackground">@drawable/navigation_bar_item_bg</item>
+        <item name="itemIconTint">@color/darkBlue</item>
+        <item name="itemTextColor">@color/darkBlue</item>
+        <item name="paddingStart">8dp</item>
+        <item name="paddingEnd">8dp</item>
+    </style>
 
 
 
