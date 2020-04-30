@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
 
             val category =
                 if(homeViewModel.filterCategory.value!!)
-                    Levels.getLevelValueFromEntry(resources, binding.partialSpinnerCategory.spCategory.selectedItem.toString())
+                    Categories.getCategoryValueFromEntry(resources, binding.partialSpinnerCategory.spCategory.selectedItem.toString())
                 else
                     Categories.DEFAULT_CATEGORY
 
