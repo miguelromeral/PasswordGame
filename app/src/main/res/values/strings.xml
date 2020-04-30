@@ -18,7 +18,7 @@
 
     <string name="dpm_category_mixed">All Categories</string>
     <string name="dpm_category_animals">Animals</string>
-    <string name="dpm_category_technology">Tecnology</string>
+    <string name="dpm_category_technology">Technology</string>
 
 
     <!-- Preferences -->
@@ -52,8 +52,8 @@
     <string name="pref_language_value_english" translatable="false">english</string>
     <string name="pref_language_value_spanish" translatable="false">spanish</string>
 
-    <string name="pref_language_entry_english">Inglés</string>
-    <string name="pref_language_entry_spanish">Español</string>
+    <string name="pref_language_entry_english">English</string>
+    <string name="pref_language_entry_spanish">Spanish</string>
 
     <string name="pref_tip_key" translatable="false">pref_tip_key</string>
     <string name="pref_tip_title">Support the Author</string>

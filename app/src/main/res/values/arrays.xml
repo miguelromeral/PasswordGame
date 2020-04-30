@@ -4,6 +4,12 @@
     <string-array name="array_category">
         <item>@string/dpm_category_animals</item>
         <item>@string/dpm_category_technology</item>
+        <item>Test1</item>
+        <item>Test2</item>
+        <item>Test3</item>
+        <item>Test4</item>
+        <item>Test5</item>
+        <item>Test6</item>
     </string-array>
 
     <string-array name="array_level">

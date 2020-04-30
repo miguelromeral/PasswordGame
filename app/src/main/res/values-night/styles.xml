@@ -81,4 +81,14 @@
         <item name="paddingEnd">8dp</item>
     </style>
 
+
+    <style name="Spinner" parent="SpinnerBase">
+        <item name="android:background">@drawable/spinner_bg_night</item>
+        <item name="android:popupBackground">@color/almost_black</item>
+    </style>
+
+    <style name="EditTextBase" parent="EditText">
+        <item name="android:textColor">@color/lightBlue</item>
+    </style>
+
 </resources>
