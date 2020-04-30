@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
-import es.miguelromeral.password.classes.PasswordDatabase
+import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentDashboardBinding
 import es.miguelromeral.password.ui.listeners.CustomPasswordListener
 

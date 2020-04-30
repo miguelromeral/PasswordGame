@@ -19,11 +19,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import es.miguelromeral.password.R
-import es.miguelromeral.password.classes.GameRecognitionService
-import es.miguelromeral.password.classes.Options
-import es.miguelromeral.password.classes.PasswordDatabase
+import es.miguelromeral.password.classes.*
+import es.miguelromeral.password.classes.options.Categories
+import es.miguelromeral.password.classes.options.Levels
+import es.miguelromeral.password.classes.options.Options
+import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentGameBinding
-import kotlinx.android.synthetic.main.partial_game.view.*
 import java.util.*
 
 /**
@@ -43,9 +44,9 @@ class GameActivityFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        var category: String? = Options.DEFAULT_CATEGORY
-        var level: String? = Options.DEFAULT_LEVEL
-        var language: String? = Options.DEFAULT_LANGUAGE
+        var category: String? = Categories.DEFAULT_CATEGORY
+        var level: String? = Levels.DEFAULT_LEVEL
+        var language: String? = resources.getString(R.string.pref_language_value_english)
 
         activity?.intent?.extras?.let{
             category = it.getString(ARG_CATEGORY)

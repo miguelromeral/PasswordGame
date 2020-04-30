@@ -11,15 +11,24 @@
 
 
 
-    <string name="dpm_level_mixed">All Levels</string>
-    <string name="dpm_level_easy">Easy</string>
-    <string name="dpm_level_medium">Medium</string>
-    <string name="dpm_level_hard">Hard</string>
-
-    <string name="dpm_category_mixed">All Categories</string>
     <string name="dpm_category_animals">Animals</string>
     <string name="dpm_category_technology">Technology</string>
 
+    <!-- Categories -->
+    <string name="value_category_animals" translatable="false">animals</string>
+    <string name="value_category_technology" translatable="false">technology</string>
+
+    <string name="entry_category_animals">Animals</string>
+    <string name="entry_category_technology">Technology</string>
+
+    <!-- Levels -->
+    <string name="value_level_easy" translatable="false">easy</string>
+    <string name="value_level_medium" translatable="false">medium</string>
+    <string name="value_level_hard" translatable="false">hard</string>
+
+    <string name="entry_level_easy">Easy</string>
+    <string name="entry_level_medium">Medium</string>
+    <string name="entry_level_hard">Hard</string>
 
     <!-- Preferences -->
     <string name="action_settings">Settings</string>

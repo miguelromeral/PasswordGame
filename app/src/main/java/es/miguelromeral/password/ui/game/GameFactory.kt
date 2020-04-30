@@ -3,18 +3,16 @@ package es.miguelromeral.password.ui.game
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import es.miguelromeral.password.classes.Options
-import es.miguelromeral.password.classes.PasswordDatabaseDao
-import es.miguelromeral.password.ui.home.HomeViewModel
+import es.miguelromeral.password.classes.database.PasswordDatabaseDao
 import java.lang.IllegalArgumentException
 
 class GameFactory (
-    private val database: PasswordDatabaseDao,
-    private val application: Application,
-    private val category: String,
-    private val level: String,
-    private val language: String,
-    private val source: Int
+        private val database: PasswordDatabaseDao,
+        private val application: Application,
+        private val category: String,
+        private val level: String,
+        private val language: String,
+        private val source: Int
 ) : ViewModelProvider.Factory {
 
     @Suppress("unchecked_cast")

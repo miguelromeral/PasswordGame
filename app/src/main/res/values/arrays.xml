@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="array_category">
-        <item>@string/dpm_category_animals</item>
-        <item>@string/dpm_category_technology</item>
-        <item>Test1</item>
-        <item>Test2</item>
-        <item>Test3</item>
-        <item>Test4</item>
-        <item>Test5</item>
-        <item>Test6</item>
+    <string-array name="array_category_entries">
+        <item>@string/entry_category_animals</item>
+        <item>@string/entry_category_technology</item>
     </string-array>
 
-    <string-array name="array_level">
-        <item>@string/dpm_level_easy</item>
-        <item>@string/dpm_level_medium</item>
-        <item>@string/dpm_level_hard</item>
+
+    <string-array name="array_level_entries">
+        <item>@string/entry_level_easy</item>
+        <item>@string/entry_level_medium</item>
+        <item>@string/entry_level_hard</item>
     </string-array>
 
 

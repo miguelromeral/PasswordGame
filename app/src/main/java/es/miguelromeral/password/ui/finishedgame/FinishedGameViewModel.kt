@@ -2,17 +2,7 @@ package es.miguelromeral.password.ui.finishedgame
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.classes.Password
-import es.miguelromeral.password.classes.ScoreBoard
-import es.miguelromeral.password.classes.ScoreBoard.Companion.SCORE_BONUS_HARD
-import es.miguelromeral.password.classes.ScoreBoard.Companion.SCORE_BONUS_MEDIUM
-import es.miguelromeral.password.classes.ScoreBoard.Companion.SCORE_HIT
-import es.miguelromeral.password.classes.ScoreBoard.Companion.SCORE_MAX_TIME
-import es.miguelromeral.password.classes.ScoreBoard.Companion.SCORE_MAX_TIME_VALUE
-import es.miguelromeral.password.classes.ScoreBoard.Companion.SCORE_MIN_TIME
-import es.miguelromeral.password.classes.ScoreBoard.Companion.SCORE_MIN_TIME_VALUE
-import es.miguelromeral.password.classes.ScoreBoard.Companion.SCORE_MISS
 
 class FinishedGameViewModel (
     private val success: Int,

@@ -5,12 +5,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import es.miguelromeral.password.classes.Password
-import es.miguelromeral.password.classes.PasswordDatabaseDao
+import es.miguelromeral.password.classes.database.PasswordDatabaseDao
 import kotlinx.coroutines.*
 
 class DashboardViewModel(
-    val database: PasswordDatabaseDao,
-    application: Application
+        val database: PasswordDatabaseDao,
+        application: Application
 ) : AndroidViewModel(application) {
 
 

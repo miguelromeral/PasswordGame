@@ -6,13 +6,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
-import es.miguelromeral.password.classes.PasswordDatabaseDao
+import es.miguelromeral.password.classes.database.PasswordDatabaseDao
 import kotlinx.coroutines.*
 import kotlin.random.Random
 
 class CustomPasswordViewModel(
-    val database: PasswordDatabaseDao,
-    application: Application
+        val database: PasswordDatabaseDao,
+        application: Application
 ) : AndroidViewModel(application) {
 
     private var viewModelJob = Job()

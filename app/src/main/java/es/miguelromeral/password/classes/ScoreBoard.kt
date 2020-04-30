@@ -1,5 +1,8 @@
 package es.miguelromeral.password.classes
 
+import android.content.res.Resources
+import es.miguelromeral.password.R
+
 class ScoreBoard {
 
     companion object {
@@ -16,9 +19,9 @@ class ScoreBoard {
         const val SCORE_BONUS_HARD = 0.5
 
 
-        fun getScore(time: Long, solved: Boolean, failed: Boolean, level: String): Int =
+        fun getScore(resources: Resources, time: Long, solved: Boolean, failed: Boolean, level: String): Int =
                         if(solved){
-                            SCORE_HIT + getBonus(time, level)
+                            SCORE_HIT + getBonus(resources, time, level)
                         }else if(failed){
                             SCORE_MISS
                         }else{
@@ -26,7 +29,7 @@ class ScoreBoard {
                         }
 
 
-        private fun getBonus(time: Long, level: String): Int {
+        private fun getBonus(resources: Resources, time: Long, level: String): Int {
 
             var points = if (time > SCORE_MAX_TIME)
                 SCORE_MAX_TIME_VALUE
@@ -44,8 +47,8 @@ class ScoreBoard {
 
 
             val bonus = when(level){
-                Options.LEVEL_MEDIUM -> (points * SCORE_BONUS_MEDIUM).toInt()
-                Options.LEVEL_HARD -> (points * SCORE_BONUS_HARD).toInt()
+                resources.getString(R.string.value_level_medium) -> (points * SCORE_BONUS_MEDIUM).toInt()
+                resources.getString(R.string.value_level_hard) -> (points * SCORE_BONUS_HARD).toInt()
                 else -> 0
             }
 

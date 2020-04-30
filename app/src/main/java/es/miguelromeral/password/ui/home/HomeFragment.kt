@@ -1,6 +1,5 @@
 package es.miguelromeral.password.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +11,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.preference.PreferenceManager
 import es.miguelromeral.password.R
-import es.miguelromeral.password.classes.Options
+import es.miguelromeral.password.classes.options.Categories
+import es.miguelromeral.password.classes.options.Levels
 import es.miguelromeral.password.databinding.FragmentHomeBinding
 import es.miguelromeral.password.ui.game.GameActivity
-import es.miguelromeral.password.ui.game.GameActivityFragment
 
 class HomeFragment : Fragment() {
 
@@ -38,16 +37,16 @@ class HomeFragment : Fragment() {
 
             val category =
                 if(homeViewModel.filterCategory.value!!)
-                    Options.getCategoryValue(binding.partialSpinnerCategory.spCategory.selectedItemPosition)
+                    Levels.getLevelValueFromEntry(resources, binding.partialSpinnerCategory.spCategory.selectedItem.toString())
                 else
-                    Options.getCategoryValue(-1)
+                    Categories.DEFAULT_CATEGORY
 
 
             val level =
                 if(homeViewModel.filterLevel.value!!)
-                    Options.getLevelValue(binding.partialSpinnerLevel.spLevel.selectedItemPosition)
+                    Levels.getLevelValueFromEntry(resources, binding.partialSpinnerLevel.spLevel.selectedItem.toString())
                 else
-                    Options.getLevelValue(-1)
+                    Levels.DEFAULT_LEVEL
 
             val language = PreferenceManager.getDefaultSharedPreferences(requireContext()).getString(
                     resources.getString(R.string.pref_language_key), null) ?:

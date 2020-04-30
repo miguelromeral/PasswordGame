@@ -1,7 +1,8 @@
-package es.miguelromeral.password.classes
+package es.miguelromeral.password.classes.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import es.miguelromeral.password.classes.Password
 
 @Dao
 interface PasswordDatabaseDao {

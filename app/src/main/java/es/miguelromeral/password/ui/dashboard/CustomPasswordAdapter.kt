@@ -6,15 +6,13 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import es.miguelromeral.password.R
-import es.miguelromeral.password.classes.Options
-import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.databinding.ItemCustomPasswordsBinding
 import es.miguelromeral.password.ui.listeners.CustomPasswordListener
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemLongClickListener
-import android.util.Log
 import android.view.View
+import es.miguelromeral.password.classes.*
+import es.miguelromeral.password.classes.options.Categories
+import es.miguelromeral.password.classes.options.Languages
+import es.miguelromeral.password.classes.options.Levels
 
 
 class CustomPasswordAdapter(
@@ -48,11 +46,11 @@ class CustomPasswordAdapter(
             binding.password = item
             editListener = listener
             deleteListener = removeListener
-            binding.tvLanguage.text = Options.getLanguageTextFromValue(res, item.language ?: "-")
+            binding.tvLanguage.text = Languages.getLanguageTextFromValue(res, item.language)
             binding.tvWord.text = item.word?.capitalize()
             binding.tvHints.text = item.hints
-            binding.tvLevel.text = Options.getStringFromLevelValue(res, item.level ?: "-")
-            binding.tvCategory.text = Options.getStringFromCategoryValue(res, item.category ?: "-")
+            binding.tvLevel.text = Levels.getLevelTextFromValue(res, item.level)
+            binding.tvCategory.text = Categories.getCategoryTextFromValue(res, item.category)
 
             binding.cardViewAnswer.setOnLongClickListener{ view ->
                 showMenu(view)

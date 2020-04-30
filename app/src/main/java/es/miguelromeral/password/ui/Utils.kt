@@ -1,11 +1,5 @@
 package es.miguelromeral.password.ui
 
-import android.R
-import android.content.Context
-import android.content.res.Resources
-import android.widget.ArrayAdapter
-import es.miguelromeral.password.classes.Options
-
 /*
 fun createSpinnerAdapter_Level(context: Context): ArrayAdapter<String> {
 

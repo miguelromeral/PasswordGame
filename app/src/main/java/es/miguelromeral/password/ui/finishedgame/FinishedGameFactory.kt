@@ -1,12 +1,8 @@
 package es.miguelromeral.password.ui.finishedgame
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.classes.Password
-import es.miguelromeral.password.ui.game.GameViewModel
-import es.miguelromeral.password.ui.home.HomeViewModel
 import java.lang.IllegalArgumentException
 
 class FinishedGameFactory (

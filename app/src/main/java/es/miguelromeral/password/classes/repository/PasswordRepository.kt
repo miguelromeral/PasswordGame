@@ -6,6 +6,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.Query
 import es.miguelromeral.password.classes.*
+import es.miguelromeral.password.classes.options.Categories
+import es.miguelromeral.password.classes.options.FirestoreConfig
+import es.miguelromeral.password.classes.options.Levels
+import es.miguelromeral.password.classes.options.Options
+import es.miguelromeral.password.classes.database.PasswordDatabaseDao
 import es.miguelromeral.password.ui.game.GameViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -34,10 +39,10 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
 
             myWords = myWords.filter { it.language.equals(language) }
 
-            if(!Options.isDefaultLevel(level))
+            if(!Levels.isDefault(level))
                 myWords = myWords.filter { it.level.equals(level) }
 
-            if(!Options.isDefaultCategory(category))
+            if(!Categories.isDefault(category))
                 myWords = myWords.filter { it.category.equals(category) }
 
             myWords.forEach { it.custom = true }
@@ -62,17 +67,17 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
                 inter.recieveWords(localWords)
                 return@withContext Unit
             }else {
-                val ref = mFirestore.collection(GameViewModel.COLL_PASSWORD)
+                val ref = mFirestore.collection(FirestoreConfig.COLL_PASSWORD)
                 Log.i(TAG, "cat: $category, lev: $level, lan: $language, source: $source")
 
 
-                var query: Query = ref.whereEqualTo(GameViewModel.FIELD_LANGUAGE, language)
+                var query: Query = ref.whereEqualTo(FirestoreConfig.FIELD_LANGUAGE, language)
 
-                if (!Options.isDefaultLevel(level)) {
-                    query = query.whereEqualTo(GameViewModel.FIELD_LEVEL, level)
+                if (!Levels.isDefault(level)) {
+                    query = query.whereEqualTo(FirestoreConfig.FIELD_LEVEL, level)
                 }
-                if (!Options.isDefaultCategory(category)) {
-                    query = query.whereEqualTo(GameViewModel.FIELD_CATEGORY, category)
+                if (!Categories.isDefault(category)) {
+                    query = query.whereEqualTo(FirestoreConfig.FIELD_CATEGORY, category)
                 }
 
 /*

@@ -27,7 +27,7 @@ class GameRecognitionService(
     }
 
     override fun onPartialResults(p0: Bundle?) {
-        Log.i(TAG,"Called: onPartialResults")
+        //Log.i(TAG,"Called: onPartialResults")
     }
 
     override fun onEvent(p0: Int, p1: Bundle?) {

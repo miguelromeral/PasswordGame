@@ -9,21 +9,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import android.os.CountDownTimer
 import android.util.Log
-import es.miguelromeral.password.classes.Options
+import es.miguelromeral.password.classes.*
+import es.miguelromeral.password.classes.options.Levels
+import es.miguelromeral.password.classes.database.PasswordDatabaseDao
 import es.miguelromeral.password.classes.repository.IRepository
-import es.miguelromeral.password.classes.Password
-import es.miguelromeral.password.classes.PasswordDatabaseDao
-import es.miguelromeral.password.classes.ScoreBoard
 import es.miguelromeral.password.classes.repository.PasswordRepository
 import kotlinx.coroutines.launch
 
 class GameViewModel(
-    private val database: PasswordDatabaseDao,
-    val application: Application,
-    val category: String,
-    val level: String,
-    val language: String,
-    val source: Int) : ViewModel(),
+        private val database: PasswordDatabaseDao,
+        val application: Application,
+        val category: String,
+        val level: String,
+        val language: String,
+        val source: Int) : ViewModel(),
     IRepository {
 
     private val _text = MutableLiveData<String>("Password!")
@@ -106,8 +105,8 @@ class GameViewModel(
             override fun onTick(milisUtilFinished: Long){
                 getCurrentPassword()?.let {
                     val end = System.currentTimeMillis() - timestamp
-                    _liveScore.postValue(ScoreBoard.getScore(end, true, false, it.level
-                            ?: Options.DEFAULT_LEVEL))
+                    _liveScore.postValue(ScoreBoard.getScore(application.resources, end, true, false, it.level
+                            ?: Levels.DEFAULT_LEVEL))
                 }
             }
 
@@ -146,7 +145,7 @@ class GameViewModel(
                             _nFails.postValue(_nFails.value!! + 1)
                         }
 
-                        pwd.score = ScoreBoard.getScore(pwd.time, pwd.solved, pwd.failed, pwd.level ?: Options.DEFAULT_LEVEL)
+                        pwd.score = ScoreBoard.getScore(application.resources, pwd.time, pwd.solved, pwd.failed, pwd.level ?: Levels.DEFAULT_LEVEL)
                         _currentIndex.postValue(_currentIndex.value!! + 1)
                     }
                     timestamp = end
@@ -207,10 +206,5 @@ class GameViewModel(
         val VALUE_FINISHED = -2
         val VALUE_NO_WORDS = -3
         val VALUE_PREPARE_TIMER = -4
-
-        val COLL_PASSWORD = "passwords"
-        val FIELD_CATEGORY = "category"
-        val FIELD_LEVEL = "level"
-        val FIELD_LANGUAGE = "language"
     }
 }

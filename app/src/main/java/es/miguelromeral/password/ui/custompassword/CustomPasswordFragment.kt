@@ -11,14 +11,16 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import es.miguelromeral.password.classes.Password
-import es.miguelromeral.password.classes.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentCustomPasswordBinding
-import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.ui.listeners.RemoveCustomHintListener
 import android.widget.LinearLayout
 import android.widget.EditText
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.*
+import es.miguelromeral.password.classes.options.Categories
+import es.miguelromeral.password.classes.options.Languages
+import es.miguelromeral.password.classes.options.Levels
+import es.miguelromeral.password.classes.database.PasswordDatabase
 
 
 class CustomPasswordFragment : Fragment() {
@@ -46,8 +48,10 @@ class CustomPasswordFragment : Fragment() {
         binding.password = if(pwdLoaded != null){
                 viewModel.setPassword(pwdLoaded)
                 binding.bInsert.text = requireContext().getString(R.string.cpf_button_update_password)
-                binding.partialSpinnerLevel.spLevel.setSelection(Options.getLevelValueIndex(pwdLoaded.level ?: Options.DEFAULT_LEVEL))
-                binding.partialSpinnerCategory.spCategory.setSelection(Options.getCategoryValueIndex(pwdLoaded.category ?: Options.DEFAULT_CATEGORY))
+
+                binding.partialSpinnerLevel.spLevel.setSelection(Levels.getLevelValueIndex(resources, pwdLoaded.level))
+                binding.partialSpinnerLanguage.spLanguage.setSelection(Languages.getLanguageValueIndex(resources, pwdLoaded.language))
+                binding.partialSpinnerCategory.spCategory.setSelection(Categories.getCategoryValueIndex(resources, pwdLoaded.category))
                 pwdLoaded
             }else{
                 Password()
@@ -107,11 +111,11 @@ class CustomPasswordFragment : Fragment() {
 
         binding.bInsert.setOnClickListener { view ->
             binding.password?.let{ pwd ->
-                pwd.level = Options.getLevelValue(binding.partialSpinnerLevel.spLevel.selectedItemPosition)
-                pwd.category = Options.getCategoryValue(binding.partialSpinnerCategory.spCategory.selectedItemPosition)
+                pwd.level = Levels.getLevelValueFromEntry(resources, binding.partialSpinnerLevel.spLevel.selectedItem.toString())
+                pwd.category = Categories.getCategoryValueFromEntry(resources, binding.partialSpinnerCategory.spCategory.selectedItem.toString())
                 pwd.hints = viewModel.getHintsFormatted()
 
-                pwd.language = Options.getLanguageValueFromEntry(resources, binding.partialSpinnerLanguage.spLanguage.selectedItem.toString())
+                pwd.language = Languages.getLanguageValueFromEntry(resources, binding.partialSpinnerLanguage.spLanguage.selectedItem.toString())
 
                 if(pwd.word.isNotEmpty())
                     viewModel.addPassword(resources, pwd)
