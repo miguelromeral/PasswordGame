@@ -1,11 +1,13 @@
-# Guess Word ![](https://img.shields.io/badge/android-6.0-green) 
-
-<!-- # <img alt='SecretManager' src='https://github.com/miguelromeral/SecretManager/blob/master/app/src/main/ic_launcher_sm_v2-web.png' height="35" width="auto" /> Secret Manager ![](https://img.shields.io/badge/android-6.0-green) <a href='https://play.google.com/store/apps/details?id=es.miguelromeral.secretmanager&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="70" width="auto" /></a> -->
+# <img alt='Guess Word!' src='https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png' height="35" width="auto" /> Guess Word! ![](https://img.shields.io/badge/android-6.0-green)  <!-- <a href='https://play.google.com/store/apps/details?id=es.miguelromeral.secretmanager&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="70" width="auto" /></a> -->
 
 ## Introduction
 
 Guess Word is an easy game in Android for two players or above in which the players have to guess the password only with the clues that one of them, the host, tell them but some words related with the passwords, the hints, will not be able to be said by the host. The hosts will then struggle with the dictionary in order to find some useful words.
 The faster they guess the password, the higher scores the team will have!
+
+## Rules
+
+Read the rules for this game in the [Game Rules](https://github.com/miguelromeral/PasswordGame/blob/master/USAGE.md#game-rules) section of the help page.
 
 ## Availability
 
