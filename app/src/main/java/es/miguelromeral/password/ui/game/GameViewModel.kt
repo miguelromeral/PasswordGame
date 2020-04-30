@@ -13,6 +13,7 @@ import es.miguelromeral.password.classes.Options
 import es.miguelromeral.password.classes.repository.IRepository
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.PasswordDatabaseDao
+import es.miguelromeral.password.classes.ScoreBoard
 import es.miguelromeral.password.classes.repository.PasswordRepository
 import kotlinx.coroutines.launch
 
@@ -53,11 +54,15 @@ class GameViewModel(
     val gameFinished = _gameFinished
 
     private lateinit var timer: CountDownTimer
+    private lateinit var timerScore: CountDownTimer
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private var timestamp: Long = 0
+
+    private val _liveScore = MutableLiveData(0)
+    val liveScore = _liveScore
 
     init{
         val t = this
@@ -94,6 +99,23 @@ class GameViewModel(
         }
         timestamp = System.currentTimeMillis()
         timer.start()
+
+
+
+        timerScore = object : CountDownTimer(DEFAULT_WAIT, DELAY_LIVE_SCORE){
+            override fun onTick(milisUtilFinished: Long){
+                getCurrentPassword()?.let {
+                    val end = System.currentTimeMillis() - timestamp
+                    _liveScore.postValue(ScoreBoard.getScore(end, true, false, it.level
+                            ?: Options.DEFAULT_LEVEL))
+                }
+            }
+
+            override fun onFinish() {
+                _liveScore.postValue(0)
+            }
+        }
+        timerScore.start()
     }
 
 
@@ -124,6 +146,7 @@ class GameViewModel(
                             _nFails.postValue(_nFails.value!! + 1)
                         }
 
+                        pwd.score = ScoreBoard.getScore(pwd.time, pwd.solved, pwd.failed, pwd.level ?: Options.DEFAULT_LEVEL)
                         _currentIndex.postValue(_currentIndex.value!! + 1)
                     }
                     timestamp = end
@@ -176,6 +199,7 @@ class GameViewModel(
 
         val DEFAULT_WAIT = 61000L
         val ONE_SECOND = 1000L
+        val DELAY_LIVE_SCORE = 100L
 
         val DEFAULT_MAX_WORDS = 20L
 

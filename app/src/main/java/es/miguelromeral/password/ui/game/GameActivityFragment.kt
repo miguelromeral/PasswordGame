@@ -118,6 +118,10 @@ class GameActivityFragment : Fragment() {
             lg.tvTimer.text = it.toString()
         })
 
+        viewModel.liveScore.observe(viewLifecycleOwner, Observer {
+            lg.tvScore.text = "+$it"
+        })
+
         viewModel.nFails.observe(viewLifecycleOwner, Observer {
             lg.tvFails.text = it.toString()
         })
