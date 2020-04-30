@@ -113,6 +113,8 @@
     <string name="fh_filter_level">Filter by Level</string>
     <string name="fh_button_start">Start new Game</string>
     <string name="fh_toast_preparing">Preparing the game!</string>
+    <string name="fh_button_rules">Read Rules</string>
+    <string name="fh_welcome">Welcome to Guess Word!\nMake a team with your friends and try to guess the passwords without saying any of the hints below.\nAre you ready?</string>
 
     <!-- Dashboard Fragment -->
     <string name="three_dots" translatable="false">&#8942;</string>

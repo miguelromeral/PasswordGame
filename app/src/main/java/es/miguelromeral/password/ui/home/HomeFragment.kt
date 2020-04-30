@@ -1,5 +1,7 @@
 package es.miguelromeral.password.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +17,7 @@ import es.miguelromeral.password.classes.options.Categories
 import es.miguelromeral.password.classes.options.Levels
 import es.miguelromeral.password.databinding.FragmentHomeBinding
 import es.miguelromeral.password.ui.game.GameActivity
+import kotlinx.android.synthetic.main.partial_welcome.view.*
 
 class HomeFragment : Fragment() {
 
@@ -30,6 +33,13 @@ class HomeFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.viewModel = homeViewModel
+
+        binding.layoutWelcome.bRules.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://github.com/miguelromeral/PasswordGame/blob/master/USAGE.md#game-rules")
+            }
+            startActivity(i)
+        }
 
         binding.bStartGame.setOnClickListener { b ->
             b.isEnabled = false
