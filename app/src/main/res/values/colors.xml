@@ -22,7 +22,7 @@
 
 
     <color name="lightOrange">#ffb875</color>
-    <color name="mainOrange">#ff8f26</color>
+        <color name="mainOrange">#ff8f26</color>
     <color name="darkOrange">#803e00</color>
     <color name="lightBlue">#a1a8ff</color>
     <color name="mainBlue">#4564ff</color>

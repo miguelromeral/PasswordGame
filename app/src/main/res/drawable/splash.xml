@@ -3,8 +3,7 @@
     <item android:drawable="@drawable/splash_background"/>
     <item>
         <bitmap
-            android:tint="@android:color/white"
             android:gravity="center"
-            android:src="@drawable/microphone"/>
+            android:src="@drawable/icon_launcher_mini"/>
     </item>
 </layer-list>
