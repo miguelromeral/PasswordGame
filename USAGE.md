@@ -25,6 +25,8 @@ They are a list of words related some how with the word that the players have to
 e.g.: if the word is "Dog", some hints would be "animal", "fur", "stroke", "walk" or even more.
 ```
 
+**You can also play without hints if you want**. To do that, just go to Settings in the app and disable the option "Play With Hints".
+
 ### <img alt='Points' src='https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/app/src/main/res/drawable/star_add.png' height="30" width="auto" /> Points
 
 With every word right you'll obtain some points. You'll get better scores when any of the other players say the word. The host can pass one word if the team is not able to solve it, but it will cost some points.

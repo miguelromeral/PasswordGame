@@ -46,6 +46,10 @@
     <string name="pref_words_source_title">Password Sources</string>
     <string name="pref_words_source_summary" translatable="false">%s</string>
 
+    <string name="pref_hints_key" translatable="false">pref_hints_key</string>
+    <string name="pref_hints_title">Play With Hints</string>
+    <string name="pref_hints_summary">If you play without hints, you will be free to say any words related with the password but the password itself. The microphone will not be needed in that case.</string>
+
     <string name="pref_words_source_value_both" translatable="false">pref_words_source_value_both</string>
     <string name="pref_words_source_value_default" translatable="false">pref_words_source_value_default</string>
     <string name="pref_words_source_value_custom" translatable="false">pref_words_source_value_custom</string>

@@ -25,6 +25,12 @@
             android:entryValues="@array/pref_words_source_values"
             android:icon="@drawable/database_regular"/>
 
+        <SwitchPreference
+            android:key="@string/pref_hints_key"
+            android:title="@string/pref_hints_title"
+            android:summary="@string/pref_hints_summary"
+            android:icon="@drawable/hint"
+            android:defaultValue="true"/>
 
         <DropDownPreference
             android:key="@string/pref_language_key"

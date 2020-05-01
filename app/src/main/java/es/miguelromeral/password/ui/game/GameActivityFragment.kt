@@ -78,7 +78,11 @@ class GameActivityFragment : Fragment() {
                 R.string.pref_microphone_key
             ), Options.DEFAULT_MICROPHONE_VALUE)
 
-        if(microphoneEnabled){
+        val hintsEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+                resources.getString(R.string.pref_hints_key), Options.DEFAULT_HINTS_VALUE)
+
+
+        if(microphoneEnabled && hintsEnabled){
 
             speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext())
             speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
@@ -106,7 +110,12 @@ class GameActivityFragment : Fragment() {
         lg.rvHints.layoutManager = manager
 
         val adapter = HintAdapter()
-        lg.rvHints.adapter = adapter
+
+        if(hintsEnabled) {
+            lg.rvHints.adapter = adapter
+        }else{
+            lg.rvHints.visibility = View.GONE
+        }
 
         lg.bFail.setOnClickListener {
             viewModel.nextWord(false)
@@ -163,7 +172,8 @@ class GameActivityFragment : Fragment() {
                         if (index < list.size) {
                             val pwd = list[index]
                             lg.tvPassword.text = pwd.word
-                            adapter.submitList(pwd.hintsSplit())
+                            if(hintsEnabled)
+                                adapter.submitList(pwd.hintsSplit())
                         }
                     }
 
