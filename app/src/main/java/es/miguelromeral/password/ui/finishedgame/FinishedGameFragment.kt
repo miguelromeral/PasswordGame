@@ -48,6 +48,13 @@ class FinishedGameFragment : Fragment() {
         viewModel.score.observe(viewLifecycleOwner, Observer {
             binding.tvScore.text = resources.getString(R.string.fg_score, it.toString())
         })
+        viewModel.hits.observe(viewLifecycleOwner, Observer {
+            binding.tvSuccess.text = resources.getString(R.string.fg_success, it.toString())
+        })
+        viewModel.mistakes.observe(viewLifecycleOwner, Observer {
+            binding.tvFails.text = resources.getString(R.string.fg_fails, it.toString())
+        })
+
 
         setHasOptionsMenu(true)
 

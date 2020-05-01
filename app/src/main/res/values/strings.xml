@@ -149,7 +149,9 @@
 
     <!-- Finished Game -->
     <string name="fg_title">Game Finished</string>
-    <string name="fg_score">Your Score: %1$s</string>
+    <string name="fg_score">Total Score: %1$s points</string>
+    <string name="fg_success">Words right: %1$s</string>
+    <string name="fg_fails">Words passed: %1$s</string>
     <string name="fg_word_default">Server</string>
     <string name="fg_word_custom">Device</string>
     <string name="fg_answer_failed">Failed</string>

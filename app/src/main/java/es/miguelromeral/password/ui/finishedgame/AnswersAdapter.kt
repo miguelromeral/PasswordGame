@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
+import es.miguelromeral.password.classes.options.Categories
+import es.miguelromeral.password.classes.options.Levels
 import es.miguelromeral.password.databinding.ItemAnswerBinding
 import es.miguelromeral.password.ui.setTimeFormatted
 import es.miguelromeral.password.ui.settings.SettingsFragment
@@ -38,6 +40,8 @@ class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(
             binding.password = item
             binding.tvState.text = item.score.toString()
             binding.tvWord.text = item.word?.capitalize()
+            binding.tvCategory.text = Categories.getCategoryTextFromValue(res, item.category)
+            binding.tvLevel.text = Levels.getLevelTextFromValue(res, item.level)
 /*
             val nightModeFlags = res.configuration.uiMode
 

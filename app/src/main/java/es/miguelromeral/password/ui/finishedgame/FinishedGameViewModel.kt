@@ -17,6 +17,13 @@ class FinishedGameViewModel (
     private val _listOfWords = MutableLiveData<List<Password>>()
     val listOfWords = _listOfWords
 
+
+    private val _hits = MutableLiveData<Int>(success)
+    val hits = _hits
+
+    private val _mistakes = MutableLiveData<Int>(fails)
+    val mistakes = _mistakes
+
     private val _score = MutableLiveData<Int>()
     private var _scoreInt = 0
     val score = _score
