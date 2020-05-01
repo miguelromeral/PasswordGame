@@ -154,6 +154,8 @@
     <string name="fg_word_custom">Device</string>
     <string name="fg_answer_failed">Failed</string>
     <string name="fg_answer_solved">Solved!</string>
+    <string name="fg_share_action">Share Score</string>
+    <string name="fg_share_text">We got %1$s points (%2$s rights and %3$s passed) in Guess Word! Download it now from Google Play</string>
 
     <!-- Partial Game -->
     <string name="pg_button_miss">PASS</string>
