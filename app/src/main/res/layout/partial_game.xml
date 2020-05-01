@@ -23,7 +23,7 @@
         tools:text="Password!"
         app:layout_constraintEnd_toEndOf="@+id/bSuccess"
         app:layout_constraintStart_toStartOf="@+id/bFail"
-        app:layout_constraintTop_toBottomOf="@+id/bFail" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutScore" />
 
     <Button
         android:id="@+id/bFail"
@@ -64,17 +64,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/tvTimer"
         style="@style/tvTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/tvTimerTitle"
         app:layout_constraintStart_toStartOf="@+id/tvTimerTitle"
         app:layout_constraintTop_toBottomOf="@+id/tvTimerTitle"
-        tools:text="Timer" />
+        tools:text="60" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/tvTimer"

@@ -164,10 +164,17 @@
         <item name="android:textColor">@color/darkBlue</item>
     </style>
 
-    <style name="tvTimer" parent="mainTextView">
-        <item name="android:textSize">28sp</item>
-        <item name="android:textColor">@color/mainOrange</item>
+    <style name="tvTimerBase" parent="mainTextView">
+        <item name="android:textSize">34sp</item>
         <item name="android:fontFamily">@font/bangers</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">60sp</item>
+        <item name="android:layout_height">60sp</item>
+    </style>
+
+    <style name="tvTimer" parent="tvTimerBase">
+        <item name="android:textColor">@color/almost_black</item>
+        <item name="android:background">@drawable/tv_rounded</item>
     </style>
 
 
