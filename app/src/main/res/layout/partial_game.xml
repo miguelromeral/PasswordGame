@@ -43,15 +43,6 @@
         app:layout_constraintEnd_toEndOf="@+id/tvSuccess"
         app:layout_constraintTop_toBottomOf="@+id/tvSuccess" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHints"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHeaderHints" />
 
     <TextView
         android:id="@+id/tvFails"
@@ -119,27 +110,121 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <ImageView
-        android:id="@+id/imageView2"
-        style="@style/MiniIconTheme"
-        android:layout_width="16sp"
-
-        android:layout_height="16sp"
-
-        app:layout_constraintBottom_toBottomOf="@+id/tvHeaderHints"
-        app:layout_constraintEnd_toStartOf="@+id/tvHeaderHints"
-        app:layout_constraintTop_toTopOf="@+id/tvHeaderHints"
-        android:layout_marginEnd="8dp"
-        app:srcCompat="@drawable/hint" />
-
-    <TextView
-        android:id="@+id/tvHeaderHints"
-        style="@style/mainTextView"
-        android:layout_marginTop="16dp"
-        android:text="@string/pg_title_hint"
+    <TableLayout
+        android:id="@+id/layoutPasswordProperties"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
+        android:stretchColumns="*">
+
+
+        <TableRow
+            android:layout_width="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivCategory"
+                    style="@style/MiniIconTheme"
+                    android:layout_width="16sp"
+                    android:layout_height="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCategory"
+                    app:layout_constraintEnd_toStartOf="@+id/tvCategory"
+                    app:layout_constraintTop_toTopOf="@+id/tvCategory"
+                    android:layout_marginEnd="16dp"
+                    app:srcCompat="@drawable/category" />
+
+                <TextView
+                    android:id="@+id/tvCategory"
+                    style="@style/mainTextView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Category" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivLevel"
+                    style="@style/MiniIconTheme"
+                    android:layout_width="16sp"
+                    android:layout_height="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvLevel"
+                    app:layout_constraintEnd_toStartOf="@+id/tvLevel"
+                    app:layout_constraintTop_toTopOf="@+id/tvLevel"
+                    android:layout_marginEnd="16dp"
+                    app:srcCompat="@drawable/level" />
+
+                <TextView
+                    android:id="@+id/tvLevel"
+                    style="@style/mainTextView"
+                    tools:text="Level"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </TableRow>
+
+    </TableLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutHintsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/layoutPasswordProperties"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            style="@style/MiniIconTheme"
+            android:layout_width="16sp"
+
+            android:layout_height="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHeaderHints"
+            app:layout_constraintEnd_toStartOf="@+id/tvHeaderHints"
+            app:layout_constraintTop_toTopOf="@+id/tvHeaderHints"
+            android:layout_marginEnd="16dp"
+            app:srcCompat="@drawable/hint" />
+
+
+        <TextView
+            android:id="@+id/tvHeaderHints"
+            style="@style/mainTextView"
+            android:text="@string/pg_title_hint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHints"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutHintsTitle" />
 
     <TextView
         android:id="@+id/tvTimerTitle"

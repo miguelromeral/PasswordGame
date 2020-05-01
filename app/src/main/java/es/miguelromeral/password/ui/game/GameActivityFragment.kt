@@ -81,6 +81,9 @@ class GameActivityFragment : Fragment() {
         val hintsEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
                 resources.getString(R.string.pref_hints_key), Options.DEFAULT_HINTS_VALUE)
 
+        if(!hintsEnabled){
+            lg.layoutHintsTitle.visibility = View.GONE
+        }
 
         if(microphoneEnabled && hintsEnabled){
 
@@ -172,6 +175,8 @@ class GameActivityFragment : Fragment() {
                         if (index < list.size) {
                             val pwd = list[index]
                             lg.tvPassword.text = pwd.word
+                            lg.tvCategory.text = Categories.getCategoryTextFromValue(resources, pwd.category)
+                            lg.tvLevel.text = Levels.getLevelTextFromValue(resources, pwd.level)
                             if(hintsEnabled)
                                 adapter.submitList(pwd.hintsSplit())
                         }
