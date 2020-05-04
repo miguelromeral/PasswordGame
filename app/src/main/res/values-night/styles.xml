@@ -87,7 +87,7 @@
         <item name="android:popupBackground">@color/almost_black</item>
     </style>
 
-    <style name="EditTextBase" parent="EditText">
+    <style name="EditText" parent="EditTextBase">
         <item name="android:textColor">@color/lightBlue</item>
     </style>
 

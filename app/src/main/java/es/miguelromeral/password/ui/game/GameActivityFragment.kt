@@ -18,6 +18,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.*
 import es.miguelromeral.password.classes.options.Categories
@@ -72,6 +75,20 @@ class GameActivityFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false)
         binding.viewModel = viewModel
         val lg = binding.layoutGame
+
+
+        MobileAds.initialize(requireContext(), getString(R.string.admob_app_id))
+        val adRequest = AdRequest.Builder().build()
+
+        binding.adIngame.loadAd(adRequest)
+        binding.adIngame.visibility = View.GONE
+        binding.adIngame.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                binding.adIngame.visibility = View.VISIBLE
+                super.onAdLoaded()
+            }
+        }
+
 
         val microphoneEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
             requireContext().getString(

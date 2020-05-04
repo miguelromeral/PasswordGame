@@ -73,6 +73,8 @@ If you need help with the application and the instructions for the game, please 
 
 Version|Code|Changes
 --- | --- | ---
+1.0.2|3|Spanish Translation and AdMobs Integration
+1.0.1|2|Improvements in GUI, fixed Bugs and refactoring
 1.0|1|First Version.
 
 ## TO BE DONE

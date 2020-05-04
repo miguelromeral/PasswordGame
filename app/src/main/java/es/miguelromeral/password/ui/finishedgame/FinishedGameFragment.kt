@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
@@ -11,6 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.preference.PreferenceManager
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.options.Options
@@ -25,6 +30,18 @@ class FinishedGameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        MobileAds.initialize(requireContext(), getString(R.string.admob_app_id))
+        val mInterstitialAd = InterstitialAd(requireContext())
+        mInterstitialAd.adUnitId = getString(R.string.admob_interstitial_finishedgame)
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
+
+        mInterstitialAd.adListener = object : AdListener(){
+            override fun onAdLoaded() {
+                mInterstitialAd.show()
+                super.onAdLoaded()
+            }
+        }
 
         val args = FinishedGameFragmentArgs.fromBundle(requireArguments())
 

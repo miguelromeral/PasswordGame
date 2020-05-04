@@ -1,18 +1,6 @@
 <resources>
+    <!-- App Data -->
     <string name="app_name">Guess Word!</string>
-
-
-
-
-
-
-
-
-
-
-
-    <string name="dpm_category_animals">Animals</string>
-    <string name="dpm_category_technology">Technology</string>
 
     <!-- Categories -->
     <string name="value_category_animals" translatable="false">animals</string>
@@ -157,7 +145,7 @@
     <string name="fg_answer_failed">Failed</string>
     <string name="fg_answer_solved">Solved!</string>
     <string name="fg_share_action">Share Score</string>
-    <string name="fg_share_text">We got %1$s points (%2$s rights and %3$s passed) in Guess Word! Download it now from Google Play</string>
+    <string name="fg_share_text">We got %1$s points (%2$s rights and %3$s passed) in Guess Word! Download it now from https://ply.gl/es.miguelromeral.password</string>
 
     <!-- Partial Game -->
     <string name="pg_button_miss">PASS</string>
@@ -171,8 +159,16 @@
 
     <!-- Bottom Nav Menu -->
     <string name="bnm_home_title">Home</string>
-    <string name="bnm_dashbord_title">Custom Answers</string>
+    <string name="bnm_dashbord_title">Mi Passwords</string>
     <string name="bnm_settings_title">Settings</string>
+
+    <!-- Ads Setup -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-3514829067318771~7798054922</string>
+    <string name="admob_banner_ingame" translatable="false">ca-app-pub-3514829067318771/8525292162</string>
+    <string name="admob_banner_TESTING" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_interstitial_finishedgame" translatable="false">ca-app-pub-3514829067318771/2509520486</string>
+    <string name="admob_interstitial_TESTING" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+
 
 
 </resources>

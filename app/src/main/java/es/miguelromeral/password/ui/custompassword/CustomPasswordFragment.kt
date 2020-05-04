@@ -42,7 +42,7 @@ class CustomPasswordFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this, vmf).get(CustomPasswordViewModel::class.java)
 
-        binding = DataBindingUtil.inflate(inflater, es.miguelromeral.password.R.layout.fragment_custom_password, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_custom_password, container, false)
 
 
         binding.password = if(pwdLoaded != null){
