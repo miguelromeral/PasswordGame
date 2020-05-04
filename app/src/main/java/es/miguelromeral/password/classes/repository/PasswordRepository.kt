@@ -87,7 +87,7 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
   */
 
                 query
-                    .limit(GameViewModel.DEFAULT_MAX_WORDS)
+                    .limit(MAX_WORDS_RETRIEVED)
                     .get()
                     .addOnSuccessListener { documents ->
                         try {
@@ -124,6 +124,8 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
 
     companion object {
         const val TAG = "PasswordRepository"
+
+        const val MAX_WORDS_RETRIEVED = 20L
     }
 
 }

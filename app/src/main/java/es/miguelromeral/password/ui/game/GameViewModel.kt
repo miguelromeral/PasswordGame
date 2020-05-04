@@ -200,8 +200,6 @@ class GameViewModel(
         val ONE_SECOND = 1000L
         val DELAY_LIVE_SCORE = 100L
 
-        val DEFAULT_MAX_WORDS = 20L
-
         val VALUE_NOT_STARTED = -1
         val VALUE_FINISHED = -2
         val VALUE_NO_WORDS = -3

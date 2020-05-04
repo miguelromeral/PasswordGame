@@ -44,7 +44,7 @@ data class Password(
             listOf()
         else{
             var h = hints!!
-            h.split(SEPARATOR).sorted()
+            h.split(SEPARATOR).sortedBy { it }
         }
     }
 

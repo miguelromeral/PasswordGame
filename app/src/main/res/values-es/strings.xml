@@ -6,6 +6,7 @@
 	<!-- Categories -->
 	<string name="entry_category_animals">Animales</string>
 	<string name="entry_category_furniture">Muebles</string>
+	<string name="entry_category_movies">Películas</string>
 
 	<!-- Levels -->
 	<string name="entry_level_easy">Fácil</string>
