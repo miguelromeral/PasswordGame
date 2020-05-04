@@ -10,8 +10,10 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.preference.PreferenceManager
 
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.options.Options
 import es.miguelromeral.password.databinding.FragmentGameFinishedBinding
 
 class FinishedGameFragment : Fragment() {
@@ -36,7 +38,11 @@ class FinishedGameFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_game_finished, container, false)
         binding.viewModel = viewModel
 
-        val adapter = AnswersAdapter()
+
+        val hintsEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+                resources.getString(R.string.pref_hints_key), Options.DEFAULT_HINTS_VALUE)
+
+        val adapter = AnswersAdapter(hintsEnabled)
         binding.answersList.adapter = adapter
 
         viewModel.listOfWords.observe(viewLifecycleOwner, Observer {

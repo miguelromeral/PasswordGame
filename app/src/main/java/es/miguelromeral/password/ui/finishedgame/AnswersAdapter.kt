@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.Color.MAGENTA
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -18,13 +19,13 @@ import es.miguelromeral.password.ui.setTimeFormatted
 import es.miguelromeral.password.ui.settings.SettingsFragment
 
 
-class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(
+class AnswersAdapter(val showHints: Boolean) : ListAdapter<Password, AnswersAdapter.ViewHolder>(
     HintDiffCallback()
 ){
 
     override fun onBindViewHolder(holder: ViewHolder, position:Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, showHints)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,13 +36,17 @@ class AnswersAdapter : ListAdapter<Password, AnswersAdapter.ViewHolder>(
 
     class ViewHolder private constructor (val binding: ItemAnswerBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Password) {
+        fun bind(item: Password, showHints: Boolean) {
             val res = binding.cardViewAnswer.resources
             binding.password = item
             binding.tvState.text = item.score.toString()
             binding.tvWord.text = item.word?.capitalize()
             binding.tvCategory.text = Categories.getCategoryTextFromValue(res, item.category)
             binding.tvLevel.text = Levels.getLevelTextFromValue(res, item.level)
+
+            if(!showHints){
+                binding.clHints.visibility = View.GONE
+            }
 /*
             val nightModeFlags = res.configuration.uiMode
 

@@ -1,4 +1,4 @@
-# <img alt='Guess Word!' src='https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png' height="35" width="auto" /> Guess Word! ![](https://img.shields.io/badge/android-6.0-green)  <!-- <a href='https://play.google.com/store/apps/details?id=es.miguelromeral.secretmanager&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="70" width="auto" /></a> -->
+# <img alt='Guess Word!' src='https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png' height="35" width="auto" /> Guess Word! ![](https://img.shields.io/badge/android-6.0-green)  <a href='https://play.google.com/store/apps/details?id=es.miguelromeral.password'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="70" width="auto" /></a>
 
 ## Introduction
 
@@ -11,7 +11,7 @@ Read the rules for this game in the [Game Rules](https://github.com/miguelromera
 
 ## Availability
 
-This App is now under development. The app will be available to be downloaded by Google Play for free in May 2020.
+This App is now under development. The app will be available to be downloaded by [Google Play](https://play.google.com/store/apps/details?id=es.miguelromeral.password) for free in May 2020.
 
 This app requires Android 6.0 or higher to be downloaded and installed on your device.
 
