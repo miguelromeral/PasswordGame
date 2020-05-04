@@ -63,6 +63,7 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
                     getString(R.string.pref_words_source_key),
                     getString(R.string.pref_theme_key),
                     getString(R.string.pref_github_key),
+                    getString(R.string.pref_timer_key),
                             getString(R.string.pref_hints_key)
 
             )

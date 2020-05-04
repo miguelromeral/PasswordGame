@@ -17,17 +17,19 @@ class Categories {
                     res.getString(R.string.value_category_animals) -> 0
                     res.getString(R.string.value_category_furniture)-> 1
                     res.getString(R.string.value_category_movies)-> 2
-                    else -> -1
+                    else -> 0
                 }
 
         fun getCategoryTextFromValue(resources: Resources, value: String?): String =
                 when(value){
+                    resources.getString(R.string.value_category_animals) ->
+                        resources.getString(R.string.entry_category_animals)
                     resources.getString(R.string.value_category_furniture) ->
                         resources.getString(R.string.entry_category_furniture)
                     resources.getString(R.string.value_category_movies) ->
                         resources.getString(R.string.entry_category_movies)
                     else ->
-                        resources.getString(R.string.entry_category_animals)
+                        resources.getString(R.string.entry_category_unknown)
                 }
 
         fun getCategoryValueFromEntry(resources: Resources, entry: String): String =

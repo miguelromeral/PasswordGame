@@ -41,4 +41,20 @@
     </string-array>
 
 
+
+
+
+
+    <string-array name="pref_timer_entries">
+        <item>@string/pref_timer_entry_30</item>
+        <item>@string/pref_timer_entry_60</item>
+        <item>@string/pref_timer_entry_90</item>
+    </string-array>
+
+    <string-array name="pref_timer_values">
+        <item>@string/pref_timer_value_30</item>
+        <item>@string/pref_timer_value_60</item>
+        <item>@string/pref_timer_value_90</item>
+    </string-array>
+
 </resources>

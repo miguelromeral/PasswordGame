@@ -13,6 +13,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
+import androidx.interpolator.view.animation.FastOutLinearInInterpolator
+import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -21,6 +23,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
+import com.transitionseverywhere.ChangeText
+import com.transitionseverywhere.Fade
+import com.transitionseverywhere.TransitionManager
+import com.transitionseverywhere.TransitionSet
+import com.transitionseverywhere.extra.Scale
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.*
 import es.miguelromeral.password.classes.options.Categories
@@ -68,7 +75,11 @@ class GameActivityFragment : Fragment() {
             resources
         )
 
-        val vmf = GameFactory(dataSource, application, category!!, level!!, language!!, source)
+
+        val gameTime = PreferenceManager.getDefaultSharedPreferences(context).getString(
+                resources.getString(R.string.pref_timer_key), Options.DEFAULT_TIMER_VALUE)?.toLong() ?: 60000L
+
+        val vmf = GameFactory(dataSource, application, category!!, level!!, language!!, source, gameTime)
 
         viewModel = ViewModelProviders.of(this, vmf).get(GameViewModel::class.java)
 
@@ -138,9 +149,11 @@ class GameActivityFragment : Fragment() {
         }
 
         lg.bFail.setOnClickListener {
+            TransitionManager.beginDelayedTransition(lg.clGame, ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN))
             viewModel.nextWord(false)
         }
         lg.bSuccess.setOnClickListener {
+            TransitionManager.beginDelayedTransition(lg.clGame, ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN))
             viewModel.nextWord(true)
         }
 
@@ -160,6 +173,7 @@ class GameActivityFragment : Fragment() {
         })
 
         viewModel.text.observe(viewLifecycleOwner, Observer {
+            //TransitionManager.beginDelayedTransition(lg.clGame, ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN))
             lg.tvPassword.text = it.toUpperCase()
         })
 
@@ -223,6 +237,21 @@ class GameActivityFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+
+    fun animatePassword(view: View, viewGroup: ViewGroup, visible: Boolean){
+        val set = TransitionSet()
+                .addTransition(Scale(0.7f))
+                .addTransition(Fade())
+                .setInterpolator(
+                        if(visible)
+                            LinearOutSlowInInterpolator()
+                        else
+                            FastOutLinearInInterpolator())
+
+        TransitionManager.beginDelayedTransition(viewGroup, set)
+        view.visibility = if (visible) View.VISIBLE else View.INVISIBLE
     }
 
 

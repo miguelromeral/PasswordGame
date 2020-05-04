@@ -40,6 +40,14 @@
             android:entryValues="@array/pref_language_values"
             android:icon="@drawable/language"/>
 
+        <DropDownPreference
+            android:key="@string/pref_timer_key"
+            android:title="@string/pref_timer_title"
+            android:summary="@string/pref_timer_summary"
+            android:entries="@array/pref_timer_entries"
+            android:entryValues="@array/pref_timer_values"
+            android:icon="@drawable/stopwatch_regular"/>
+
     </PreferenceCategory>
 
 

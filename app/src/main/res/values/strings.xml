@@ -7,6 +7,7 @@
     <string name="value_category_furniture" translatable="false">furniture</string>
     <string name="value_category_movies" translatable="false">movies</string>
 
+    <string name="entry_category_unknown">Unknown</string>
     <string name="entry_category_animals">Animals</string>
     <string name="entry_category_furniture">Furniture</string>
     <string name="entry_category_movies">Movies</string>
@@ -57,6 +58,22 @@
 
     <string name="pref_language_entry_english">English</string>
     <string name="pref_language_entry_spanish">Spanish</string>
+
+
+    <string name="pref_timer_key" translatable="false">pref_timer_key</string>
+    <string name="pref_timer_title">Game Time</string>
+    <string name="pref_timer_summary" translatable="false">%s</string>
+
+
+    <string name="pref_timer_value_30" translatable="false">30000</string>
+    <string name="pref_timer_value_60" translatable="false">60000</string>
+    <string name="pref_timer_value_90" translatable="false">90000</string>
+
+    <string name="pref_timer_entry_30">30 seconds</string>
+    <string name="pref_timer_entry_60">60 seconds</string>
+    <string name="pref_timer_entry_90">90 seconds</string>
+
+
 
     <string name="pref_tip_key" translatable="false">pref_tip_key</string>
     <string name="pref_tip_title">Support the Author</string>

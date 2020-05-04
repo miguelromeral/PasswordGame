@@ -12,13 +12,14 @@ class GameFactory (
         private val category: String,
         private val level: String,
         private val language: String,
-        private val source: Int
+        private val source: Int,
+        private val gameTime: Long
 ) : ViewModelProvider.Factory {
 
     @Suppress("unchecked_cast")
     override  fun <T: ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(GameViewModel::class.java)){
-            return GameViewModel(database, application, category, level, language, source) as T
+            return GameViewModel(database, application, category, level, language, source, gameTime) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

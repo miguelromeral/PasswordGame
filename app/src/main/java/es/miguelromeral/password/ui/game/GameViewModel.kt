@@ -22,7 +22,8 @@ class GameViewModel(
         val category: String,
         val level: String,
         val language: String,
-        val source: Int) : ViewModel(),
+        val source: Int,
+        val gameTime: Long) : ViewModel(),
     IRepository {
 
     private val _text = MutableLiveData<String>("Password!")
@@ -81,10 +82,11 @@ class GameViewModel(
     }
 
     fun initTimer(){
-        _countdownInt = (DEFAULT_WAIT / ONE_SECOND).toInt()
+        val chronTime = gameTime + ONE_SECOND - 1
+        _countdownInt = (chronTime / ONE_SECOND).toInt()
         _countdown.postValue(_countdownInt)
         _currentIndex.postValue(0)
-        timer = object : CountDownTimer(DEFAULT_WAIT, ONE_SECOND){
+        timer = object : CountDownTimer(chronTime, ONE_SECOND){
             override fun onTick(milisUtilFinished: Long){
                 _countdownInt -= 1
                 _countdown.postValue(_countdownInt)
@@ -101,7 +103,7 @@ class GameViewModel(
 
 
 
-        timerScore = object : CountDownTimer(DEFAULT_WAIT, DELAY_LIVE_SCORE){
+        timerScore = object : CountDownTimer(chronTime, DELAY_LIVE_SCORE){
             override fun onTick(milisUtilFinished: Long){
                 getCurrentPassword()?.let {
                     val end = System.currentTimeMillis() - timestamp
@@ -196,7 +198,6 @@ class GameViewModel(
         const val SEPARATOR_VOICE = " "
 
 
-        val DEFAULT_WAIT = 61000L
         val ONE_SECOND = 1000L
         val DELAY_LIVE_SCORE = 100L
 
