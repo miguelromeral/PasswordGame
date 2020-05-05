@@ -7,12 +7,14 @@
     <string name="value_category_cooking" translatable="false">cooking</string>
     <string name="value_category_furniture" translatable="false">furniture</string>
     <string name="value_category_movies" translatable="false">movies</string>
+    <string name="value_category_custom" translatable="false">custom</string>
 
     <string name="entry_category_unknown">Unknown</string>
     <string name="entry_category_animals">Animals</string>
     <string name="entry_category_cooking">Cooking</string>
     <string name="entry_category_furniture">Furniture</string>
     <string name="entry_category_movies">Movies</string>
+    <string name="entry_category_custom">*Custom*</string>
 
     <!-- Levels -->
     <string name="value_level_easy" translatable="false">easy</string>
@@ -128,6 +130,9 @@
     <string name="fh_toast_preparing">Preparing the game!</string>
     <string name="fh_button_rules">Read Rules</string>
     <string name="fh_welcome">Welcome to Guess Word!\nMake a team with your friends and try to guess the passwords without saying any of the hints below.\nAre you ready?</string>
+    <string name="fh_warning_custom_title">Unable to start</string>
+    <string name="fh_warning_custom_body">You\'ve filtered the words to only be your custom but also only from the Server. The server doesn\'t have any custom words. Please, change the criteria to start a new game: you can change the source to "Just Device" or change the category.</string>
+    <string name="fh_warning_custom_OK">Got it</string>
 
     <!-- Dashboard Fragment -->
     <string name="three_dots" translatable="false">&#8942;</string>

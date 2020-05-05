@@ -9,6 +9,7 @@
 	<string name="entry_category_cooking">Cocina</string>
 	<string name="entry_category_furniture">Muebles</string>
 	<string name="entry_category_movies">Películas</string>
+	<string name="entry_category_custom">*Personalizada*</string>
 
 	<!-- Levels -->
 	<string name="entry_level_easy">Fácil</string>
@@ -91,6 +92,9 @@
 	<string name="fh_toast_preparing">¡Preparando el juego!</string>
 	<string name="fh_button_rules">Leer Reglas</string>
 	<string name="fh_welcome">Bienvenido a Guess Word!\nHaz un equipo con tus amigos e intentad adivinar las palabras sin decir ninguna de las pistas más abajo.\n¿Estáis preparados?</string>
+	<string name="fh_warning_custom_title">Imposible comenzar</string>
+	<string name="fh_warning_custom_body">Has filtrado las palabras para que sean solo personalizadas pero también desde el Servidor. El servidor no tiene ninguna palabra personalizada. Por favor, cambia el criterio para empezar una nueva partida: puedes cambiar el origen a "Solo Dispositivo" o cambiar la categoría.</string>
+	<string name="fh_warning_custom_OK">Entendido</string>
 
 	<!-- Dashboard Fragment -->
 	<string name="df_alert_clear_db_title">¿Eliminar todos los passwords personalizados?</string>

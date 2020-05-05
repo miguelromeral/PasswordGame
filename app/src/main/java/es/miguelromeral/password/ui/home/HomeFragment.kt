@@ -3,18 +3,22 @@ package es.miguelromeral.password.ui.home
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.preference.PreferenceManager
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.classes.options.Categories
 import es.miguelromeral.password.classes.options.Levels
+import es.miguelromeral.password.classes.options.Options
 import es.miguelromeral.password.databinding.FragmentHomeBinding
 import es.miguelromeral.password.ui.game.GameActivity
 import kotlinx.android.synthetic.main.partial_welcome.view.*
@@ -51,21 +55,39 @@ class HomeFragment : Fragment() {
                 else
                     Categories.DEFAULT_CATEGORY
 
+            val source = PreferenceManager.getDefaultSharedPreferences(context).getString(
+                            requireContext().getString(R.string.pref_words_source_key),"") ?: ""
 
-            val level =
-                if(homeViewModel.filterLevel.value!!)
-                    Levels.getLevelValueFromEntry(resources, binding.partialSpinnerLevel.spLevel.selectedItem.toString())
-                else
-                    Levels.DEFAULT_LEVEL
+            Log.i("Teeeeeee", "Category: $category | Source: $source")
 
-            val language = PreferenceManager.getDefaultSharedPreferences(requireContext()).getString(
-                    resources.getString(R.string.pref_language_key), null) ?:
-                    resources.getString(R.string.pref_language_value_english)
+            if(category.equals(getString(R.string.value_category_custom)) && source.equals(getString(R.string.pref_words_source_value_default))){
+                val builder = AlertDialog.Builder(requireContext())
+                builder.setTitle(R.string.fh_warning_custom_title)
+                builder.setMessage(R.string.fh_warning_custom_body)
+                builder.setPositiveButton(R.string.fh_warning_custom_OK){ dialogInterface, i ->
+                }
 
-            GameActivity.newInstance(requireContext(),
-                category,
-                level,
-                language)
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
+            }else {
+
+                val level =
+                        if (homeViewModel.filterLevel.value!!)
+                            Levels.getLevelValueFromEntry(resources, binding.partialSpinnerLevel.spLevel.selectedItem.toString())
+                        else
+                            Levels.DEFAULT_LEVEL
+
+                val language = PreferenceManager.getDefaultSharedPreferences(requireContext()).getString(
+                        resources.getString(R.string.pref_language_key), null)
+                        ?: resources.getString(R.string.pref_language_value_english)
+
+
+
+                GameActivity.newInstance(requireContext(),
+                        category,
+                        level,
+                        language)
+            }
         }
 
         homeViewModel.filterCategory.observe(viewLifecycleOwner, Observer {
@@ -92,5 +114,9 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         binding.bStartGame.isEnabled = true
+    }
+
+    companion object {
+        const val TAG = "HomeFragment"
     }
 }
