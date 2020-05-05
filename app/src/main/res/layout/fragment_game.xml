@@ -31,7 +31,7 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             ads:adSize="SMART_BANNER"
-            ads:adUnitId="@string/admob_banner_TESTING">
+            ads:adUnitId="@string/admob_banner_ingame">
         </com.google.android.gms.ads.AdView>
 
 
