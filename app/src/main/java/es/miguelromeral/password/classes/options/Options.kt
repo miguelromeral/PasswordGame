@@ -31,6 +31,7 @@ class Options {
         const val DEFAULT_MICROPHONE_VALUE = true
         const val DEFAULT_HINTS_VALUE = true
         const val DEFAULT_TIMER_VALUE = "60000"
+        const val DEFAULT_COUNT_VALUE = "10"
         const val DEFAULT_MIX_PASSWORDS_VALUE = true
     }
 }

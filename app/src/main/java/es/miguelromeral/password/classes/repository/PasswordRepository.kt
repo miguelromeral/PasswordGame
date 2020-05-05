@@ -51,8 +51,20 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
         return myWords
     }
 
+    private fun sendResults(count: Int, list: List<Password>, inter: IRepository){
 
-    suspend fun retrieveWords(category: String, level: String, language: String, source: Int, inter: IRepository) {
+        val toReturn = if(list.size > count){
+            list.shuffled().subList(0, count)
+        }else{
+            list
+        }
+
+        retrieved.postValue(toReturn)
+        inter.recieveWords(toReturn)
+    }
+
+
+    suspend fun retrieveWords(category: String, level: String, language: String, source: Int, countWords: Int, inter: IRepository) {
         return withContext(Dispatchers.IO) {
             var listRetrieved = mutableListOf<Password>()
 
@@ -63,8 +75,7 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
                     emptyList()
 
             if(source == Options.SOURCE_CUSTOM){
-                retrieved.postValue(localWords)
-                inter.recieveWords(localWords)
+                sendResults(countWords, localWords, inter)
                 return@withContext Unit
             }else {
                 val ref = mFirestore.collection(FirestoreConfig.COLL_PASSWORD)
@@ -87,7 +98,7 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
   */
 
                 query
-                    .limit(MAX_WORDS_RETRIEVED)
+                    .limit(countWords.toLong())
                     .get()
                     .addOnSuccessListener { documents ->
                         try {
@@ -100,8 +111,8 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
                                 if(source == Options.SOURCE_BOTH)
                                     listRetrieved.addAll(localWords)
 
-                                retrieved.postValue(listRetrieved.toList())
-                                inter.recieveWords(listRetrieved.toList())
+                                sendResults(countWords, listRetrieved, inter)
+
                                 Log.d(TAG, "DocumentSnapshot read successfully: ${listRetrieved.size}!")
 
                             } else {

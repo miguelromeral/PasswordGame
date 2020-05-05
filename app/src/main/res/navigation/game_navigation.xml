@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/game_navigation"
-    app:startDestination="@id/gameActivityFragment">
+    app:startDestination="@id/loadingFragment">
 
     <fragment
         android:id="@+id/gameActivityFragment"
@@ -18,11 +18,16 @@
             <argument android:defaultValue="0"
                 android:name="fails" />
         </action>
+        <argument
+            android:name="disableMic"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/finishedGameFragment"
         android:name="es.miguelromeral.password.ui.finishedgame.FinishedGameFragment"
-        android:label="@string/fg_title">
+        android:label="@string/fg_title"
+        tools:layout="@layout/fragment_game_finished">
         <argument
             android:name="success"
             android:defaultValue="0"
@@ -34,5 +39,14 @@
         <argument
             android:name="passwords"
             app:argType="es.miguelromeral.password.classes.Password[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="es.miguelromeral.password.ui.game.LoadingFragment"
+        android:label="LoadingFragment"
+        tools:layout="@layout/fragment_game_loading">
+        <action
+            android:id="@+id/action_loadingFragment_to_gameActivityFragment"
+            app:destination="@id/gameActivityFragment" />
     </fragment>
 </navigation>

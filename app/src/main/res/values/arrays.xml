@@ -59,4 +59,20 @@
         <item>@string/pref_timer_value_90</item>
     </string-array>
 
+
+    <!-- Setting Count -->
+
+    <string-array name="pref_count_entries">
+        <item>@string/pref_count_entry_5</item>
+        <item>@string/pref_count_entry_10</item>
+        <item>@string/pref_count_entry_20</item>
+    </string-array>
+
+    <string-array name="pref_count_values">
+        <item>@string/pref_count_value_5</item>
+        <item>@string/pref_count_value_10</item>
+        <item>@string/pref_count_value_20</item>
+    </string-array>
+
+
 </resources>

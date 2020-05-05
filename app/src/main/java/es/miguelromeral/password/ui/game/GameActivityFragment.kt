@@ -35,6 +35,7 @@ import es.miguelromeral.password.classes.options.Levels
 import es.miguelromeral.password.classes.options.Options
 import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentGameBinding
+import es.miguelromeral.password.ui.finishedgame.FinishedGameFragmentArgs
 import java.util.*
 
 /**
@@ -64,6 +65,8 @@ class GameActivityFragment : Fragment() {
             language = it.getString(ARG_LANGUAGE)
         }
 
+        val disableMic = GameActivityFragmentArgs.fromBundle(requireArguments()).disableMic
+
         val application = requireNotNull(this.activity).application
         val dataSource = PasswordDatabase.getInstance(application).passwordDatabaseDao
 
@@ -79,7 +82,10 @@ class GameActivityFragment : Fragment() {
         val gameTime = PreferenceManager.getDefaultSharedPreferences(context).getString(
                 resources.getString(R.string.pref_timer_key), Options.DEFAULT_TIMER_VALUE)?.toLong() ?: 60000L
 
-        val vmf = GameFactory(dataSource, application, category!!, level!!, language!!, source, gameTime)
+        val countWords = PreferenceManager.getDefaultSharedPreferences(context).getString(
+                resources.getString(R.string.pref_count_key), Options.DEFAULT_COUNT_VALUE)?.toInt() ?: 10
+
+        val vmf = GameFactory(dataSource, application, category!!, level!!, language!!, source, gameTime, countWords)
 
         viewModel = ViewModelProviders.of(this, vmf).get(GameViewModel::class.java)
 
@@ -113,7 +119,7 @@ class GameActivityFragment : Fragment() {
             lg.layoutHintsTitle.visibility = View.GONE
         }
 
-        if(microphoneEnabled && hintsEnabled){
+        if(microphoneEnabled && hintsEnabled && !disableMic){
 
             speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext())
             speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
@@ -238,6 +244,9 @@ class GameActivityFragment : Fragment() {
 
         return binding.root
     }
+
+
+
 
 
     fun animatePassword(view: View, viewGroup: ViewGroup, visible: Boolean){

@@ -23,7 +23,8 @@ class GameViewModel(
         val level: String,
         val language: String,
         val source: Int,
-        val gameTime: Long) : ViewModel(),
+        val gameTime: Long,
+        val countWords: Int) : ViewModel(),
     IRepository {
 
     private val _text = MutableLiveData<String>("Password!")
@@ -67,7 +68,7 @@ class GameViewModel(
     init{
         val t = this
         uiScope.launch {
-            repository.retrieveWords(category, level, language, source, t)
+            repository.retrieveWords(category, level, language, source, countWords, t)
         }
     }
 

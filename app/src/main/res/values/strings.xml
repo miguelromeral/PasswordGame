@@ -1,200 +1,216 @@
 <resources>
-    <!-- App Data -->
-    <string name="app_name">Guess Word!</string>
+	<!-- App Data -->
+	<string name="app_name">Guess Word!</string>
 
-    <!-- Categories -->
-    <string name="value_category_animals" translatable="false">animals</string>
-    <string name="value_category_cooking" translatable="false">cooking</string>
-    <string name="value_category_furniture" translatable="false">furniture</string>
-    <string name="value_category_movies" translatable="false">movies</string>
-    <string name="value_category_custom" translatable="false">custom</string>
+	<!-- Categories -->
+	<string name="value_category_animals" translatable="false">animals</string>
+	<string name="value_category_cooking" translatable="false">cooking</string>
+	<string name="value_category_furniture" translatable="false">furniture</string>
+	<string name="value_category_movies" translatable="false">movies</string>
+	<string name="value_category_custom" translatable="false">custom</string>
 
-    <string name="entry_category_unknown">Unknown</string>
-    <string name="entry_category_animals">Animals</string>
-    <string name="entry_category_cooking">Cooking</string>
-    <string name="entry_category_furniture">Furniture</string>
-    <string name="entry_category_movies">Movies</string>
-    <string name="entry_category_custom">*Custom*</string>
+	<string name="entry_category_unknown">Unknown</string>
+	<string name="entry_category_animals">Animals</string>
+	<string name="entry_category_cooking">Cooking</string>
+	<string name="entry_category_furniture">Furniture</string>
+	<string name="entry_category_movies">Movies</string>
+	<string name="entry_category_custom">*Custom*</string>
 
-    <!-- Levels -->
-    <string name="value_level_easy" translatable="false">easy</string>
-    <string name="value_level_medium" translatable="false">medium</string>
-    <string name="value_level_hard" translatable="false">hard</string>
+	<!-- Levels -->
+	<string name="value_level_easy" translatable="false">easy</string>
+	<string name="value_level_medium" translatable="false">medium</string>
+	<string name="value_level_hard" translatable="false">hard</string>
 
-    <string name="entry_level_easy">Easy</string>
-    <string name="entry_level_medium">Medium</string>
-    <string name="entry_level_hard">Hard</string>
+	<string name="entry_level_easy">Easy</string>
+	<string name="entry_level_medium">Medium</string>
+	<string name="entry_level_hard">Hard</string>
 
-    <!-- Preferences -->
-    <string name="action_settings">Settings</string>
-
-
-    <string name="pref_microphone_header_title">Microphone</string>
-
-    <string name="pref_microphone_key" translatable="false">pref_microphone_key</string>
-    <string name="pref_microphone_title">Use microphone in game</string>
-    <string name="pref_microphone_summary">The user can choose if the app listens to them in order to avoid cheating saying any of the hints.</string>
-
-    <string name="pref_game_header_title">Game</string>
-
-    <string name="pref_words_source_key" translatable="false">pref_words_source_key</string>
-    <string name="pref_words_source_title">Password Sources</string>
-    <string name="pref_words_source_summary" translatable="false">%s</string>
-
-    <string name="pref_hints_key" translatable="false">pref_hints_key</string>
-    <string name="pref_hints_title">Play With Hints</string>
-    <string name="pref_hints_summary">If you play without hints, you will be free to say any words related with the password but the password itself. The microphone will not be needed in that case.</string>
-
-    <string name="pref_words_source_value_both" translatable="false">pref_words_source_value_both</string>
-    <string name="pref_words_source_value_default" translatable="false">pref_words_source_value_default</string>
-    <string name="pref_words_source_value_custom" translatable="false">pref_words_source_value_custom</string>
-
-    <string name="pref_words_source_entry_both">Both Server and Device</string>
-    <string name="pref_words_source_entry_default">Just Server</string>
-    <string name="pref_words_source_entry_custom">Just Device</string>
-
-    <string name="pref_language_key" translatable="false">pref_language_key</string>
-    <string name="pref_language_title">Answers language</string>
-    <string name="pref_language_summary" translatable="false">%s</string>
-
-    <string name="pref_language_value_english" translatable="false">english</string>
-    <string name="pref_language_value_spanish" translatable="false">spanish</string>
-
-    <string name="pref_language_entry_english">English</string>
-    <string name="pref_language_entry_spanish">Spanish</string>
+	<!-- Preferences -->
+	<string name="action_settings">Settings</string>
 
 
-    <string name="pref_timer_key" translatable="false">pref_timer_key</string>
-    <string name="pref_timer_title">Game Time</string>
-    <string name="pref_timer_summary" translatable="false">%s</string>
+	<string name="pref_microphone_header_title">Microphone</string>
+
+	<string name="pref_microphone_key" translatable="false">pref_microphone_key</string>
+	<string name="pref_microphone_title">Use microphone in game</string>
+	<string name="pref_microphone_summary">The user can choose if the app listens to them in order to avoid cheating saying any of the hints.</string>
+
+	<string name="pref_game_header_title">Game</string>
+
+	<string name="pref_words_source_key" translatable="false">pref_words_source_key</string>
+	<string name="pref_words_source_title">Password Sources</string>
+	<string name="pref_words_source_summary" translatable="false">%s</string>
+
+	<string name="pref_hints_key" translatable="false">pref_hints_key</string>
+	<string name="pref_hints_title">Play With Hints</string>
+	<string name="pref_hints_summary">If you play without hints, you will be free to say any words related with the password but the password itself. The microphone will not be needed in that case.</string>
+
+	<string name="pref_words_source_value_both" translatable="false">pref_words_source_value_both</string>
+	<string name="pref_words_source_value_default" translatable="false">pref_words_source_value_default</string>
+	<string name="pref_words_source_value_custom" translatable="false">pref_words_source_value_custom</string>
+
+	<string name="pref_words_source_entry_both">Both Server and Device</string>
+	<string name="pref_words_source_entry_default">Just Server</string>
+	<string name="pref_words_source_entry_custom">Just Device</string>
+
+	<string name="pref_language_key" translatable="false">pref_language_key</string>
+	<string name="pref_language_title">Answers language</string>
+	<string name="pref_language_summary" translatable="false">%s</string>
+
+	<string name="pref_language_value_english" translatable="false">english</string>
+	<string name="pref_language_value_spanish" translatable="false">spanish</string>
+
+	<string name="pref_language_entry_english">English</string>
+	<string name="pref_language_entry_spanish">Spanish</string>
 
 
-    <string name="pref_timer_value_30" translatable="false">30000</string>
-    <string name="pref_timer_value_60" translatable="false">60000</string>
-    <string name="pref_timer_value_90" translatable="false">90000</string>
-
-    <string name="pref_timer_entry_30">30 seconds</string>
-    <string name="pref_timer_entry_60">60 seconds</string>
-    <string name="pref_timer_entry_90">90 seconds</string>
+	<string name="pref_timer_key" translatable="false">pref_timer_key</string>
+	<string name="pref_timer_title">Game Time</string>
+	<string name="pref_timer_summary" translatable="false">%s</string>
 
 
+	<string name="pref_timer_value_30" translatable="false">30000</string>
+	<string name="pref_timer_value_60" translatable="false">60000</string>
+	<string name="pref_timer_value_90" translatable="false">90000</string>
 
-    <string name="pref_tip_key" translatable="false">pref_tip_key</string>
-    <string name="pref_tip_title">Support the Author</string>
-    <string name="pref_tip_summary">Send us a tip if you found the app useful and entertaining.</string>
-
-    <string name="pref_policy_key" translatable="false">pref_policy_key</string>
-    <string name="pref_policy_title">Privacy Policy</string>
-    <string name="pref_policy_summary">Read the app\'s Privacy Policy.</string>
-
-
-    <string name="pref_display_header_title">Display</string>
-
-    <string name="pref_theme_key" translatable="false">pref_theme_key</string>
-    <string name="pref_theme_title">Dark Theme</string>
-    <string name="pref_theme_summary">Enable dark colors for the app</string>
-
-    <string name="pref_about_header_title">About</string>
-
-    <string name="pref_github_key" translatable="false">pref_github_key</string>
-    <string name="pref_github_web" translatable="false">https://github.com/miguelromeral/PasswordGame</string>
-    <string name="pref_github_title">View Repository in GitHub</string>
-    <string name="pref_github_summary">Take a look to the code in the MiguelRomeral\'s GitHub repository for this project.</string>
+	<string name="pref_timer_entry_30">30 seconds</string>
+	<string name="pref_timer_entry_60">60 seconds</string>
+	<string name="pref_timer_entry_90">90 seconds</string>
 
 
-    <!-- Item Custom Password -->
-    <string name="cp_edit_title">Edit</string>
-    <string name="cp_delete_title">Delete</string>
-    <string name="cp_no_hints">*No hints for this word*</string>
+	<string name="pref_count_key" translatable="false">pref_count_key</string>
+	<string name="pref_count_title">Max. words in game</string>
+	<string name="pref_count_summary" translatable="false">%s</string>
 
-    <!-- Custom Passowrd Fragment -->
-    <string name="cpf_title">Custom Answer</string>
-    <string name="cpf_title_word">Word (Solution)</string>
-    <string name="cpf_title_category">Category</string>
-    <string name="cpf_title_level">Level</string>
-    <string name="cpf_title_language">Language</string>
-    <string name="cpf_title_hints">Hints</string>
-    <string name="cpf_button_add_hint">Add Hint</string>
-    <string name="cpf_button_add_password">Create</string>
-    <string name="cpf_button_update_password">Update</string>
-    <string name="cpf_alert_new_hint_title">New Hint</string>
-    <string name="cpf_alert_new_hint_body">Write the new hint</string>
-    <string name="cpf_alert_new_hint_ok">OK</string>
-    <string name="cpf_alert_new_hint_cancel">Cancel</string>
-    <string name="cpf_warning_added_successfully">Added \"%1$s\" Successfully!</string>
+	<string name="pref_count_value_5" translatable="false">5</string>
+	<string name="pref_count_value_10" translatable="false">10</string>
+	<string name="pref_count_value_20" translatable="false">20</string>
 
-    <!-- Fragment Home -->
-    <string name="fh_filter_category">Filter by Category</string>
-    <string name="fh_filter_level">Filter by Level</string>
-    <string name="fh_button_start">Start new Game</string>
-    <string name="fh_toast_preparing">Preparing the game!</string>
-    <string name="fh_button_rules">Read Rules</string>
-    <string name="fh_welcome">Welcome to Guess Word!\nMake a team with your friends and try to guess the passwords without saying any of the hints below.\nAre you ready?</string>
-    <string name="fh_warning_custom_title">Unable to start</string>
-    <string name="fh_warning_custom_body">You\'ve filtered the words to only be your custom but also only from the Server. The server doesn\'t have any custom words. Please, change the criteria to start a new game: you can change the source to "Just Device" or change the category.</string>
-    <string name="fh_warning_custom_OK">Got it</string>
+	<string name="pref_count_entry_5" translatable="false">5</string>
+	<string name="pref_count_entry_10" translatable="false">10</string>
+	<string name="pref_count_entry_20" translatable="false">20</string>
 
-    <!-- Dashboard Fragment -->
-    <string name="three_dots" translatable="false">&#8942;</string>
-    <string name="df_alert_clear_db_title">Clear All Custom Passwords?</string>
-    <string name="df_alert_clear_db_body">Are you sure you really want to clear all the passwords you have in this device? This action can not be changed.</string>
-    <string name="df_alert_clear_db_ok">DELETE</string>
-    <string name="df_alert_clear_db_cancel">BACK</string>
 
-    <string name="df_option_search">Search</string>
-    <string name="df_option_add">Add New Answer</string>
-    <string name="df_option_clear">Clear All Answers</string>
+	<string name="pref_tip_key" translatable="false">pref_tip_key</string>
+	<string name="pref_tip_title">Support the Author</string>
+	<string name="pref_tip_summary">Send us a tip if you found the app useful and entertaining.</string>
 
-    <!-- Item Custom Hint -->
-    <string name="ch_button_delete">Remove</string>
+	<string name="pref_policy_key" translatable="false">pref_policy_key</string>
+	<string name="pref_policy_title">Privacy Policy</string>
+	<string name="pref_policy_summary">Read the app\'s Privacy Policy.</string>
 
-    <!-- Partial Empty CP -->
-    <string name="pecp_alert_empty">There aren\'t any custom passwords yet.\nPlease, touch the three dots on the toolbar to add one.</string>
 
-    <!-- Game Activity Fragment -->
-    <string name="gaf_alert_microphone_title">Microphone Permission Required</string>
-    <string name="gaf_alert_microphone_body">In order to use the auto check for hints, you must enable the Microphone permission for this app.\nPlease, in the next screen, go to \'Permissions\' and enable the one named \'Microphone\'.</string>
-    <string name="gaf_alert_microphone_ok">Go To Settings</string>
-    <string name="gaf_alert_microphone_cancel">Dismiss</string>
-    <string name="gaf_alert_no_words_title">Couldn\'t start the game</string>
-    <string name="gaf_alert_no_words_body">We haven\'t been able to find words according to that criteria.\nPlease, try filtering other values or try with these again later.</string>
-    <string name="gaf_alert_no_words_ok">Go Home</string>
-    <string name="gaf_title_activity">@string/app_name</string>
+	<string name="pref_display_header_title">Display</string>
 
-    <!-- Finished Game -->
-    <string name="fg_title">Game Finished</string>
-    <string name="fg_score">Total Score: %1$s points</string>
-    <string name="fg_success">Words right: %1$s</string>
-    <string name="fg_fails">Words passed: %1$s</string>
-    <string name="fg_word_default">Server</string>
-    <string name="fg_word_custom">Device</string>
-    <string name="fg_answer_failed">Failed</string>
-    <string name="fg_answer_solved">Solved!</string>
-    <string name="fg_share_action">Share Score</string>
-    <string name="fg_share_text">We got %1$s points (%2$s rights and %3$s passed) in Guess Word! Download it now from https://ply.gl/es.miguelromeral.password</string>
+	<string name="pref_theme_key" translatable="false">pref_theme_key</string>
+	<string name="pref_theme_title">Dark Theme</string>
+	<string name="pref_theme_summary">Enable dark colors for the app</string>
 
-    <!-- Partial Game -->
-    <string name="pg_button_miss">PASS</string>
-    <string name="pg_button_hit">SUCCESS</string>
-    <string name="pg_score_zero">0</string>
-    <string name="pg_title_hint">You can\'t say any of these words</string>
-    <string name="pg_timer_title">TIME LEFT:</string>
+	<string name="pref_about_header_title">About</string>
 
-    <!-- Partial Loading Game -->
-    <string name="plg_waiting">Loading game. Please, stand by.</string>
+	<string name="pref_github_key" translatable="false">pref_github_key</string>
+	<string name="pref_github_web" translatable="false">https://github.com/miguelromeral/PasswordGame</string>
+	<string name="pref_github_title">View Repository in GitHub</string>
+	<string name="pref_github_summary">Take a look to the code in the MiguelRomeral\'s GitHub repository for this project.</string>
 
-    <!-- Bottom Nav Menu -->
-    <string name="bnm_home_title">Home</string>
-    <string name="bnm_dashbord_title">Mi Passwords</string>
-    <string name="bnm_settings_title">Settings</string>
 
-    <!-- Ads Setup -->
-    <string name="admob_app_id" translatable="false">ca-app-pub-3514829067318771~7798054922</string>
-    <string name="admob_banner_ingame" translatable="false">ca-app-pub-3514829067318771/8525292162</string>
-    <string name="admob_banner_TESTING" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="admob_interstitial_finishedgame" translatable="false">ca-app-pub-3514829067318771/2509520486</string>
-    <string name="admob_interstitial_TESTING" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+	<!-- Item Custom Password -->
+	<string name="cp_edit_title">Edit</string>
+	<string name="cp_delete_title">Delete</string>
+	<string name="cp_no_hints">*No hints for this word*</string>
 
+	<!-- Custom Passowrd Fragment -->
+	<string name="cpf_title">Custom Answer</string>
+	<string name="cpf_title_word">Word (Solution)</string>
+	<string name="cpf_title_category">Category</string>
+	<string name="cpf_title_level">Level</string>
+	<string name="cpf_title_language">Language</string>
+	<string name="cpf_title_hints">Hints</string>
+	<string name="cpf_button_add_hint">Add Hint</string>
+	<string name="cpf_button_add_password">Create</string>
+	<string name="cpf_button_update_password">Update</string>
+	<string name="cpf_alert_new_hint_title">New Hint</string>
+	<string name="cpf_alert_new_hint_body">Write the new hint</string>
+	<string name="cpf_alert_new_hint_ok">OK</string>
+	<string name="cpf_alert_new_hint_cancel">Cancel</string>
+	<string name="cpf_warning_added_successfully">Added \"%1$s\" Successfully!</string>
+
+	<!-- Fragment Home -->
+	<string name="fh_filter_category">Filter by Category</string>
+	<string name="fh_filter_level">Filter by Level</string>
+	<string name="fh_button_start">Start new Game</string>
+	<string name="fh_toast_preparing">Preparing the game!</string>
+	<string name="fh_button_rules">Read Rules</string>
+	<string name="fh_welcome">Welcome to Guess Word!\nMake a team with your friends and try to guess the passwords without saying any of the hints below.\nAre you ready?</string>
+	<string name="fh_warning_custom_title">Unable to start</string>
+	<string name="fh_warning_custom_body">You\'ve filtered the words to only be your custom but also only from the Server. The server doesn\'t have any custom words. Please, change the criteria to start a new game: you can change the source to "Just Device" or change the category.</string>
+	<string name="fh_warning_custom_OK">Got it</string>
+
+	<!-- Dashboard Fragment -->
+	<string name="three_dots" translatable="false">&#8942;</string>
+	<string name="df_alert_clear_db_title">Clear All Custom Passwords?</string>
+	<string name="df_alert_clear_db_body">Are you sure you really want to clear all the passwords you have in this device? This action can not be changed.</string>
+	<string name="df_alert_clear_db_ok">DELETE</string>
+	<string name="df_alert_clear_db_cancel">BACK</string>
+
+	<string name="df_option_search">Search</string>
+	<string name="df_option_add">Add New Answer</string>
+	<string name="df_option_clear">Clear All Answers</string>
+
+	<!-- Item Custom Hint -->
+	<string name="ch_button_delete">Remove</string>
+
+	<!-- Partial Empty CP -->
+	<string name="pecp_alert_empty">There aren\'t any custom passwords yet.\nPlease, touch the three dots on the toolbar to add one.</string>
+
+	<!-- Game Activity Fragment -->
+	<string name="gaf_alert_microphone_title">Microphone Permission Required</string>
+	<string name="gaf_alert_microphone_body">In order to use the auto check for hints, you must enable the Microphone permission for this app.\nPlease, in the next screen, go to \'Permissions\' and enable the one named \'Microphone\'.</string>
+	<string name="gaf_alert_microphone_ok">Ask Again</string>
+	<string name="gaf_alert_microphone_cancel">Go Back</string>
+	<string name="gaf_alert_microphone_start_without">Game will start without microphone then</string>
+
+	<string name="gaf_alert_no_words_title">Couldn\'t start the game</string>
+	<string name="gaf_alert_no_words_body">We haven\'t been able to find words according to that criteria.\nPlease, try filtering other values or try with these again later.</string>
+	<string name="gaf_alert_no_words_ok">Go Home</string>
+	<string name="gaf_title_activity">@string/app_name</string>
+
+	<!-- Finished Game -->
+	<string name="fg_title">Game Finished</string>
+	<string name="fg_score">Total Score: %1$s points</string>
+	<string name="fg_success">Words right: %1$s</string>
+	<string name="fg_fails">Words passed: %1$s</string>
+	<string name="fg_word_default">Server</string>
+	<string name="fg_word_custom">Device</string>
+	<string name="fg_answer_failed">Failed</string>
+	<string name="fg_answer_solved">Solved!</string>
+	<string name="fg_share_action">Share Score</string>
+	<string name="fg_share_text">We got %1$s points (%2$s rights and %3$s passed) in Guess Word! Download it now from https://ply.gl/es.miguelromeral.password</string>
+
+	<!-- Partial Game -->
+	<string name="pg_button_miss">PASS</string>
+	<string name="pg_button_hit">SUCCESS</string>
+	<string name="pg_score_zero">0</string>
+	<string name="pg_title_hint">You can\'t say any of these words</string>
+	<string name="pg_timer_title">TIME LEFT:</string>
+
+	<!-- Partial Loading Game -->
+	<string name="plg_waiting">Loading game. Please, stand by.</string>
+
+	<!-- Bottom Nav Menu -->
+	<string name="bnm_home_title">Home</string>
+	<string name="bnm_dashbord_title">Mi Passwords</string>
+	<string name="bnm_settings_title">Settings</string>
+
+	<!-- Ads Setup -->
+	<string name="admob_app_id" translatable="false">ca-app-pub-3514829067318771~7798054922</string>
+	<string name="admob_banner_ingame" translatable="false">ca-app-pub-3514829067318771/8525292162</string>
+	<string name="admob_banner_TESTING" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+	<string name="admob_interstitial_finishedgame" translatable="false">ca-app-pub-3514829067318771/2509520486</string>
+	<string name="admob_interstitial_TESTING" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

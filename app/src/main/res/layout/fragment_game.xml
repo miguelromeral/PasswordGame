@@ -31,7 +31,7 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             ads:adSize="SMART_BANNER"
-            ads:adUnitId="@string/admob_banner_ingame">
+            ads:adUnitId="@string/admob_banner_TESTING">
         </com.google.android.gms.ads.AdView>
 
 
@@ -47,7 +47,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
 
-
                 <include
                     android:id="@+id/layout_loading"
                     layout="@layout/partial_loading_game"
@@ -57,7 +56,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
 
                 <include
                     android:id="@+id/layout_game"

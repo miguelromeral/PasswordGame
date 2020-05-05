@@ -49,6 +49,16 @@
             android:icon="@drawable/stopwatch_regular"
             android:defaultValue="@string/pref_timer_value_60"/>
 
+
+        <DropDownPreference
+            android:key="@string/pref_count_key"
+            android:title="@string/pref_count_title"
+            android:summary="@string/pref_count_summary"
+            android:entries="@array/pref_count_entries"
+            android:entryValues="@array/pref_count_values"
+            android:icon="@drawable/count"
+            android:defaultValue="@string/pref_count_value_10"/>
+
     </PreferenceCategory>
 
 

@@ -47,6 +47,9 @@
 	<string name="pref_timer_entry_60">60 segundos</string>
 	<string name="pref_timer_entry_90">90 segundos</string>
 
+
+	<string name="pref_count_title">Máx. palabras en el juego</string>
+
 	<string name="pref_tip_title">Apoya al Autor</string>
 	<string name="pref_tip_summary">Mándanos una propina si encontraste la app útil y entretenida.</string>
 
@@ -117,8 +120,10 @@
 	<string name="gaf_alert_microphone_body">
 		Para poder usar el auto comprobador de pistas, debes habilitar el permiso de Micrófono para esta app.\n
 		Por favor, en la siguiente pantalla, ve a \'Permisos\' y habilita el que se llame \'Micrófono\'.</string>
-	<string name="gaf_alert_microphone_ok">Ir a Ajustes</string>
+	<string name="gaf_alert_microphone_ok">Preguntar Otra Vez</string>
 	<string name="gaf_alert_microphone_cancel">Volver</string>
+	<string name="gaf_alert_microphone_start_without">El juego empezará sin el micrófono entonces</string>
+
 	<string name="gaf_alert_no_words_title">No se pudo iniciar el juego</string>
 	<string name="gaf_alert_no_words_body">No hemos sido capaces de encontrar ninguna solución acorde a esos criterios.\nPor favor, intenta filtrar por otros valores o inténtalo con éstos más tarde.</string>
 	<string name="gaf_alert_no_words_ok">Ir a Inicio</string>
