@@ -6,6 +6,7 @@
 	<!-- Categories -->
 	<string name="entry_category_unknown">Desconocida</string>
 	<string name="entry_category_animals">Animales</string>
+	<string name="entry_category_cooking">Cocina</string>
 	<string name="entry_category_furniture">Muebles</string>
 	<string name="entry_category_movies">Películas</string>
 

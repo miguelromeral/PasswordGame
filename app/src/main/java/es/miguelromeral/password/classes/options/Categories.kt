@@ -15,8 +15,9 @@ class Categories {
         fun getCategoryValueIndex(res: Resources, value: String?): Int =
                 when(value){
                     res.getString(R.string.value_category_animals) -> 0
-                    res.getString(R.string.value_category_furniture)-> 1
-                    res.getString(R.string.value_category_movies)-> 2
+                    res.getString(R.string.value_category_cooking)-> 1
+                    res.getString(R.string.value_category_furniture)-> 2
+                    res.getString(R.string.value_category_movies)-> 3
                     else -> 0
                 }
 
@@ -24,6 +25,8 @@ class Categories {
                 when(value){
                     resources.getString(R.string.value_category_animals) ->
                         resources.getString(R.string.entry_category_animals)
+                    resources.getString(R.string.value_category_cooking) ->
+                        resources.getString(R.string.entry_category_cooking)
                     resources.getString(R.string.value_category_furniture) ->
                         resources.getString(R.string.entry_category_furniture)
                     resources.getString(R.string.value_category_movies) ->
@@ -34,6 +37,8 @@ class Categories {
 
         fun getCategoryValueFromEntry(resources: Resources, entry: String): String =
                 when(entry){
+                    resources.getString(R.string.entry_category_cooking) ->
+                        resources.getString(R.string.value_category_cooking)
                     resources.getString(R.string.entry_category_furniture) ->
                         resources.getString(R.string.value_category_furniture)
                     resources.getString(R.string.entry_category_movies) ->

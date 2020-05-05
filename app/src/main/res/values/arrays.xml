@@ -3,7 +3,8 @@
 
     <string-array name="array_category_entries">
         <item>@string/entry_category_animals</item>
-        <item>@string/entry_category_furniture</item>
+		<item>@string/entry_category_cooking</item>
+		<item>@string/entry_category_furniture</item>
         <item>@string/entry_category_movies</item>
     </string-array>
 

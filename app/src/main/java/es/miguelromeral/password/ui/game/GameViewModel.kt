@@ -82,7 +82,7 @@ class GameViewModel(
     }
 
     fun initTimer(){
-        val chronTime = gameTime + ONE_SECOND - 1
+        val chronTime = gameTime + ONE_SECOND
         _countdownInt = (chronTime / ONE_SECOND).toInt()
         _countdown.postValue(_countdownInt)
         _currentIndex.postValue(0)
