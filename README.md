@@ -25,46 +25,41 @@ On the other hand, the insertions are performed by a simple Node.js project, get
 ## Functionalities and Screenshots
 
 * Filter passwords by categories, levels and language
+
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/home_light.png" height="400px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/home_dark.png" height="400px" width="auto">
+
 * Hints Referee by enabling the microphone
+
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/game_light.png" height="400px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/game_dark.png" height="400px" width="auto">
+
 * Create your own passwords and expand the game functionalities
+
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/custom_light.png" height="400px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/custom_dark.png" height="400px" width="auto">
+
 * Mix your own solutions with the defaults ones
-* Play without hints if its too difficult
+
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/filter_light.png" height="400px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/filter_dark.png" height="400px" width="auto">
+
+* Play without hints if its too difficult, along other settings
+
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/settings_light.png" height="400px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/settings_dark.png" height="400px" width="auto">
+
 * Scoreboards according to the time elapsed to solve a password
+
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/finished_light.png" height="400px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/finished_dark.png" height="400px" width="auto">
+
 * Dark Theme
 
-<!--
-* Conversion between texts.
-* QR codes for processed text.
-* Share the texts converted with other apps.
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/splash_light.png" height="400px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/splash_dark.png" height="400px" width="auto">
 
-<img src="https://raw.githubusercontent.com/miguelromeral/SecretManager/master/screenshots/Screenshot_1580320480.png" height="400px" width="auto">
-<img src="https://raw.githubusercontent.com/miguelromeral/SecretManager/master/screenshots/Screenshot_1580320572.png" height="400px" width="auto">
 
-* Conversion between other files (images, videos, documents, etc.)
-
-<img src="https://raw.githubusercontent.com/miguelromeral/SecretManager/master/screenshots/Screenshot_1580320662.png" height="400px" width="auto">
-<img src="https://raw.githubusercontent.com/miguelromeral/SecretManager/master/screenshots/Screenshot_1580320695.png" height="400px" width="auto">
-<img src="https://raw.githubusercontent.com/miguelromeral/SecretManager/master/screenshots/Screenshot_1580322527.png" height="400px" width="auto">
-
-* Store text encrypted and retrieve it when you want to decrypt it.
-
-<img src="https://raw.githubusercontent.com/miguelromeral/SecretManager/master/screenshots/Screenshot_1580320766.png" height="400px" width="auto">
-<img src="https://raw.githubusercontent.com/miguelromeral/SecretManager/master/screenshots/Screenshot_1580320859.png" height="400px" width="auto">
-
-* Process text directly when select some text in any other Android app.
-
-<img src="https://raw.githubusercontent.com/miguelromeral/SecretManager/master/screenshots/Screenshot_1580322478.png" height="400px" width="auto">
-
-* Pass a file from other app to Secret Manager to be converted.
-
-<img src="https://raw.githubusercontent.com/miguelromeral/SecretManager/master/screenshots/Screenshot_1580322598.png" height="400px" width="auto">
-
-* Export and import secrets stored oon the device.
-
-<img src="https://raw.githubusercontent.com/miguelromeral/SecretManager/master/screenshots/Screenshot_1580320842.png" height="400px" width="auto">
-
-* Day / Night app theme.
--->
 ## Help
 
 If you need help with the application and the instructions for the game, please visit the [USAGE](https://github.com/miguelromeral/PasswordGame/blob/master/USAGE.md) page or contact to the developer via the information given below.
