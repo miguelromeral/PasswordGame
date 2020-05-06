@@ -88,6 +88,14 @@ You can send your suggestions, doubts, or anything else related to the app direc
 
 You can know me further in [my online resume](https://miguelromeral.github.io/about).
 
+In colaboration with:
+
+* Icons are bougth from [Streamline](https://app.streamlineicons.com/home).
+
+* Sounds are downloaded from [Freesound](https://freesound.org/).
+
+* Fonts used in the App from [Google Fonts](https://fonts.google.com/).
+
 ## <img alt='Donations' src='https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/app/src/main/res/drawable/tip.png' height="30" width="auto" /> Donations
 
 Please, if you found useful this project, I'd appreciate you [buy me a coffee clicking on this link](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=M4CR7FHADMVXN&source=url) and send your feedback.
