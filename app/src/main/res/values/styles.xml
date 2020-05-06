@@ -223,7 +223,7 @@
         <item name="android:popupElevation">3dp</item>
         <item name="android:stateListAnimator">@drawable/spinner_sla</item>
         <item name="android:textSize">40sp</item>
-        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:spinnerMode">dialog</item>
     </style>
 
 
