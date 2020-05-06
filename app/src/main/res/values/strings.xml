@@ -211,8 +211,4 @@
 	<string name="admob_interstitial_finishedgame" translatable="false">ca-app-pub-3514829067318771/2509520486</string>
 	<string name="admob_interstitial_TESTING" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
 
-	<!-- TODO: Remove or change this placeholder text -->
-	<string name="hello_blank_fragment">Hello blank fragment</string>
-
-
 </resources>
