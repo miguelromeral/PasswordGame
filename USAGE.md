@@ -75,7 +75,7 @@ If you think the database has no whatever you need, you can add your own passwor
 
 ### <img alt='Server' src='https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/app/src/main/res/drawable/database_regular.png' height="30" width="auto" /> Online database
 
-The app's default solutions are available in a database hosted in an online server, so in order to get these words, **you'll need internet connection**. The database's words can change remotely without any user activity, so you can have new content available with no user interaction*.
+More than 400 solutions are available in the server. The app's default solutions are available in a database hosted in an online server, so in order to get these words, **you'll need internet connection**. The database's words can change remotely without any user activity, so you can have new content available with no user interaction*.
 
 ```
 *If there are new categories added, the user will have to update the app to play with them.

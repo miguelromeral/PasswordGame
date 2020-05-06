@@ -9,6 +9,7 @@
 	<string name="entry_category_cooking">Cocina</string>
 	<string name="entry_category_furniture">Muebles</string>
 	<string name="entry_category_movies">Películas</string>
+	<string name="entry_category_sports">Deportes</string>
 	<string name="entry_category_custom">*Personalizada*</string>
 
 	<!-- Levels -->
