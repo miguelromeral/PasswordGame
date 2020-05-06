@@ -31,12 +31,14 @@ data class Password(
 
 ) : Parcelable {
 
-    var time: Long = 0
-    var score: Int = 0
+    var time: Long? = 0
+    var score: Int? = 0
 
-    var solved: Boolean = false
-    var failed: Boolean = false
-    var custom: Boolean = false
+    var solved: Boolean? = false
+    var failed: Boolean? = false
+    var custom: Boolean? = false
+
+
 
 
     fun hintsSplit(): List<String> {

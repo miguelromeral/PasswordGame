@@ -30,7 +30,7 @@ class FinishedGameViewModel (
 
 
     init {
-        val answers = passwords.filter { it.solved || it.failed }
+        val answers = passwords.filter { it.solved ?: false || it.failed ?: false }
         _score.postValue(calculateScore(answers))
         _listOfWords.postValue(answers)
     }
@@ -38,8 +38,7 @@ class FinishedGameViewModel (
     private fun calculateScore(answers: List<Password>): Int{
         var points = 0
         for(ans in answers){
-            //ans.score = ScoreBoard.getScore(ans.time, ans.solved, ans.failed, ans.level ?: Options.DEFAULT_LEVEL)
-            points += ans.score
+            points += ans.score ?: 0
         }
         if(points < 0)
             points = 0

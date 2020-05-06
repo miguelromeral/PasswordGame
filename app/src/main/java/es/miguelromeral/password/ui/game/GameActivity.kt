@@ -25,6 +25,7 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.*
 import android.widget.Toast
 import es.miguelromeral.password.R
+import es.miguelromeral.password.ui.requestPermission
 
 
 class GameActivity : AppCompatActivity() {
@@ -104,7 +105,7 @@ class GameActivity : AppCompatActivity() {
                             //val newIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName"))
                             //activity.startActivity(newIntent)
 
-                            requestPermission(permission)
+                            requestPermission(activity, permission, MY_PERMISSIONS_REQUEST_READ_CONTACTS)
                         }
 
                         val dialog: AlertDialog = builder.create()
@@ -115,7 +116,7 @@ class GameActivity : AppCompatActivity() {
                 //viewModel.showExplanationMicro(mHandler)
             } else {
                 // No explanation needed, we can request the permission.
-                requestPermission(permission)
+                requestPermission(this, permission, MY_PERMISSIONS_REQUEST_READ_CONTACTS)
             }
         } else {
             // Permission has already been granted
@@ -123,11 +124,6 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    fun requestPermission(permission: String){
-        ActivityCompat.requestPermissions(this,
-                arrayOf(permission),
-                MY_PERMISSIONS_REQUEST_READ_CONTACTS)
-    }
 
     override fun onRequestPermissionsResult(requestCode: Int,
                                             permissions: Array<String>, grantResults: IntArray) {

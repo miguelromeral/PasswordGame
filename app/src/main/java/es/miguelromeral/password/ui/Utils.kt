@@ -1,5 +1,9 @@
 package es.miguelromeral.password.ui
 
+import android.app.Activity
+import androidx.core.app.ActivityCompat
+import es.miguelromeral.password.ui.game.GameActivity
+
 /*
 fun createSpinnerAdapter_Level(context: Context): ArrayAdapter<String> {
 
@@ -16,3 +20,8 @@ fun createSpinnerAdapter_Level(context: Context): ArrayAdapter<String> {
         R.layout.simple_spinner_dropdown_item, items)
 }
 */
+
+
+fun requestPermission(activity: Activity, permission: String, code: Int){
+    ActivityCompat.requestPermissions(activity, arrayOf(permission), code)
+}

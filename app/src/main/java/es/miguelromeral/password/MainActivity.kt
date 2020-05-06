@@ -1,12 +1,24 @@
 package es.miguelromeral.password
 
+import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.snackbar.Snackbar
+import es.miguelromeral.password.classes.database.PasswordDatabase
+import es.miguelromeral.password.ui.actionViewFile
+import es.miguelromeral.password.ui.executeExportSecrets
+import es.miguelromeral.password.ui.game.GameActivity
+import es.miguelromeral.password.ui.settings.SettingsFragment
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,4 +43,53 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION -> {
+                // If request is cancelled, the result arrays are empty.
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                    exportSecrets(baseContext)
+                } else {
+                    Toast.makeText(this, R.string.df_warning_export_toast, Toast.LENGTH_LONG).show()
+                }
+                return
+            }
+
+
+            else -> {
+                // Ignore all other requests.
+            }
+        }
+    }
+
+
+    fun exportSecrets(context: Context){
+        executeExportSecrets(context, PasswordDatabase.getInstance(context))?.let{ uri ->
+
+            val view: View = findViewById(R.id.nav_host_fragment)
+
+            val snackbar = Snackbar.make(view, R.string.df_export_complete, Snackbar.LENGTH_LONG)
+            snackbar.setAction(R.string.df_export_complete_open){
+
+                try {
+                    startActivity(actionViewFile(context, uri))
+                }catch (e: Exception){
+                    e.printStackTrace()
+                }
+
+            }
+            snackbar.show()
+        }
+
+    }
+
+    companion object {
+        const val REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 20
+    }
+
 }

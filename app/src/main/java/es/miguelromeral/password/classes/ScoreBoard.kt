@@ -2,6 +2,7 @@ package es.miguelromeral.password.classes
 
 import android.content.res.Resources
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.options.Levels
 
 class ScoreBoard {
 
@@ -19,7 +20,7 @@ class ScoreBoard {
         const val SCORE_BONUS_HARD = 0.5
 
 
-        fun getScore(resources: Resources, time: Long, solved: Boolean, failed: Boolean, level: String): Int =
+        fun getScore(resources: Resources, time: Long = 0L, solved: Boolean = false, failed: Boolean = false, level: String = Levels.DEFAULT_LEVEL): Int =
                         if(solved){
                             SCORE_HIT + getBonus(resources, time, level)
                         }else if(failed){

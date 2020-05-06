@@ -52,6 +52,10 @@ class CustomPasswordAdapter(
             binding.tvLevel.text = Levels.getLevelTextFromValue(res, item.level)
             binding.tvCategory.text = Categories.getCategoryTextFromValue(res, item.category)
 
+            if(item.hintsSplit().isEmpty()){
+                binding.clHints.visibility = View.GONE
+            }
+
             binding.cardViewAnswer.setOnLongClickListener{ view ->
                 showMenu(view)
                 true

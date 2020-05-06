@@ -76,7 +76,6 @@
 
 
 
-
     <PreferenceCategory
         android:title="@string/pref_about_header_title">
 

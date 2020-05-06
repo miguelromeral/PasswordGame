@@ -157,7 +157,7 @@ class GameViewModel(
                             _solutionState.postValue(STATE_FAIL)
                         }
 
-                        pwd.score = ScoreBoard.getScore(application.resources, pwd.time, pwd.solved, pwd.failed, pwd.level ?: Levels.DEFAULT_LEVEL)
+                        pwd.score = ScoreBoard.getScore(application.resources, pwd.time ?: 0, pwd.solved ?: false, pwd.failed ?: false, pwd.level ?: Levels.DEFAULT_LEVEL)
                         _currentIndex.postValue(_currentIndex.value!! + 1)
                     }
                     timestamp = end

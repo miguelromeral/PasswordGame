@@ -107,8 +107,32 @@
 	<string name="df_alert_clear_db_cancel">VOLVER</string>
 
 	<string name="df_option_search">Buscar</string>
+	<string name="df_option_import">Importar Datos</string>
+	<string name="df_option_export">Exportar Datos</string>
 	<string name="df_option_add">Añadir Nuevo Password</string>
 	<string name="df_option_clear">Eliminar todos los Passwords</string>
+
+
+
+	<string name="df_alert_import_title">¿Importar desde tu dispositivo?</string>
+	<string name="df_alert_import_body">¿Quieres importar todos tus passwords anteriormente almacenados de tu dispositivo? Los que ya estén importados no serán duplicados.</string>
+	<string name="df_alert_import_ok">IMPORTAR</string>
+	<string name="df_alert_import_cancel">Cancelar</string>
+
+	<string name="df_alert_export_title">¿Exportar a tu dispositivo?</string>
+	<string name="df_alert_export_body">¿Quieres guardar una copia de todos tus passwords personalizados? Serán almacenados en tu almacenamiento interno y sobreescribirá la copia anterior.</string>
+	<string name="df_alert_export_ok">EXPORTAR</string>
+	<string name="df_alert_export_cancel">Cancelar</string>
+
+	<string name="df_warning_export_title">Error al exportar tus datos</string>
+	<string name="df_warning_export_body">Para poder hacer una copia de tus soluciones actuales, necesitarás dar el permiso a la app de escritura.</string>
+	<string name="df_warning_export_ok">Preguntar Otra Vez</string>
+	<string name="df_warning_export_cancel">Cancelar</string>
+
+	<string name="df_export_complete">Fichero guardado con éxito</string>
+	<string name="df_export_complete_open">Abrir Fichero</string>
+
+	<string name="df_warning_export_toast">No se ha exportado la copia. Permite a la app primero</string>
 
 	<!-- Item Custom Hint -->
 	<string name="ch_button_delete">Eliminar</string>

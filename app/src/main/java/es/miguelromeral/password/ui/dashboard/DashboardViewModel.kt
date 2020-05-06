@@ -1,11 +1,15 @@
 package es.miguelromeral.password.ui.dashboard
 
+import android.app.Activity
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import es.miguelromeral.password.classes.Password
+import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.classes.database.PasswordDatabaseDao
+import es.miguelromeral.password.ui.importSecretsFU
 import kotlinx.coroutines.*
 
 class DashboardViewModel(
@@ -59,6 +63,21 @@ class DashboardViewModel(
         return true
     }
 
+
+    fun importSecrets(activity: Activity) = uiScope.launch {
+
+        val task = async(Dispatchers.IO) {
+            importSecretsFU(activity, database)
+        }
+
+        when(task.await()){
+            true -> {
+                updateAllPasswords()
+            }
+        }
+
+
+    }
 
 
     fun clearAllPasswords(){

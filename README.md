@@ -34,7 +34,7 @@ On the other hand, the insertions are performed by a simple Node.js project, get
 <img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/game_light.png" height="400px" width="auto">
 <img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/game_dark.png" height="400px" width="auto">
 
-* Create your own passwords and expand the game functionalities
+* Create your own passwords and expand the game functionalities. Export to your device or import them from your internal storage.
 
 <img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/custom_light.png" height="400px" width="auto">
 <img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/custom_dark.png" height="400px" width="auto">
@@ -68,6 +68,7 @@ If you need help with the application and the instructions for the game, please 
 
 Version|Code|Changes
 --- | --- | ---
+1.1|6|Features to export and import custom passwords added.
 1.0.4|5|Added more categories and fixed permission requests experience
 1.0.3|4|Support for Custom user words
 1.0.2|3|Spanish Translation and AdMobs Integration

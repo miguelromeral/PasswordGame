@@ -115,7 +115,6 @@
 	<string name="pref_github_title">View Repository in GitHub</string>
 	<string name="pref_github_summary">Take a look to the code in the MiguelRomeral\'s GitHub repository for this project.</string>
 
-
 	<!-- Item Custom Password -->
 	<string name="cp_edit_title">Edit</string>
 	<string name="cp_delete_title">Delete</string>
@@ -156,8 +155,31 @@
 	<string name="df_alert_clear_db_cancel">BACK</string>
 
 	<string name="df_option_search">Search</string>
+	<string name="df_option_import">Import Data</string>
+	<string name="df_option_export">Export Data</string>
 	<string name="df_option_add">Add New Answer</string>
 	<string name="df_option_clear">Clear All Answers</string>
+
+
+	<string name="df_alert_import_title">Import from your Device?</string>
+	<string name="df_alert_import_body">Do you want to import all the previous passwords you had stored in your device? The ones that are already imported will not be duplicated.</string>
+	<string name="df_alert_import_ok">IMPORT</string>
+	<string name="df_alert_import_cancel">Cancel</string>
+
+	<string name="df_alert_export_title">Export to your Device?</string>
+	<string name="df_alert_export_body">Do you want to save a copy of all your custom passwords? They\'ll be stored in the internal storage and will override the previous copy.</string>
+	<string name="df_alert_export_ok">EXPORT</string>
+	<string name="df_alert_export_cancel">Cancel</string>
+
+	<string name="df_warning_export_title">Unable to Export your Data</string>
+	<string name="df_warning_export_body">In order to make a copy of your current data, you\'ll need to allow the app to write in your internal storage.</string>
+	<string name="df_warning_export_ok">Ask Again</string>
+	<string name="df_warning_export_cancel">Cancel</string>
+
+	<string name="df_export_complete">File saved successfully</string>
+	<string name="df_export_complete_open">Open File</string>
+
+	<string name="df_warning_export_toast">No copy was exported. Allow the permission first</string>
 
 	<!-- Item Custom Hint -->
 	<string name="ch_button_delete">Remove</string>

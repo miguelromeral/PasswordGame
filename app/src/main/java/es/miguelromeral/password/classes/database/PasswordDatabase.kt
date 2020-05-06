@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import es.miguelromeral.password.classes.Password
 
-@Database(entities = [Password::class], version = 5, exportSchema = false)
+@Database(entities = [Password::class], version = 6, exportSchema = false)
 abstract class PasswordDatabase : RoomDatabase() {
 
     abstract val passwordDatabaseDao: PasswordDatabaseDao

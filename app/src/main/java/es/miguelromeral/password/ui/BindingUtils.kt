@@ -10,7 +10,7 @@ import java.util.*
 @BindingAdapter("timeFormatted")
 fun TextView.setTimeFormatted(item: Password) {
     item?.let {
-        text = formatTime(item.time)
+        text = formatTime(item.time ?: 0)
     }
 }
 
@@ -32,7 +32,7 @@ fun TextView.setCustomPasswordText(custom: Boolean){
 
 @BindingAdapter("solvedPasswordText")
 fun TextView.setSolvedPasswordText(pwd: Password){
-    text = resources.getString(if(pwd.solved) R.string.fg_answer_solved else R.string.fg_answer_failed)
+    text = resources.getString(if(pwd.solved ?: false) R.string.fg_answer_solved else R.string.fg_answer_failed)
 }
 
 

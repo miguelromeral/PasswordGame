@@ -59,9 +59,9 @@ class AnswersAdapter(val showHints: Boolean) : ListAdapter<Password, AnswersAdap
             val nightMode = SettingsFragment.isNightThemeEnabled(binding.cardViewAnswer.context)
 
             binding.cardViewAnswer.setBackgroundColor(res.getColor(
-                    if(item.solved)
+                    if(item.solved ?: false)
                         if(nightMode) R.color.darkGreen else R.color.green
-                    else if(item.failed)
+                    else if(item.failed ?: false)
                         if(nightMode) R.color.darkRed else R.color.lightRed
                     else
                         R.color.colorPrimaryDark
