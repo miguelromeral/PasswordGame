@@ -41,6 +41,9 @@ class GameViewModel(
     private val _currentIndex = MutableLiveData<Int>(VALUE_NOT_STARTED)
     val currentIndex = _currentIndex
 
+    private val _solutionState = MutableLiveData(STATE_DEFAULT)
+    val solutionState = _solutionState
+
     private val _nFails = MutableLiveData(0)
     val nFails = _nFails
 
@@ -80,6 +83,10 @@ class GameViewModel(
         }else {
             _currentIndex.postValue(VALUE_NO_WORDS)
         }
+    }
+
+    fun endState(){
+        _solutionState.postValue(STATE_DEFAULT)
     }
 
     fun initTimer(){
@@ -143,9 +150,11 @@ class GameViewModel(
                         if(success){
                             pwd.solved = true
                             _nSuccess.postValue(_nSuccess.value!! + 1)
+                            _solutionState.postValue(STATE_SUCCESS)
                         }else{
                             pwd.failed = true
                             _nFails.postValue(_nFails.value!! + 1)
+                            _solutionState.postValue(STATE_FAIL)
                         }
 
                         pwd.score = ScoreBoard.getScore(application.resources, pwd.time, pwd.solved, pwd.failed, pwd.level ?: Levels.DEFAULT_LEVEL)
@@ -206,5 +215,9 @@ class GameViewModel(
         val VALUE_FINISHED = -2
         val VALUE_NO_WORDS = -3
         val VALUE_PREPARE_TIMER = -4
+
+        const val STATE_FAIL = 1
+        const val STATE_SUCCESS = 2
+        const val STATE_DEFAULT = 0
     }
 }

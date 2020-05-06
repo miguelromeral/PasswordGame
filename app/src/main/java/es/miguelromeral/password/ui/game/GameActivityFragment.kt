@@ -2,6 +2,7 @@ package es.miguelromeral.password.ui.game
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.speech.RecognizerIntent
@@ -49,6 +50,9 @@ class GameActivityFragment : Fragment() {
     private lateinit var speechRecognizer: SpeechRecognizer
     private lateinit var speechRecognizerIntent: Intent
 
+    private lateinit var mediaPlayerSuccess: MediaPlayer
+    private lateinit var mediaPlayerFail: MediaPlayer
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,6 +81,9 @@ class GameActivityFragment : Fragment() {
                     "")!!,
             resources
         )
+
+        mediaPlayerSuccess = MediaPlayer.create(requireContext(), R.raw.success)
+        mediaPlayerFail = MediaPlayer.create(requireContext(), R.raw.fail)
 
 
         val gameTime = PreferenceManager.getDefaultSharedPreferences(context).getString(
@@ -201,6 +208,7 @@ class GameActivityFragment : Fragment() {
                     lg.bFail.isEnabled = true
                     lg.bSuccess.isEnabled = true
 
+
                     viewModel.listened.observe(viewLifecycleOwner, Observer {
                         binding.etSpeech.setText(it)
                         binding.etSpeech.setSelection(it.length)
@@ -226,6 +234,19 @@ class GameActivityFragment : Fragment() {
             }
         })
 
+        viewModel.solutionState.observe(viewLifecycleOwner, Observer {
+            when(it){
+                GameViewModel.STATE_FAIL -> {
+                    playFail()
+                    viewModel.endState()
+                }
+                GameViewModel.STATE_SUCCESS -> {
+                    playSuccess()
+                    viewModel.endState()
+                }
+            }
+        })
+
         viewModel.gameFinished.observe(viewLifecycleOwner, Observer {
             if(it == true) {
                 viewModel.nextWord(false)
@@ -246,6 +267,17 @@ class GameActivityFragment : Fragment() {
     }
 
 
+    private fun playSuccess(){
+        play(mediaPlayerSuccess)
+    }
+    private fun playFail(){
+        play(mediaPlayerFail)
+    }
+
+    private fun play(mediaPlayer: MediaPlayer){
+        mediaPlayer.seekTo(0)
+        mediaPlayer.start()
+    }
 
 
 
