@@ -68,6 +68,10 @@ class GameViewModel(
     private val _liveScore = MutableLiveData(0)
     val liveScore = _liveScore
 
+
+    private val _enableFABMic = MutableLiveData<Boolean>(false)
+    val enableFABMic = _enableFABMic
+
     init{
         val t = this
         uiScope.launch {
@@ -187,6 +191,13 @@ class GameViewModel(
         }catch (e: Exception){
             Log.i(TAG, "exception in checkHintsFromMicrophone: "+e.message)
         }
+    }
+
+    fun endEnableMic(){
+        _enableFABMic.postValue(false)
+    }
+    fun startEnableMic(){
+        _enableFABMic.postValue(true)
     }
 
     private fun getCurrentPassword(): Password? {

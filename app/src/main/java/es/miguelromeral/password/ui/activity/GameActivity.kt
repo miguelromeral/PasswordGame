@@ -1,31 +1,24 @@
-package es.miguelromeral.password.ui.game
+package es.miguelromeral.password.ui.activity
 
 import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.pm.PermissionGroupInfo
-import android.net.Uri
-import android.provider.Settings
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import es.miguelromeral.password.classes.options.Options
 import kotlinx.android.synthetic.main.activity_game.*
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.*
 import android.widget.Toast
 import es.miguelromeral.password.R
-import es.miguelromeral.password.ui.requestPermission
+import es.miguelromeral.password.ui.game.GameActivityFragment
+import es.miguelromeral.password.ui.game.LoadingFragmentDirections
+import es.miguelromeral.password.ui.game.LoadingViewModel
+import es.miguelromeral.password.ui.utils.requestPermission
 
 
 class GameActivity : AppCompatActivity() {

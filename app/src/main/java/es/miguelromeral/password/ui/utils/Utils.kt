@@ -1,8 +1,7 @@
-package es.miguelromeral.password.ui
+package es.miguelromeral.password.ui.utils
 
 import android.app.Activity
 import androidx.core.app.ActivityCompat
-import es.miguelromeral.password.ui.game.GameActivity
 
 /*
 fun createSpinnerAdapter_Level(context: Context): ArrayAdapter<String> {

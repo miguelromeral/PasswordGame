@@ -2,14 +2,12 @@ package es.miguelromeral.password.ui.dashboard
 
 import android.app.Activity
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import es.miguelromeral.password.classes.Password
-import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.classes.database.PasswordDatabaseDao
-import es.miguelromeral.password.ui.importSecretsFU
+import es.miguelromeral.password.ui.utils.importSecretsFU
 import kotlinx.coroutines.*
 
 class DashboardViewModel(

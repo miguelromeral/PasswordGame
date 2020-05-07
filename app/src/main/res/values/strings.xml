@@ -8,6 +8,7 @@
 	<string name="value_category_furniture" translatable="false">furniture</string>
 	<string name="value_category_movies" translatable="false">movies</string>
 	<string name="value_category_sports" translatable="false">sports</string>
+	<string name="value_category_techonology" translatable="false">technology</string>
 	<string name="value_category_custom" translatable="false">custom</string>
 
 	<string name="entry_category_unknown">Unknown</string>
@@ -16,6 +17,7 @@
 	<string name="entry_category_furniture">Furniture</string>
 	<string name="entry_category_movies">Movies</string>
 	<string name="entry_category_sports">Sports</string>
+	<string name="entry_category_techonology">Techonology</string>
 	<string name="entry_category_custom">*Custom*</string>
 
 	<!-- Levels -->

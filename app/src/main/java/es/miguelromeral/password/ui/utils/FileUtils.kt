@@ -1,4 +1,4 @@
-package es.miguelromeral.password.ui
+package es.miguelromeral.password.ui.utils
 
 import android.content.Context
 import android.content.Intent
@@ -6,11 +6,9 @@ import android.net.Uri
 import android.os.Environment
 import android.util.Log
 import androidx.core.content.FileProvider
-import androidx.recyclerview.widget.RecyclerView
 import androidx.sqlite.db.SimpleSQLiteQuery
 import es.miguelromeral.password.classes.CSVReader
 import es.miguelromeral.password.classes.CSVWriter
-import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.classes.database.PasswordDatabaseDao
 import kotlinx.coroutines.CoroutineScope

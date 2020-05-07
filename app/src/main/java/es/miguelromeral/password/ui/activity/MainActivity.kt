@@ -1,9 +1,8 @@
-package es.miguelromeral.password
+package es.miguelromeral.password.ui.activity
 
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -13,11 +12,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.snackbar.Snackbar
+import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.database.PasswordDatabase
-import es.miguelromeral.password.ui.actionViewFile
-import es.miguelromeral.password.ui.executeExportSecrets
-import es.miguelromeral.password.ui.game.GameActivity
-import es.miguelromeral.password.ui.settings.SettingsFragment
+import es.miguelromeral.password.ui.utils.actionViewFile
+import es.miguelromeral.password.ui.utils.executeExportSecrets
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
@@ -34,9 +32,9 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home,
-                R.id.navigation_dashboard,
-                R.id.action_settings
+                    R.id.navigation_home,
+                    R.id.navigation_dashboard,
+                    R.id.action_settings
             )
         )
 

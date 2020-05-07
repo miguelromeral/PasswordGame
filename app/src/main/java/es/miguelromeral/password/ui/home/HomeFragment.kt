@@ -15,12 +15,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.preference.PreferenceManager
 import es.miguelromeral.password.R
-import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.classes.options.Categories
 import es.miguelromeral.password.classes.options.Levels
-import es.miguelromeral.password.classes.options.Options
 import es.miguelromeral.password.databinding.FragmentHomeBinding
-import es.miguelromeral.password.ui.game.GameActivity
+import es.miguelromeral.password.ui.activity.GameActivity
 import kotlinx.android.synthetic.main.partial_welcome.view.*
 
 class HomeFragment : Fragment() {

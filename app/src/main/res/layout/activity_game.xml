@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/backgroundStyle"
-    tools:context=".ui.game.GameActivity">
+    tools:context=".ui.activity.GameActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

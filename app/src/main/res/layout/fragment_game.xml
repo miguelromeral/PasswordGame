@@ -31,7 +31,7 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             ads:adSize="SMART_BANNER"
-            ads:adUnitId="@string/admob_banner_ingame">
+            ads:adUnitId="@string/admob_banner_TESTING">
         </com.google.android.gms.ads.AdView>
 
 
@@ -87,6 +87,8 @@
                 android:layout_height="100sp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
+                style="@style/EditTextSpeech"
+                tools:text="This is a great test\nOther line, this is very large one, by the way but no problem"
                 android:enabled="false"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"

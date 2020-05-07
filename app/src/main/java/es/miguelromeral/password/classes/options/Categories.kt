@@ -19,7 +19,8 @@ class Categories {
                     res.getString(R.string.value_category_furniture)-> 2
                     res.getString(R.string.value_category_movies)-> 3
                     res.getString(R.string.value_category_sports)-> 4
-                    res.getString(R.string.value_category_custom)-> 5
+                    res.getString(R.string.value_category_techonology)-> 5
+                    res.getString(R.string.value_category_custom)-> 6
                     else -> 0
                 }
 
@@ -35,6 +36,8 @@ class Categories {
                         resources.getString(R.string.entry_category_movies)
                     resources.getString(R.string.value_category_sports) ->
                         resources.getString(R.string.entry_category_sports)
+                    resources.getString(R.string.value_category_techonology) ->
+                        resources.getString(R.string.entry_category_techonology)
                     resources.getString(R.string.value_category_custom) ->
                         resources.getString(R.string.entry_category_custom)
                     else ->
@@ -51,6 +54,8 @@ class Categories {
                         resources.getString(R.string.value_category_movies)
                     resources.getString(R.string.entry_category_sports) ->
                         resources.getString(R.string.value_category_sports)
+                    resources.getString(R.string.entry_category_techonology) ->
+                        resources.getString(R.string.value_category_techonology)
                     resources.getString(R.string.entry_category_custom) ->
                         resources.getString(R.string.value_category_custom)
                     else ->

@@ -68,7 +68,7 @@
     </style>
 
     <style name="textViewPassword" parent="textViewPasswordBase">
-        <item name="android:textColor">@color/lightBlue</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
 
@@ -91,6 +91,9 @@
         <item name="android:textColor">@color/lightBlue</item>
     </style>
 
+    <style name="EditTextSpeech" parent="EditTextSpeechBase">
+        <item name="android:textColor">@color/lightBlue</item>
+    </style>
 
     <style name="tvTimer" parent="tvTimerBase">
         <item name="android:textColor">@color/white</item>

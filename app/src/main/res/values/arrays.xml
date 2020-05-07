@@ -7,6 +7,7 @@
 		<item>@string/entry_category_furniture</item>
         <item>@string/entry_category_movies</item>
         <item>@string/entry_category_sports</item>
+        <item>@string/entry_category_techonology</item>
         <item>@string/entry_category_custom</item>
     </string-array>
 

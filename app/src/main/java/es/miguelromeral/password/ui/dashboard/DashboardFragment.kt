@@ -14,17 +14,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import es.miguelromeral.password.MainActivity
+import es.miguelromeral.password.ui.activity.MainActivity
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.databinding.FragmentDashboardBinding
-import es.miguelromeral.password.ui.game.GameActivity
 import es.miguelromeral.password.ui.listeners.CustomPasswordListener
-import es.miguelromeral.password.ui.requestPermission
-import es.miguelromeral.password.ui.settings.SettingsFragment
+import es.miguelromeral.password.ui.utils.requestPermission
 
 class DashboardFragment : Fragment(), SearchView.OnQueryTextListener {
 

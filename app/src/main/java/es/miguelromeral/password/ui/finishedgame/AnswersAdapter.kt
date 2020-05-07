@@ -1,9 +1,5 @@
 package es.miguelromeral.password.ui.finishedgame
 
-import android.content.res.Configuration
-import android.graphics.Color
-import android.graphics.Color.MAGENTA
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +11,6 @@ import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.options.Categories
 import es.miguelromeral.password.classes.options.Levels
 import es.miguelromeral.password.databinding.ItemAnswerBinding
-import es.miguelromeral.password.ui.setTimeFormatted
 import es.miguelromeral.password.ui.settings.SettingsFragment
 
 

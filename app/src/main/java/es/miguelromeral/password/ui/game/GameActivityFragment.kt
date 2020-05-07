@@ -35,6 +35,7 @@ import es.miguelromeral.password.classes.options.Categories
 import es.miguelromeral.password.classes.options.Levels
 import es.miguelromeral.password.classes.options.Options
 import es.miguelromeral.password.classes.database.PasswordDatabase
+import es.miguelromeral.password.classes.options.Languages
 import es.miguelromeral.password.databinding.FragmentGameBinding
 import es.miguelromeral.password.ui.finishedgame.FinishedGameFragmentArgs
 import java.util.*
@@ -86,11 +87,11 @@ class GameActivityFragment : Fragment() {
         mediaPlayerFail = MediaPlayer.create(requireContext(), R.raw.fail)
 
 
-        val gameTime = PreferenceManager.getDefaultSharedPreferences(context).getString(
-                resources.getString(R.string.pref_timer_key), Options.DEFAULT_TIMER_VALUE)?.toLong() ?: 60000L
+        val gameTime = (PreferenceManager.getDefaultSharedPreferences(context).getString(
+                resources.getString(R.string.pref_timer_key), Options.DEFAULT_TIMER_VALUE) ?: Options.DEFAULT_TIMER_VALUE).toLong()
 
-        val countWords = PreferenceManager.getDefaultSharedPreferences(context).getString(
-                resources.getString(R.string.pref_count_key), Options.DEFAULT_COUNT_VALUE)?.toInt() ?: 10
+        val countWords = (PreferenceManager.getDefaultSharedPreferences(context).getString(
+                resources.getString(R.string.pref_count_key), Options.DEFAULT_COUNT_VALUE) ?: Options.DEFAULT_COUNT_VALUE).toInt()
 
         val vmf = GameFactory(dataSource, application, category!!, level!!, language!!, source, gameTime, countWords)
 
@@ -131,19 +132,29 @@ class GameActivityFragment : Fragment() {
             speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext())
             speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
             speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-            speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+            speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Languages.getLanguageLocale(resources, language))
             speechRecognizer.setRecognitionListener(GameRecognitionService(requireContext(), viewModel))
 
             binding.fabAudio.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
 
                 when(motionEvent.action){
-                    MotionEvent.ACTION_DOWN ->
+                    MotionEvent.ACTION_DOWN -> {
+                        binding.fabAudio.visibility = View.INVISIBLE
                         speechRecognizer.startListening(speechRecognizerIntent)
-                    MotionEvent.ACTION_UP ->
+                    }
+                    MotionEvent.ACTION_UP -> {
                         speechRecognizer.stopListening()
+                    }
                 }
 
                 return@OnTouchListener false
+            })
+
+            viewModel.enableFABMic.observe(viewLifecycleOwner, Observer {
+                if(it){
+                    binding.fabAudio.visibility = View.VISIBLE
+                    viewModel.endEnableMic()
+                }
             })
 
         }else{

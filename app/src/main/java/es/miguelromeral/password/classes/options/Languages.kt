@@ -2,9 +2,17 @@ package es.miguelromeral.password.classes.options
 
 import android.content.res.Resources
 import es.miguelromeral.password.R
+import java.util.*
 
 class Languages {
     companion object {
+
+        fun getLanguageLocale(res: Resources, value: String?): Locale =
+                when(value){
+                    res.getString(R.string.pref_language_value_english) -> Locale.ENGLISH
+                    res.getString(R.string.pref_language_value_spanish) -> Locale("es", "ES")
+                    else -> Locale.getDefault()
+                }
 
         fun getLanguageValueIndex(res: Resources, value: String?): Int =
                 when(value){

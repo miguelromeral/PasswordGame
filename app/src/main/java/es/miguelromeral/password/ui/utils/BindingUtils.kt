@@ -1,11 +1,9 @@
-package es.miguelromeral.password.ui
+package es.miguelromeral.password.ui.utils
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
-import java.text.SimpleDateFormat
-import java.util.*
 
 @BindingAdapter("timeFormatted")
 fun TextView.setTimeFormatted(item: Password) {

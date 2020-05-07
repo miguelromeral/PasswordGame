@@ -15,35 +15,37 @@ class GameRecognitionService(
     val viewModel: GameViewModel) : RecognitionListener {
 
     override fun onReadyForSpeech(p0: Bundle?) {
-        //Log.i(TAG,"Called: onReadyForSpeech")
+        Log.i(TAG,"Called: onReadyForSpeech")
     }
 
     override fun onRmsChanged(p0: Float) {
-        //Log.i(TAG,"Called: onRmsChanged")
+        Log.i(TAG,"Called: onRmsChanged")
     }
 
     override fun onBufferReceived(p0: ByteArray?) {
-        //Log.i(TAG,"Called: onBufferReceived")
+        Log.i(TAG,"Called: onBufferReceived")
     }
 
     override fun onPartialResults(p0: Bundle?) {
-        //Log.i(TAG,"Called: onPartialResults")
+        Log.i(TAG,"Called: onPartialResults")
     }
 
     override fun onEvent(p0: Int, p1: Bundle?) {
-        //Log.i(TAG,"Called: onEvent: $p0")
+        Log.i(TAG,"Called: onEvent: $p0")
     }
 
     override fun onBeginningOfSpeech() {
-        //Log.i(TAG,"Called: onBegginningOfSpeech")
+        Log.i(TAG,"Called: onBegginningOfSpeech")
     }
 
     override fun onEndOfSpeech() {
-        //Log.i(TAG,"Called: onEndOfSpeech")
+        viewModel.startEnableMic()
+        Log.i(TAG,"Called: onEndOfSpeech")
     }
 
     override fun onError(p0: Int) {
-        //Log.i(TAG,"Called: onError: $p0")
+        viewModel.startEnableMic()
+        Log.i(TAG,"Called: onError: $p0")
     }
 
     override fun onResults(bundle: Bundle?) {
@@ -60,6 +62,8 @@ class GameRecognitionService(
                 }
             }
         }
+
+        viewModel.startEnableMic()
     }
 
 
