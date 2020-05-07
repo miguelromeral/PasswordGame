@@ -1,6 +1,7 @@
 package es.miguelromeral.password.ui.game
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import androidx.fragment.app.Fragment
@@ -12,7 +13,9 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.TranslateAnimation
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.ViewCompat.animate
 import androidx.databinding.DataBindingUtil
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
@@ -139,7 +142,14 @@ class GameActivityFragment : Fragment() {
 
                 when(motionEvent.action){
                     MotionEvent.ACTION_DOWN -> {
+  /*                      TransitionManager.beginDelayedTransition(binding.clSpeech, TransitionSet()
+                                .addTransition(Scale(0.7f))
+                                .addTransition(Fade())
+                                .setInterpolator(LinearOutSlowInInterpolator()))
                         binding.fabAudio.visibility = View.INVISIBLE
+*/
+                        binding.fabAudio.animate().translationX(200f)
+
                         speechRecognizer.startListening(speechRecognizerIntent)
                     }
                     MotionEvent.ACTION_UP -> {
@@ -152,11 +162,11 @@ class GameActivityFragment : Fragment() {
 
             viewModel.enableFABMic.observe(viewLifecycleOwner, Observer {
                 if(it){
-                    binding.fabAudio.visibility = View.VISIBLE
+                    binding.fabAudio.animate().translationX(0f)
+
                     viewModel.endEnableMic()
                 }
             })
-
         }else{
             binding.clSpeech.visibility = View.GONE
         }
@@ -214,6 +224,11 @@ class GameActivityFragment : Fragment() {
                     val dialog: AlertDialog = builder.create()
                     dialog.show()
                 }else if(index == GameViewModel.VALUE_PREPARE_TIMER) {
+
+                    if(microphoneEnabled && hintsEnabled && !disableMic){
+                        binding.clSpeech.visibility = View.VISIBLE
+                    }
+
                     viewModel.initTimer()
                 } else {
                     lg.bFail.isEnabled = true
@@ -291,28 +306,6 @@ class GameActivityFragment : Fragment() {
     }
 
 
-
-    fun animatePassword(view: View, viewGroup: ViewGroup, visible: Boolean){
-        val set = TransitionSet()
-                .addTransition(Scale(0.7f))
-                .addTransition(Fade())
-                .setInterpolator(
-                        if(visible)
-                            LinearOutSlowInInterpolator()
-                        else
-                            FastOutLinearInInterpolator())
-
-        TransitionManager.beginDelayedTransition(viewGroup, set)
-        view.visibility = if (visible) View.VISIBLE else View.INVISIBLE
-    }
-
-
-    /*
-        override fun onResume() {
-            super.onResume()
-            viewModel.initSettings()
-        }
-    */
 
     companion object {
         const val TAG = "GameActivityFragment"
