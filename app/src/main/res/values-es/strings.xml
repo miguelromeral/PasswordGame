@@ -11,6 +11,7 @@
 	<string name="entry_category_movies">Películas</string>
 	<string name="entry_category_sports">Deportes</string>
 	<string name="entry_category_techonology">Tecnología</string>
+	<string name="entry_category_music">Música</string>
 	<string name="entry_category_custom">*Personaliz.*</string>
 
 	<!-- Levels -->
@@ -165,6 +166,8 @@
 	<string name="fg_answer_failed">Fallada</string>
 	<string name="fg_answer_solved">¡Resuelta!</string>
 	<string name="fg_share_action">Compartir puntuación</string>
+	<string name="fg_action_save">Guardar al Dispositivo</string>
+	<string name="fg_action_save_success">Solución \"%1$s\" añadida con éxito</string>
 	<string name="fg_share_text">
 		Obtuvimos %1$s puntos (%2$s aciertos y %3$s pasadas) en Guess Word! Bájate la aplicación gratis desde https://ply.gl/es.miguelromeral.password</string>
 

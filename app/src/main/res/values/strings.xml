@@ -9,6 +9,7 @@
 	<string name="value_category_movies" translatable="false">movies</string>
 	<string name="value_category_sports" translatable="false">sports</string>
 	<string name="value_category_techonology" translatable="false">technology</string>
+	<string name="value_category_music" translatable="false">music</string>
 	<string name="value_category_custom" translatable="false">custom</string>
 
 	<string name="entry_category_unknown">Unknown</string>
@@ -18,6 +19,7 @@
 	<string name="entry_category_movies">Movies</string>
 	<string name="entry_category_sports">Sports</string>
 	<string name="entry_category_techonology">Techonology</string>
+	<string name="entry_category_music">Music</string>
 	<string name="entry_category_custom">*Custom*</string>
 
 	<!-- Levels -->
@@ -211,6 +213,8 @@
 	<string name="fg_answer_failed">Failed</string>
 	<string name="fg_answer_solved">Solved!</string>
 	<string name="fg_share_action">Share Score</string>
+	<string name="fg_action_save">Save to Device</string>
+	<string name="fg_action_save_success">Solution \"%1$s\" added successfully</string>
 	<string name="fg_share_text">We got %1$s points (%2$s rights and %3$s passed) in Guess Word! Download it now from https://ply.gl/es.miguelromeral.password</string>
 
 	<!-- Partial Game -->

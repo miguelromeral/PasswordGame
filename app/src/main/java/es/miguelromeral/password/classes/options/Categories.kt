@@ -18,9 +18,10 @@ class Categories {
                     res.getString(R.string.value_category_cooking)-> 1
                     res.getString(R.string.value_category_furniture)-> 2
                     res.getString(R.string.value_category_movies)-> 3
-                    res.getString(R.string.value_category_sports)-> 4
-                    res.getString(R.string.value_category_techonology)-> 5
-                    res.getString(R.string.value_category_custom)-> 6
+                    res.getString(R.string.value_category_music)-> 4
+                    res.getString(R.string.value_category_sports)-> 5
+                    res.getString(R.string.value_category_techonology)-> 6
+                    res.getString(R.string.value_category_custom)-> 7
                     else -> 0
                 }
 
@@ -34,6 +35,8 @@ class Categories {
                         resources.getString(R.string.entry_category_furniture)
                     resources.getString(R.string.value_category_movies) ->
                         resources.getString(R.string.entry_category_movies)
+                    resources.getString(R.string.value_category_music) ->
+                        resources.getString(R.string.entry_category_music)
                     resources.getString(R.string.value_category_sports) ->
                         resources.getString(R.string.entry_category_sports)
                     resources.getString(R.string.value_category_techonology) ->
@@ -52,6 +55,8 @@ class Categories {
                         resources.getString(R.string.value_category_furniture)
                     resources.getString(R.string.entry_category_movies) ->
                         resources.getString(R.string.value_category_movies)
+                    resources.getString(R.string.entry_category_music) ->
+                        resources.getString(R.string.value_category_music)
                     resources.getString(R.string.entry_category_sports) ->
                         resources.getString(R.string.value_category_sports)
                     resources.getString(R.string.entry_category_techonology) ->

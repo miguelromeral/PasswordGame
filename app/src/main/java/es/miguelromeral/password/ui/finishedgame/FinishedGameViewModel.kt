@@ -1,17 +1,22 @@
 package es.miguelromeral.password.ui.finishedgame
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
+import es.miguelromeral.password.classes.database.PasswordDatabaseDao
+import kotlinx.coroutines.*
 
 class FinishedGameViewModel (
-    private val success: Int,
-    private val fails: Int,
-    private val passwords: Array<Password>
+        private val database: PasswordDatabaseDao,
+        private val application: Application,
+        private val success: Int,
+        private val fails: Int,
+        private val passwords: Array<Password>
 ) : ViewModel() {
 
     private val _listOfWords = MutableLiveData<List<Password>>()
@@ -28,6 +33,12 @@ class FinishedGameViewModel (
     private var _scoreInt = 0
     val score = _score
 
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+
+    private val _added = MutableLiveData<String>("")
+    val added = _added
 
     init {
         val answers = passwords.filter { it.solved ?: false || it.failed ?: false }
@@ -59,6 +70,32 @@ class FinishedGameViewModel (
 
         val shareIntent = Intent.createChooser(sendIntent, null)
         context.startActivity(shareIntent)
+    }
+
+    fun saveWord(pwd: Password){
+        uiScope.launch {
+            saveWordThread(pwd)
+        }
+    }
+
+    private suspend fun saveWordThread(pwd: Password){
+        return withContext(Dispatchers.IO){
+            pwd.time = 0
+            pwd.score = 0
+            pwd.solved = false
+            pwd.failed = false
+            database.insert(pwd)
+            _added.postValue(pwd.word)
+        }
+    }
+
+    fun endAdd(){
+        _added.postValue("")
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 
 }

@@ -3,6 +3,7 @@ package es.miguelromeral.password.ui.finishedgame
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,16 +12,19 @@ import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.options.Categories
 import es.miguelromeral.password.classes.options.Levels
 import es.miguelromeral.password.databinding.ItemAnswerBinding
+import es.miguelromeral.password.ui.listeners.CustomPasswordListener
 import es.miguelromeral.password.ui.settings.SettingsFragment
 
 
-class AnswersAdapter(val showHints: Boolean) : ListAdapter<Password, AnswersAdapter.ViewHolder>(
+class AnswersAdapter(
+        val listener: CustomPasswordListener,
+        val showHints: Boolean) : ListAdapter<Password, AnswersAdapter.ViewHolder>(
     HintDiffCallback()
 ){
 
     override fun onBindViewHolder(holder: ViewHolder, position:Int) {
         val item = getItem(position)
-        holder.bind(item, showHints)
+        holder.bind(item, showHints, listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,8 +35,13 @@ class AnswersAdapter(val showHints: Boolean) : ListAdapter<Password, AnswersAdap
 
     class ViewHolder private constructor (val binding: ItemAnswerBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Password, showHints: Boolean) {
+        private lateinit var item: Password
+        private lateinit var listener: CustomPasswordListener
+
+        fun bind(item: Password, showHints: Boolean, listener: CustomPasswordListener) {
             val res = binding.cardViewAnswer.resources
+            this.listener = listener
+            this.item = item
             binding.password = item
             binding.tvState.text = item.score.toString()
             binding.tvWord.text = item.word?.capitalize()
@@ -42,14 +51,6 @@ class AnswersAdapter(val showHints: Boolean) : ListAdapter<Password, AnswersAdap
             if(!showHints){
                 binding.clHints.visibility = View.GONE
             }
-/*
-            val nightModeFlags = res.configuration.uiMode
-
-            when(nightModeFlags){
-                Configuration.UI_MODE_NIGHT_YES -> Log.i("TEST", "Night: Yes")
-                    Configuration.UI_MODE_NIGHT_NO -> Log.i("TEST", "Night: No")
-                Configuration.UI_MODE_NIGHT_UNDEFINED -> Log.i("TEST", "Night: Undefined")
-            }*/
 
             val nightMode = SettingsFragment.isNightThemeEnabled(binding.cardViewAnswer.context)
 
@@ -61,6 +62,32 @@ class AnswersAdapter(val showHints: Boolean) : ListAdapter<Password, AnswersAdap
                     else
                         R.color.colorPrimaryDark
             ))
+
+
+            binding.cardViewAnswer.setOnLongClickListener{ view ->
+                showMenu(view)
+                true
+            }
+
+            binding.tvThreeDots.setOnClickListener { view ->
+                showMenu(view)
+            }
+        }
+
+
+        private fun showMenu(view: View){
+            val popupMenu = PopupMenu(view.context, view)
+            popupMenu.inflate(es.miguelromeral.password.R.menu.option_answer)
+            popupMenu.setOnMenuItemClickListener {
+                when(it.itemId){
+                    es.miguelromeral.password.R.id.option_save_answer -> {
+                        listener.onClick(item)
+                        true
+                    }
+                    else -> false
+                }
+            }
+            popupMenu.show()
         }
 
         companion object {

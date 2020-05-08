@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -18,8 +19,11 @@ import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
 
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.classes.options.Options
 import es.miguelromeral.password.databinding.FragmentGameFinishedBinding
+import es.miguelromeral.password.ui.dashboard.CustomPasswordAdapter
+import es.miguelromeral.password.ui.listeners.CustomPasswordListener
 
 class FinishedGameFragment : Fragment() {
 
@@ -45,9 +49,12 @@ class FinishedGameFragment : Fragment() {
 
         val args = FinishedGameFragmentArgs.fromBundle(requireArguments())
 
+        val application = requireNotNull(this.activity).application
+        val dataSource = PasswordDatabase.getInstance(application).passwordDatabaseDao
+
         //Log.i(TAG, "Success: ${args.success}, fails: ${args.fails}, passwords: ${args.passwords}")
 
-        val vmf = FinishedGameFactory(args.success, args.fails, args.passwords)
+        val vmf = FinishedGameFactory(dataSource, application, args.success, args.fails, args.passwords)
 
         viewModel = ViewModelProviders.of(this, vmf).get(FinishedGameViewModel::class.java)
 
@@ -59,12 +66,20 @@ class FinishedGameFragment : Fragment() {
         val hintsEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
                 resources.getString(R.string.pref_hints_key), Options.DEFAULT_HINTS_VALUE)
 
-        val adapter = AnswersAdapter(hintsEnabled)
+        val adapter =
+                AnswersAdapter(CustomPasswordListener { pwd -> viewModel.saveWord(pwd) }, hintsEnabled)
         binding.answersList.adapter = adapter
 
         viewModel.listOfWords.observe(viewLifecycleOwner, Observer {
             it?.let{
                 adapter.submitList(it)
+            }
+        })
+
+        viewModel.added.observe(viewLifecycleOwner, Observer {
+            if(!it.isEmpty()){
+                Toast.makeText(context, getString(R.string.fg_action_save_success, it), Toast.LENGTH_LONG).show()
+                viewModel.endAdd()
             }
         })
 
