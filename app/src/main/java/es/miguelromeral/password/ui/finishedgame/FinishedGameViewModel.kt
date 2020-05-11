@@ -47,30 +47,58 @@ class FinishedGameViewModel (
     }
 
     private fun setFastest(list: List<Password>): List<Password> {
-        var fastestTime: Long? = null
-        var fastestPwd: Password? = null
 
-        var mostPointsScore: Int? = null
+        var fastestPwd: Password? = null
         var mostPointsPwd: Password? = null
 
         for (pwd in list){
+            pwd.fastest = false
+            pwd.mostPoints = false
+        }
+
+        for (pwd in list){
             if(pwd.solved == true){
-                if(fastestTime == null || pwd.time?.compareTo(fastestTime) == -1){
-                    if (fastestPwd != null) {
-                        fastestPwd.fastest = false
+
+                var change = false
+                if(fastestPwd == null){
+                    change = true
+                }else{
+                    when(pwd.time?.compareTo(fastestPwd.time!!)){
+                        -1 -> change = true
                     }
-                    fastestTime = pwd.time
+                }
+
+                if(change){
+                    fastestPwd?.let{
+                        it.fastest = false
+                    }
                     pwd.fastest = true
                     fastestPwd = pwd
                 }
-                if(mostPointsScore == null || pwd.score?.compareTo(mostPointsScore) == 1){
-                    if(mostPointsPwd != null){
-                        mostPointsPwd.mostPoints = false
+
+
+                change = false
+                if(mostPointsPwd == null){
+                    change = true
+                }else{
+                    var res = pwd.score?.compareTo(mostPointsPwd.score!!)
+                    when(res){
+                        1 -> change = true
+                        0 -> {
+                            if(pwd.time?.compareTo(mostPointsPwd.time!!) == -1)
+                                change = true
+                        }
                     }
-                    mostPointsScore = pwd.score
+                }
+
+                if(change){
+                    mostPointsPwd?.let{
+                        it.mostPoints = false
+                    }
                     pwd.mostPoints = true
                     mostPointsPwd = pwd
                 }
+
             }
         }
         return list

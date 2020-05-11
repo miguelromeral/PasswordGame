@@ -333,8 +333,8 @@
 
             <ImageView
                 android:id="@+id/ivTime"
-                android:layout_width="50sp"
-                android:layout_height="50sp"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/gold_medal_time"
@@ -345,8 +345,8 @@
 
             <ImageView
                 android:id="@+id/ivScore"
-                android:layout_width="50sp"
-                android:layout_height="50sp"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/platinum_medal_score"
