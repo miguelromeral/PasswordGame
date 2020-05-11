@@ -66,8 +66,12 @@ class FinishedGameFragment : Fragment() {
         val hintsEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
                 resources.getString(R.string.pref_hints_key), Options.DEFAULT_HINTS_VALUE)
 
+
+        val badgesShown = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+            resources.getString(R.string.pref_badges_key), Options.DEFAULT_BADGES_VALUE)
+
         val adapter =
-                AnswersAdapter(CustomPasswordListener { pwd -> viewModel.saveWord(pwd) }, hintsEnabled)
+                AnswersAdapter(CustomPasswordListener { pwd -> viewModel.saveWord(pwd) }, hintsEnabled, badgesShown)
         binding.answersList.adapter = adapter
 
         viewModel.listOfWords.observe(viewLifecycleOwner, Observer {

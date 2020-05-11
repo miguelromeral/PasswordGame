@@ -119,6 +119,11 @@
 	<string name="pref_github_title">View Repository in GitHub</string>
 	<string name="pref_github_summary">Take a look to the code in the MiguelRomeral\'s GitHub repository for this project.</string>
 
+
+	<string name="pref_badges_key" translatable="false">pref_badges_key</string>
+	<string name="pref_badges_title">Show Stats Badges</string>
+	<string name="pref_badges_summary">In the review screen, show badges for the fastest answer and one that got more points.</string>
+
 	<!-- Item Custom Password -->
 	<string name="cp_edit_title">Edit</string>
 	<string name="cp_delete_title">Delete</string>

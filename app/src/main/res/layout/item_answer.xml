@@ -328,6 +328,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBadges"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
@@ -338,7 +339,8 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/gold_medal_time"
-                android:visibility="@{password.fastest ? View.VISIBLE : View.GONE}"
+                android:visibility="gone"
+                tools:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -350,7 +352,8 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/platinum_medal_score"
-                android:visibility="@{password.mostPoints ? View.VISIBLE : View.GONE}"
+                android:visibility="gone"
+                tools:visibility="visible"
                 app:layout_constraintStart_toEndOf="@id/ivTime"
                 app:layout_constraintTop_toTopOf="parent" />
 

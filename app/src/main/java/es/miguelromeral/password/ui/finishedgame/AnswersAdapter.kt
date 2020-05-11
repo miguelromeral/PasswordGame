@@ -18,13 +18,14 @@ import es.miguelromeral.password.ui.settings.SettingsFragment
 
 class AnswersAdapter(
         val listener: CustomPasswordListener,
-        val showHints: Boolean) : ListAdapter<Password, AnswersAdapter.ViewHolder>(
+        val showHints: Boolean,
+        val badgesShown: Boolean) : ListAdapter<Password, AnswersAdapter.ViewHolder>(
     HintDiffCallback()
 ){
 
     override fun onBindViewHolder(holder: ViewHolder, position:Int) {
         val item = getItem(position)
-        holder.bind(item, showHints, listener)
+        holder.bind(item, showHints, badgesShown, listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,7 +39,7 @@ class AnswersAdapter(
         private lateinit var item: Password
         private lateinit var listener: CustomPasswordListener
 
-        fun bind(item: Password, showHints: Boolean, listener: CustomPasswordListener) {
+        fun bind(item: Password, showHints: Boolean, badgesShown: Boolean, listener: CustomPasswordListener) {
             val res = binding.cardViewAnswer.resources
             this.listener = listener
             this.item = item
@@ -50,6 +51,13 @@ class AnswersAdapter(
 
             if(!showHints){
                 binding.clHints.visibility = View.GONE
+            }
+
+            if(badgesShown) {
+                binding.ivTime.visibility = if(item.fastest ?: false) View.VISIBLE else View.GONE
+                binding.ivScore.visibility = if(item.mostPoints ?: false) View.VISIBLE else View.GONE
+            }else{
+                binding.clBadges.visibility = View.GONE
             }
 
             val nightMode = SettingsFragment.isNightThemeEnabled(binding.cardViewAnswer.context)

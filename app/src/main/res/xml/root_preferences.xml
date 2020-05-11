@@ -72,6 +72,14 @@
             android:title="@string/pref_theme_title"
             android:icon="@drawable/theme" />
 
+
+        <SwitchPreference
+            android:key="@string/pref_badges_key"
+            android:title="@string/pref_badges_title"
+            android:summary="@string/pref_badges_summary"
+            android:icon="@drawable/badge"
+            android:defaultValue="true"/>
+
     </PreferenceCategory>
 
 

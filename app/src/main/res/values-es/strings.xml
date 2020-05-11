@@ -69,6 +69,8 @@
 	<string name="pref_github_title">Ver Repositorio en GitHub</string>
 	<string name="pref_github_summary">Echa un vistazo al código en el repositorio de GitHub de MiguelRomeral para este proyecto.</string>
 
+	<string name="pref_badges_title">Mostrar Emblemas de Estadísticas</string>
+	<string name="pref_badges_summary">En la pantalla de revisión, mostrar emblemas para la respuesta más rápida y la que obtuvo más puntos.</string>
 
 	<!-- Item Custom Password -->
 	<string name="cp_edit_title">Editar</string>
