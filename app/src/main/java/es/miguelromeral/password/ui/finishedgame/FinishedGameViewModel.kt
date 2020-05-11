@@ -41,9 +41,39 @@ class FinishedGameViewModel (
     val added = _added
 
     init {
-        val answers = passwords.filter { it.solved ?: false || it.failed ?: false }
+        val answers = setFastest(passwords.filter { it.solved ?: false || it.failed ?: false })
         _score.postValue(calculateScore(answers))
         _listOfWords.postValue(answers)
+    }
+
+    private fun setFastest(list: List<Password>): List<Password> {
+        var fastestTime: Long? = null
+        var fastestPwd: Password? = null
+
+        var mostPointsScore: Int? = null
+        var mostPointsPwd: Password? = null
+
+        for (pwd in list){
+            if(pwd.solved == true){
+                if(fastestTime == null || pwd.time?.compareTo(fastestTime) == -1){
+                    if (fastestPwd != null) {
+                        fastestPwd.fastest = false
+                    }
+                    fastestTime = pwd.time
+                    pwd.fastest = true
+                    fastestPwd = pwd
+                }
+                if(mostPointsScore == null || pwd.score?.compareTo(mostPointsScore) == 1){
+                    if(mostPointsPwd != null){
+                        mostPointsPwd.mostPoints = false
+                    }
+                    mostPointsScore = pwd.score
+                    pwd.mostPoints = true
+                    mostPointsPwd = pwd
+                }
+            }
+        }
+        return list
     }
 
     private fun calculateScore(answers: List<Password>): Int{

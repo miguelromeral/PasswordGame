@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval">
+
+            <gradient
+                android:endColor="#ffffff"
+                android:centerColor="#a6a6a6"
+                android:startColor="#dbdbdb"
+                android:gradientRadius="50sp"
+                android:type="linear"
+                android:angle="135" />
+
+            <stroke android:width="10sp"
+                android:color="#9e9e9e" />
+
+        </shape>
+    </item>
+    <item
+        android:height="200sp"
+        android:width="200sp">
+
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/star_add"/>
+    </item>
+</layer-list>
+

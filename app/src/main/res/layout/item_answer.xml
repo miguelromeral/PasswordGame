@@ -4,17 +4,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="password"
             type="es.miguelromeral.password.classes.Password" />
 
     </data>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
     <androidx.cardview.widget.CardView
         style="@style/mainCardView"
         android:id="@+id/cardViewAnswer"
-        tools:cardBackgroundColor="@color/mainBlue">
+        tools:cardBackgroundColor="@color/mainBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,17 +53,22 @@
                 <ImageView
                     android:id="@+id/imageView3"
                     style="@style/IconCustomPassword"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toStartOf="@+id/tvWord"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/word" />
 
                 <TextView
                     android:id="@+id/tvWord"
                     style="@style/TextCustomPassword"
+                    android:layout_width="0dp"
                     android:layout_marginStart="8sp"
-                    android:textAlignment="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8sp"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvThreeDots"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Word" />
@@ -58,10 +77,9 @@
                 <TextView
                     android:id="@+id/tvThreeDots"
                     style="@style/TextThreeDots"
-                    android:layout_width="16sp"
+                    android:gravity="center"
+                    android:layout_width="40sp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:gravity="left|top"
                     android:text="@string/three_dots"
                     android:textAlignment="center"
                     android:textAppearance="?android:textAppearanceLarge"
@@ -304,6 +322,42 @@
 
 
     </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/ivTime"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/gold_medal_time"
+                android:visibility="@{password.fastest ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/ivScore"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/platinum_medal_score"
+                android:visibility="@{password.mostPoints ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toEndOf="@id/ivTime"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
 
 
 </layout>

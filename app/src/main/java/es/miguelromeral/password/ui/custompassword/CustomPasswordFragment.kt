@@ -1,26 +1,29 @@
 package es.miguelromeral.password.ui.custompassword
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import es.miguelromeral.password.databinding.FragmentCustomPasswordBinding
-import es.miguelromeral.password.ui.listeners.RemoveCustomHintListener
-import android.widget.LinearLayout
-import android.widget.EditText
 import es.miguelromeral.password.R
-import es.miguelromeral.password.classes.*
+import es.miguelromeral.password.classes.Password
+import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.classes.options.Categories
 import es.miguelromeral.password.classes.options.Languages
 import es.miguelromeral.password.classes.options.Levels
-import es.miguelromeral.password.classes.database.PasswordDatabase
+import es.miguelromeral.password.databinding.FragmentCustomPasswordBinding
+import es.miguelromeral.password.ui.listeners.RemoveCustomHintListener
 
 
 class CustomPasswordFragment : Fragment() {
@@ -122,7 +125,20 @@ class CustomPasswordFragment : Fragment() {
             }
         }
 
+        //setHasOptionsMenu(true)
 
+
+        // This callback will only be called when MyFragment is at least Started.
+
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    requireActivity().onBackPressed()
+                    Log.i("TEST", "Back pressed")
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
         return binding.root
     }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval">
+
+            <gradient
+                android:endColor="#ffe7d1"
+                android:centerColor="#ff8819"
+                android:startColor="#ffa724"
+                android:gradientRadius="50sp"
+                android:type="linear"
+                android:angle="135" />
+
+            <stroke android:width="10sp"
+                android:color="#ff800f" />
+
+        </shape>
+    </item>
+    <item
+        android:height="200sp"
+        android:width="200sp">
+
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/stopwatch_regular"/>
+    </item>
+</layer-list>
+

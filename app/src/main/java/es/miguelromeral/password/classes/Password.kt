@@ -34,6 +34,9 @@ data class Password(
     var time: Long? = 0
     var score: Int? = 0
 
+    var fastest: Boolean? = false
+    var mostPoints: Boolean? = false
+
     var solved: Boolean? = false
     var failed: Boolean? = false
     var custom: Boolean? = false

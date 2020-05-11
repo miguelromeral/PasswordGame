@@ -13,6 +13,12 @@ import androidx.preference.*
 
 class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnSharedPreferenceChangeListener {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setTintColor(context)
+    }
+
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
         findPreference(getString(R.string.pref_github_key)).setOnPreferenceClickListener {

@@ -142,14 +142,7 @@ class GameActivityFragment : Fragment() {
 
                 when(motionEvent.action){
                     MotionEvent.ACTION_DOWN -> {
-  /*                      TransitionManager.beginDelayedTransition(binding.clSpeech, TransitionSet()
-                                .addTransition(Scale(0.7f))
-                                .addTransition(Fade())
-                                .setInterpolator(LinearOutSlowInInterpolator()))
-                        binding.fabAudio.visibility = View.INVISIBLE
-*/
                         binding.fabAudio.animate().translationX(200f)
-
                         speechRecognizer.startListening(speechRecognizerIntent)
                     }
                     MotionEvent.ACTION_UP -> {
@@ -163,7 +156,6 @@ class GameActivityFragment : Fragment() {
             viewModel.enableFABMic.observe(viewLifecycleOwner, Observer {
                 if(it){
                     binding.fabAudio.animate().translationX(0f)
-
                     viewModel.endEnableMic()
                 }
             })
@@ -183,11 +175,9 @@ class GameActivityFragment : Fragment() {
         }
 
         lg.bFail.setOnClickListener {
-            TransitionManager.beginDelayedTransition(lg.clGame, ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN))
             viewModel.nextWord(false)
         }
         lg.bSuccess.setOnClickListener {
-            TransitionManager.beginDelayedTransition(lg.clGame, ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN))
             viewModel.nextWord(true)
         }
 
@@ -207,7 +197,6 @@ class GameActivityFragment : Fragment() {
         })
 
         viewModel.text.observe(viewLifecycleOwner, Observer {
-            //TransitionManager.beginDelayedTransition(lg.clGame, ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN))
             lg.tvPassword.text = it.toUpperCase()
         })
 
