@@ -14,6 +14,7 @@ import es.miguelromeral.password.classes.database.PasswordDatabaseDao
 import es.miguelromeral.password.ui.game.GameViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.random.Random
 
 class PasswordRepository(private val database: PasswordDatabaseDao) {
 
@@ -64,7 +65,7 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
     }
 
 
-    suspend fun retrieveWords(category: String, level: String, language: String, source: Int, countWords: Int, inter: IRepository) {
+    suspend fun retrieveWords(category: String, level: String, language: String, source: Int, countWords: Int, collection: String, inter: IRepository) {
         return withContext(Dispatchers.IO) {
             var listRetrieved = mutableListOf<Password>()
 
@@ -78,8 +79,8 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
                 sendResults(countWords, localWords, inter)
                 return@withContext Unit
             }else {
-                val ref = mFirestore.collection(FirestoreConfig.COLL_PASSWORD)
-                Log.i(TAG, "cat: $category, lev: $level, lan: $language, source: $source")
+                val ref = mFirestore.collection(collection)
+                Log.i(TAG, "cat: $category, lev: $level, lan: $language, source: $source collection: $collection")
 
 
                 var query: Query = ref.whereEqualTo(FirestoreConfig.FIELD_LANGUAGE, language)
@@ -91,16 +92,14 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
                     query = query.whereEqualTo(FirestoreConfig.FIELD_CATEGORY, category)
                 }
 
-/*
-                query.limit(GameViewModel.DEFAULT_MAX_WORDS)
-                    .get()
-                    .addOn
-  */
+
 
                 query
-                    .limit(countWords.toLong())
+                    //.whereGreaterThan(FirestoreConfig.FIELD_RANDOM, randomIndex)
+                    //.limit(countWords.toLong())
+                    //.orderBy(FirestoreConfig.FIELD_RANDOM)
                     .get()
-                    .addOnSuccessListener { documents ->
+                    .addOnSuccessListener {documents ->
                         try {
                             if (documents != null) {
                                 for (document in documents) {
@@ -125,7 +124,6 @@ class PasswordRepository(private val database: PasswordDatabaseDao) {
 
                     }
 
-                /*Log.i("TEST", "End of retrieving")*/
             }
             Unit
         }

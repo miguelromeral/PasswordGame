@@ -97,6 +97,29 @@ class FinishedGameFragment : Fragment() {
             binding.tvFails.text = resources.getString(R.string.fg_fails, it.toString())
         })
 
+        viewModel.fastest.observe(viewLifecycleOwner, Observer {
+            binding.tvFastest.text = if(it == null){
+                resources.getString(R.string.fg_fastest_empty)
+            }else{
+                if(it.isEmpty()){
+                    resources.getString(R.string.fg_fastest_empty)
+                }else{
+                    resources.getString(R.string.fg_fastest, it)
+                }
+            }
+        })
+
+        viewModel.morePoints.observe(viewLifecycleOwner, Observer {
+            binding.tvMoreScore.text = if(it == null){
+                resources.getString(R.string.fg_morePoints_empty)
+            }else{
+                if(it.isEmpty()){
+                    resources.getString(R.string.fg_morePoints_empty)
+                }else{
+                    resources.getString(R.string.fg_morePoints, it)
+                }
+            }
+        })
 
         setHasOptionsMenu(true)
 

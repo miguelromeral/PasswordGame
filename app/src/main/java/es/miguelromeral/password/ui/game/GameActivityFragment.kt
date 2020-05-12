@@ -34,11 +34,8 @@ import com.transitionseverywhere.TransitionSet
 import com.transitionseverywhere.extra.Scale
 import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.*
-import es.miguelromeral.password.classes.options.Categories
-import es.miguelromeral.password.classes.options.Levels
-import es.miguelromeral.password.classes.options.Options
 import es.miguelromeral.password.classes.database.PasswordDatabase
-import es.miguelromeral.password.classes.options.Languages
+import es.miguelromeral.password.classes.options.*
 import es.miguelromeral.password.databinding.FragmentGameBinding
 import es.miguelromeral.password.ui.finishedgame.FinishedGameFragmentArgs
 import java.util.*
@@ -86,6 +83,8 @@ class GameActivityFragment : Fragment() {
             resources
         )
 
+        val collection = FirestoreConfig.getCollectionByLocale(resources, language)
+
         mediaPlayerSuccess = MediaPlayer.create(requireContext(), R.raw.success)
         mediaPlayerFail = MediaPlayer.create(requireContext(), R.raw.fail)
 
@@ -96,7 +95,7 @@ class GameActivityFragment : Fragment() {
         val countWords = (PreferenceManager.getDefaultSharedPreferences(context).getString(
                 resources.getString(R.string.pref_count_key), Options.DEFAULT_COUNT_VALUE) ?: Options.DEFAULT_COUNT_VALUE).toInt()
 
-        val vmf = GameFactory(dataSource, application, category!!, level!!, language!!, source, gameTime, countWords)
+        val vmf = GameFactory(dataSource, application, category!!, level!!, language!!, source, gameTime, countWords, collection)
 
         viewModel = ViewModelProviders.of(this, vmf).get(GameViewModel::class.java)
 

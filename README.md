@@ -68,6 +68,7 @@ If you need help with the application and the instructions for the game, please 
 
 Version|Code|Changes
 --- | --- | ---
+1.1.2|8|Fixed a problem in which the solutions were not retrieved randomly. Added badges to show stastics of game.
 1.1.1|7|Added more categories. Also the user can save default answers from the database to their devices.
 1.1|6|Features to export and import custom passwords added.
 1.0.4|5|Added more categories and fixed permission requests experience

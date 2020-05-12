@@ -29,6 +29,11 @@ class FinishedGameViewModel (
     private val _mistakes = MutableLiveData<Int>(fails)
     val mistakes = _mistakes
 
+    private val _fastest = MutableLiveData<String?>(null)
+    val fastest = _fastest
+    private val _morePoints = MutableLiveData<String?>(null)
+    val morePoints = _morePoints
+
     private val _score = MutableLiveData<Int>()
     private var _scoreInt = 0
     val score = _score
@@ -101,6 +106,14 @@ class FinishedGameViewModel (
 
             }
         }
+
+        fastestPwd?.let{
+            _fastest.postValue(it.word)
+        }
+        mostPointsPwd?.let{
+            _morePoints.postValue(it.word)
+        }
+
         return list
     }
 

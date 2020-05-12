@@ -161,8 +161,12 @@
 	<!-- Finished Game -->
 	<string name="fg_title">Juego Finalizado</string>
 	<string name="fg_score">Puntuación Total: %1$s puntos</string>
-	<string name="fg_success">Palabras acertadas: %1$s</string>
-	<string name="fg_fails">Palabras pasadas: %1$s</string>
+	<string name="fg_success">Aciertos: %1$s</string>
+	<string name="fg_fails">Pasadas: %1$s</string>
+	<string name="fg_fastest">La más rápida: \"%1$s\"</string>
+	<string name="fg_fastest_empty">Sin Estadísticas</string>
+	<string name="fg_morePoints">Mejor puntuación: \"%1$s\"</string>
+	<string name="fg_morePoints_empty">--</string>
 	<string name="fg_word_default">Servidor</string>
 	<string name="fg_word_custom">Dispositivo</string>
 	<string name="fg_answer_failed">Fallada</string>
