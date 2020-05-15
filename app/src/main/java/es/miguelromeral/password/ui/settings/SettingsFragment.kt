@@ -31,7 +31,7 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
             }
             false
         }
-        findPreference(getString(R.string.pref_tip_key)).setOnPreferenceClickListener {
+        /*findPreference(getString(R.string.pref_tip_key)).setOnPreferenceClickListener {
             context?.let{
                 val i = Intent(Intent.ACTION_VIEW).apply {
                     data = Uri.parse(paypal_tip_web)
@@ -40,7 +40,7 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
                 return@setOnPreferenceClickListener true
             }
             false
-        }
+        }*/
         findPreference(getString(R.string.pref_policy_key)).setOnPreferenceClickListener {
             context?.let{
                 val i = Intent(Intent.ACTION_VIEW).apply {
@@ -63,7 +63,6 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
             val preferences = listOf(
                     getString(R.string.pref_microphone_key),
                     getString(R.string.pref_language_key),
-                    getString(R.string.pref_tip_key),
                     getString(R.string.pref_policy_key),
                     getString(R.string.pref_words_source_key),
                     getString(R.string.pref_theme_key),

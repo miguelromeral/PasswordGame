@@ -125,21 +125,6 @@ class CustomPasswordFragment : Fragment() {
             }
         }
 
-        //setHasOptionsMenu(true)
-
-
-        // This callback will only be called when MyFragment is at least Started.
-
-        // This callback will only be called when MyFragment is at least Started.
-        val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true /* enabled by default */) {
-                override fun handleOnBackPressed() {
-                    requireActivity().onBackPressed()
-                    Log.i("TEST", "Back pressed")
-                }
-            }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-
         return binding.root
     }
 
