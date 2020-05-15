@@ -54,13 +54,13 @@ The fastest the team can guess the word, the more points will obtain (see table 
 
 You can select only words related to one category specified. This way you will not see other topics and you can enjoy your user expierence.
 
-<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/Filter_Category.png" height="300px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/Filter_Category.png" height="auto" width="300px">
 
 ### <img alt='Level' src='https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/app/src/main/res/drawable/level.png' height="30" width="auto" /> Filter by levels
 
 You can filter all the words to only get the easiest or even the hardest if you find the mixed options too randomly.
 
-<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/Filter_Level.png" height="300px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/Home_Level.png" height="auto" width="300px">
 
 ### <img alt='Language' src='https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/app/src/main/res/drawable/language.png' height="30" width="auto" /> Different languages
 
@@ -70,7 +70,7 @@ The app's solutions have different languages, depending on the user language pre
 To change the language preferences for the solutions fetched from the server, go to Settings (third button on the bottom menu) and look for the option "Language".
 ```
 
-<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/Settings_Language.png" height="300px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/Settings_Language.png" height="auto" width="300px">
 
 ### <img alt='Custom Words' src='https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/app/src/main/res/drawable/list_edit.png' height="30" width="auto" /> Create your own solutions!
 
@@ -92,7 +92,7 @@ Furthermore, you can select to play with only the server answers, your own answe
 To change the source of the solutions, go to Settings and change the "Password Source" value.
 ```
 
-<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/Settings_Source.png" height="300px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/Settings_Source.png" height="auto" width="300px">
 
 # FAQs
 
@@ -125,7 +125,7 @@ If you have selected the option "Password sources" to server or mixed, (the ones
 
 In screen that shows all your passwords, clicking on the three dots on the right of the toolbar, there are two options enabled: "Import Data" and "Export Data".
 
-<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/export_import.png" height="300px" width="auto">
+<img src="https://raw.githubusercontent.com/miguelromeral/PasswordGame/master/screenshots/export_import.png" height="auto" width="300px">
 
 #### Exporting Data
 
