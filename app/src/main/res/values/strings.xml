@@ -124,6 +124,11 @@
 	<string name="pref_badges_title">Show Stats Badges</string>
 	<string name="pref_badges_summary">In the review screen, show badges for the fastest answer and one that got more points.</string>
 
+	<string name="pref_firestore_cache_key" translatable="false">pref_firestore_cache_key</string>
+	<string name="pref_firestore_cache_key_server" translatable="false">collectionCache</string>
+	<string name="pref_firestore_cache_server_default_value" translatable="false">0</string>
+
+
 	<!-- Item Custom Password -->
 	<string name="cp_edit_title">Edit</string>
 	<string name="cp_delete_title">Delete</string>

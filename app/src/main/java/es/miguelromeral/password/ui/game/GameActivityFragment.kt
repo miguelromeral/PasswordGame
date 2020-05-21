@@ -83,8 +83,6 @@ class GameActivityFragment : Fragment() {
             resources
         )
 
-        val collection = FirestoreConfig.getCollectionByLocale(resources, language)
-
         mediaPlayerSuccess = MediaPlayer.create(requireContext(), R.raw.success)
         mediaPlayerFail = MediaPlayer.create(requireContext(), R.raw.fail)
 
@@ -95,7 +93,7 @@ class GameActivityFragment : Fragment() {
         val countWords = (PreferenceManager.getDefaultSharedPreferences(context).getString(
                 resources.getString(R.string.pref_count_key), Options.DEFAULT_COUNT_VALUE) ?: Options.DEFAULT_COUNT_VALUE).toInt()
 
-        val vmf = GameFactory(dataSource, application, category!!, level!!, language!!, source, gameTime, countWords, collection)
+        val vmf = GameFactory(dataSource, application, category!!, level!!, language!!, source, gameTime, countWords)
 
         viewModel = ViewModelProviders.of(this, vmf).get(GameViewModel::class.java)
 

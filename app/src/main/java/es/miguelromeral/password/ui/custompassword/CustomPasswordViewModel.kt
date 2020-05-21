@@ -70,6 +70,7 @@ class CustomPasswordViewModel(
     private suspend fun createNewPassword(resources: Resources, password: Password){
         return withContext(Dispatchers.IO){
             password.random = Random.nextLong()
+            password.custom = true
             /*password.language = password.language
             password.level = password.level
             password.category = password.category*/

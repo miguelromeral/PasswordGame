@@ -72,13 +72,20 @@ class AnswersAdapter(
             ))
 
 
-            binding.cardViewAnswer.setOnLongClickListener{ view ->
-                showMenu(view)
-                true
-            }
 
-            binding.tvThreeDots.setOnClickListener { view ->
-                showMenu(view)
+            item.custom?.let {
+                if (it) {
+                    binding.tvThreeDots.visibility = View.GONE
+                } else {
+                    binding.tvThreeDots.setOnClickListener { view ->
+                        showMenu(view)
+                    }
+
+                    binding.cardViewAnswer.setOnLongClickListener{ view ->
+                        showMenu(view)
+                        true
+                    }
+                }
             }
         }
 

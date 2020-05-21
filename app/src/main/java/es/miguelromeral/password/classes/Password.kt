@@ -6,11 +6,16 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.firebase.firestore.Exclude
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.parcel.Parceler
 import kotlinx.android.parcel.Parcelize
+import java.util.*
 
 @Entity(tableName = "password_table")
 data class Password(
+    @PrimaryKey
+    var id: String = UUID.randomUUID().toString(),
+
     @ColumnInfo(name = "category")
     var category: String? = "",
 
@@ -23,11 +28,14 @@ data class Password(
     @ColumnInfo(name = "level")
     var level: String? = "",
 
-    @PrimaryKey
+    @ColumnInfo(name = "word")
     var word: String = "",
 
     @ColumnInfo(name = "random")
-    var random: Long? = 0
+    var random: Long? = 0,
+
+    @ColumnInfo(name = "custom")
+    var custom: Boolean? = false
 
 ) : Parcelable {
 
@@ -39,7 +47,6 @@ data class Password(
 
     var solved: Boolean? = false
     var failed: Boolean? = false
-    var custom: Boolean? = false
 
 
 

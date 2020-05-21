@@ -60,11 +60,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
+
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
     // Room
-    implementation "android.arch.persistence.room:runtime:1.0.0"
-    kapt "android.arch.persistence.room:compiler:1.0.0"
+    implementation "androidx.room:room-runtime:2.1.0-alpha06"
+    kapt "androidx.room:room-compiler:2.1.0-alpha06"
 
     implementation 'com.karumi:dexter:6.1.0'
 
@@ -73,6 +75,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.3.0'
     implementation 'com.google.firebase:firebase-firestore:20.0.0'
     implementation 'com.google.firebase:firebase-analytics:17.3.0'
+
+    // Remote Config
+    compile 'com.google.firebase:firebase-config:19.1.4'
+
     //implementation 'com.google.firebase:firebase-database:18.0.0'
     //implementation 'com.google.firebase:firebase-messaging:20.1.5'
 
@@ -81,5 +87,8 @@ dependencies {
 
     // Transitions
     implementation "com.andkulikov:transitionseverywhere:1.8.1"
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
 }

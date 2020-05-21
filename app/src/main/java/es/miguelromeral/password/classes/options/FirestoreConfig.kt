@@ -8,17 +8,11 @@ class FirestoreConfig {
 
 
 
-        fun getCollectionByLocale(res: Resources, value: String?): String =
-            when(value){
-                res.getString(R.string.pref_language_value_english) -> COLL_PASSWORD_EN
-                res.getString(R.string.pref_language_value_spanish) -> COLL_PASSWORD_ES
-                else -> COLL_PASSWORD_EN
-            }
-
         const val COLL_PASSWORD = "passwords"
-        const val COLL_PASSWORD_EN = "passwords_en"
-        const val COLL_PASSWORD_ES = "passwords_es"
         const val COLL_PASSWORD_DEV = "passwords_dev"
+
+        const val CONFIG_CACHE = "collectionCache"
+        const val CONFIG_CACHE_DEFAULT_VALUE = "0"
 
         const val FIELD_CATEGORY = "category"
         const val FIELD_LEVEL = "level"

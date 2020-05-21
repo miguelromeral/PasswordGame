@@ -13,7 +13,7 @@ import es.miguelromeral.password.classes.*
 import es.miguelromeral.password.classes.options.Levels
 import es.miguelromeral.password.classes.database.PasswordDatabaseDao
 import es.miguelromeral.password.classes.repository.IRepository
-import es.miguelromeral.password.classes.repository.PasswordRepository
+import es.miguelromeral.password.classes.repository.Repository
 import kotlinx.coroutines.launch
 
 class GameViewModel(
@@ -24,14 +24,13 @@ class GameViewModel(
         val language: String,
         val source: Int,
         val gameTime: Long,
-        val countWords: Int,
-        val collection: String) : ViewModel(),
+        val countWords: Int) : ViewModel(),
     IRepository {
 
     private val _text = MutableLiveData<String>("Password!")
     val text: LiveData<String> = _text
 
-    private val repository = PasswordRepository(database)
+    private val repository = Repository(application, database)
 
     private val _listened = MutableLiveData<String>("")
     val listened = _listened
@@ -62,7 +61,7 @@ class GameViewModel(
     private lateinit var timerScore: CountDownTimer
 
     private var viewModelJob = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    private val uiScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private var timestamp: Long = 0
 
@@ -76,7 +75,7 @@ class GameViewModel(
     init{
         val t = this
         uiScope.launch {
-            repository.retrieveWords(category, level, language, source, countWords, collection, t)
+            repository.retrieveWords(category, level, language, source, countWords, t)
         }
     }
 

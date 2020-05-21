@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.preference.PreferenceManager
 import es.miguelromeral.password.R
+import es.miguelromeral.password.classes.database.PasswordDatabase
 import es.miguelromeral.password.classes.options.Categories
 import es.miguelromeral.password.classes.options.Levels
 import es.miguelromeral.password.databinding.FragmentHomeBinding
@@ -31,7 +32,13 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        val application = requireNotNull(this.activity).application
+        val dataSource = PasswordDatabase.getInstance(application).passwordDatabaseDao
+
+
+        val vmf = HomeFactory(requireActivity(), dataSource, application)
+
+        homeViewModel = ViewModelProviders.of(this, vmf).get(HomeViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.viewModel = homeViewModel

@@ -33,7 +33,7 @@ class DashboardViewModel(
 
 
     fun updateAllPasswords(){
-        passwords = database.getAllPasswords()
+        passwords = database.getAllPasswords(true)
         _dataChanged.postValue(true)
     }
 
@@ -92,7 +92,7 @@ class DashboardViewModel(
 
     private suspend fun clearDatabaseIO(){
         return withContext(Dispatchers.IO){
-            database.clear()
+            database.clear(custom = true)
         }
     }
 

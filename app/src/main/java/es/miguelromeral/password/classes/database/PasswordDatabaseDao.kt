@@ -14,19 +14,23 @@ interface PasswordDatabaseDao {
     @Update
     fun update(password: Password)
 
-    @Query("SELECT * FROM password_table")
-    fun getAllPasswords(): LiveData<List<Password>>
+    @Query("SELECT * FROM password_table WHERE custom = :custom")
+    fun getAllPasswords(custom: Boolean): LiveData<List<Password>>
 
 
-    @Query("SELECT * FROM password_table")
-    fun getAllPasswordsSync(): List<Password>
-
-    @Query("DELETE FROM password_table")
-    fun clear()
+    @Query("SELECT * FROM password_table WHERE custom = :custom")
+    fun getAllPasswordsSync(custom: Boolean): List<Password>
 
     @Query("DELETE FROM password_table WHERE word = :key")
     fun delete(key: String)
 
+    @Query("DELETE FROM password_table WHERE custom = :custom")
+    fun clear(custom: Boolean = false)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    //@Insert
+    @JvmSuppressWildcards
+    fun insertCache(objects: List<Password>)
 
     @RawQuery
     fun insertDataRawFormat(query: SupportSQLiteQuery): Boolean

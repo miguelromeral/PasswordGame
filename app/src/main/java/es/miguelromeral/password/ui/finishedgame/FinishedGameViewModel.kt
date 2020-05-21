@@ -10,6 +10,7 @@ import es.miguelromeral.password.R
 import es.miguelromeral.password.classes.Password
 import es.miguelromeral.password.classes.database.PasswordDatabaseDao
 import kotlinx.coroutines.*
+import java.util.*
 
 class FinishedGameViewModel (
         private val database: PasswordDatabaseDao,
@@ -153,8 +154,10 @@ class FinishedGameViewModel (
         return withContext(Dispatchers.IO){
             pwd.time = 0
             pwd.score = 0
+            pwd.custom = true
             pwd.solved = false
             pwd.failed = false
+            pwd.id = UUID.randomUUID().toString()
             database.insert(pwd)
             _added.postValue(pwd.word)
         }
