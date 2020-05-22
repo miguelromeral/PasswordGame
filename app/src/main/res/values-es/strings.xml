@@ -72,6 +72,11 @@
 	<string name="pref_badges_title">Mostrar Emblemas de Estadísticas</string>
 	<string name="pref_badges_summary">En la pantalla de revisión, mostrar emblemas para la respuesta más rápida y la que obtuvo más puntos.</string>
 
+	<string name="pref_cache_header_title">Caché</string>
+
+	<string name="pref_cache_title">Versión de Caché</string>
+	<string name="pref_cache_summary_unknown">Desconocida</string>
+
 	<!-- Item Custom Password -->
 	<string name="cp_edit_title">Editar</string>
 	<string name="cp_delete_title">Eliminar</string>
@@ -97,6 +102,7 @@
 	<string name="fh_filter_category">Filtrar por Categoría</string>
 	<string name="fh_filter_level">Filtrar por Nivel</string>
 	<string name="fh_button_start">Empezar Juego</string>
+	<string name="fh_updated_cache">Descargadas las palabras más recientes desed el servidor</string>
 	<string name="fh_toast_preparing">¡Preparando el juego!</string>
 	<string name="fh_button_rules">Leer Reglas</string>
 	<string name="fh_welcome">Bienvenido a Guess Word!\nHaz un equipo con tus amigos e intentad adivinar las palabras sin decir ninguna de las pistas más abajo.\n¿Estáis preparados?</string>

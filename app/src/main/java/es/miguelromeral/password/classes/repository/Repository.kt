@@ -3,6 +3,7 @@ package es.miguelromeral.password.classes.repository
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.QuerySnapshot
@@ -28,6 +29,17 @@ class Repository(
     private val application: Application,
     private val database: PasswordDatabaseDao
 ) {
+
+    private var remoteConfig: FirebaseRemoteConfig
+
+    init {
+        remoteConfig = FirebaseRemoteConfig.getInstance()
+        val configSettings = FirebaseRemoteConfigSettings.Builder()
+            .setDeveloperModeEnabled(BuildConfig.DEBUG)
+            .setMinimumFetchIntervalInSeconds(4200)
+            .build()
+        remoteConfig.setConfigSettings(configSettings)
+    }
 
     suspend fun retrieveWords(category: String, level: String, language: String, source: Int, countWords: Int, inter: IRepository) {
         withContext(Dispatchers.IO) {
@@ -86,16 +98,9 @@ class Repository(
     }
 
 
-    fun refreshCache(scope: CoroutineScope, activity: Activity, cacheVersionLocal: String) {
+    fun refreshCache(scope: CoroutineScope, activity: Activity, cacheVersionLocal: String, flag: MutableLiveData<Boolean>) {
 
         Timber.i("Refreshing cache")
-
-            var remoteConfig = FirebaseRemoteConfig.getInstance()
-            val configSettings = FirebaseRemoteConfigSettings.Builder()
-                .setDeveloperModeEnabled(BuildConfig.DEBUG)
-                .setMinimumFetchIntervalInSeconds(4200)
-                .build()
-            remoteConfig.setConfigSettings(configSettings)
 
             remoteConfig.fetchAndActivate()
                 .addOnSuccessListener {
@@ -122,6 +127,8 @@ class Repository(
                                         }
                                     }
 
+                                    flag.postValue(true)
+
                                     Timber.i("Updated the local cache version")
                                 }
                             }
@@ -129,6 +136,7 @@ class Repository(
                 }
 
     }
+
 
     private suspend fun insertAllData(documents: QuerySnapshot){
         withContext(Dispatchers.IO) {
@@ -141,7 +149,7 @@ class Repository(
                         obj.id = document.id
                         listObjects.add(obj)
                     }
-                    database.insert(listObjects.get(0))
+                    database.insertCache(listObjects)
                     Timber.i("Finished after ${listObjects.size}!"
                     )
                 } else {

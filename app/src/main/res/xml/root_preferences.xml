@@ -82,6 +82,17 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/pref_cache_header_title">
+
+        <Preference
+            app:key="@string/pref_cache_key"
+            app:title="@string/pref_cache_title"
+            app:summary="@string/pref_cache_summary_unknown"
+            android:icon="@drawable/network_sync"/>
+
+
+    </PreferenceCategory>
 
 
     <PreferenceCategory

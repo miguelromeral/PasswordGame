@@ -37,7 +37,7 @@ class FinishedGameFragment : Fragment() {
 
         MobileAds.initialize(requireContext(), getString(R.string.admob_app_id))
         val mInterstitialAd = InterstitialAd(requireContext())
-        mInterstitialAd.adUnitId = getString(R.string.admob_interstitial_TESTING)
+        mInterstitialAd.adUnitId = getString(R.string.admob_interstitial_finishedgame)
         mInterstitialAd.loadAd(AdRequest.Builder().build())
 
         mInterstitialAd.adListener = object : AdListener(){

@@ -12,6 +12,7 @@ class FirestoreConfig {
         const val COLL_PASSWORD_DEV = "passwords_dev"
 
         const val CONFIG_CACHE = "collectionCache"
+        const val CONFIG_CACHE_DEV = "collectionCache_dev"
         const val CONFIG_CACHE_DEFAULT_VALUE = "0"
 
         const val FIELD_CATEGORY = "category"

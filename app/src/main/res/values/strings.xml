@@ -129,6 +129,16 @@
 	<string name="pref_firestore_cache_server_default_value" translatable="false">0</string>
 
 
+	<string name="pref_cache_header_title">Cache</string>
+
+	<string name="pref_cache_key" translatable="false">pref_cache_key</string>
+	<string name="pref_cache_title">Cache Version</string>
+	<string name="pref_cache_summary_version" translatable="false">%1$s</string>
+	<string name="pref_cache_summary_unknown">Unknown</string>
+
+
+
+
 	<!-- Item Custom Password -->
 	<string name="cp_edit_title">Edit</string>
 	<string name="cp_delete_title">Delete</string>
@@ -154,6 +164,7 @@
 	<string name="fh_filter_category">Filter by Category</string>
 	<string name="fh_filter_level">Filter by Level</string>
 	<string name="fh_button_start">Start new Game</string>
+	<string name="fh_updated_cache">Downloaded the latest words from the server</string>
 	<string name="fh_toast_preparing">Preparing the game!</string>
 	<string name="fh_button_rules">Read Rules</string>
 	<string name="fh_welcome">Welcome to Guess Word!\nMake a team with your friends and try to guess the passwords without saying any of the hints below.\nAre you ready?</string>

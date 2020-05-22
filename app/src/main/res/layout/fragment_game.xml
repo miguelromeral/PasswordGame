@@ -19,7 +19,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+<!--
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/ad_ingame"
@@ -35,11 +35,14 @@
         </com.google.android.gms.ads.AdView>
 
 
+            app:layout_constraintTop_toBottomOf="@id/ad_ingame"
+-->
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/clSpeech"
-            app:layout_constraintTop_toBottomOf="@id/ad_ingame">
+            app:layout_constraintTop_toTopOf="parent">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout

@@ -104,6 +104,13 @@ class HomeFragment : Fragment() {
                 }
         })
 
+        homeViewModel.updatedCache.observe(viewLifecycleOwner, Observer {
+            if(it){
+                Toast.makeText(context, R.string.fh_updated_cache, Toast.LENGTH_LONG).show()
+                homeViewModel.endUpdatedCache()
+            }
+        })
+
         homeViewModel.filterLevel.observe(viewLifecycleOwner, Observer {
             binding.partialSpinnerLevel.levelLayout.visibility =
                 if(it){

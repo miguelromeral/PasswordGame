@@ -9,6 +9,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import es.miguelromeral.password.R
 import androidx.preference.*
+import es.miguelromeral.password.classes.options.FirestoreConfig
 
 
 class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnSharedPreferenceChangeListener {
@@ -21,6 +22,15 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+        val cache = sharedPref?.getString(FirestoreConfig.CONFIG_CACHE, FirestoreConfig.CONFIG_CACHE_DEFAULT_VALUE)
+            ?: FirestoreConfig.CONFIG_CACHE_DEFAULT_VALUE
+
+        if(cache != FirestoreConfig.CONFIG_CACHE_DEFAULT_VALUE) {
+            findPreference(getString(R.string.pref_cache_key)).summary = resources.getString(R.string.pref_cache_summary_version, cache)
+        }
+
         findPreference(getString(R.string.pref_github_key)).setOnPreferenceClickListener {
             context?.let{
                 val i = Intent(Intent.ACTION_VIEW).apply {
@@ -31,6 +41,8 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
             }
             false
         }
+
+
         /*findPreference(getString(R.string.pref_tip_key)).setOnPreferenceClickListener {
             context?.let{
                 val i = Intent(Intent.ACTION_VIEW).apply {
@@ -70,6 +82,7 @@ class SettingsFragment : PreferenceFragmentCompat(),  SharedPreferences.OnShared
                     getString(R.string.pref_timer_key),
                 getString(R.string.pref_hints_key),
                 getString(R.string.pref_badges_key),
+                getString(R.string.pref_cache_key),
                     getString(R.string.pref_count_key)
 
             )

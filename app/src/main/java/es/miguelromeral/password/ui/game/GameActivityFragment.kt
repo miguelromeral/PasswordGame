@@ -105,6 +105,7 @@ class GameActivityFragment : Fragment() {
         MobileAds.initialize(requireContext(), getString(R.string.admob_app_id))
         val adRequest = AdRequest.Builder().build()
 
+        /*
         binding.adIngame.loadAd(adRequest)
         binding.adIngame.visibility = View.GONE
         binding.adIngame.adListener = object : AdListener() {
@@ -112,7 +113,7 @@ class GameActivityFragment : Fragment() {
                 binding.adIngame.visibility = View.VISIBLE
                 super.onAdLoaded()
             }
-        }
+        }*/
 
 
         val microphoneEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
